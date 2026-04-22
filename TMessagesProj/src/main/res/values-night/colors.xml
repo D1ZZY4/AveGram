@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Mode — Deep Glass -->
+    <color name="divider">#1E2A3A</color>
+    <color name="widget_name">#E6EDF3</color>
+    <color name="widget_badge">#FFFFFF</color>
+    <color name="widget_time">#8B949E</color>
+    <color name="widget_text">#8B949E</color>
+    <color name="widget_divider">#1E2A3A</color>
+    <color name="widget_action_text">#8B949E</color>
+    <color name="widget_edit_text">#6E7681</color>
+    <color name="SplashBackground">#FF0D1117</color>
+    <color name="avegram_surface">#0D1117</color>
+    <color name="glass_light">#CC1C2232</color>
+    <color name="glass_border_light">#2AFFFFFF</color>
+    <color name="bg_primary_light">#0D1117</color>
+    <color name="bg_secondary_light">#161B22</color>
+    <color name="bg_card_light">#1C2232</color>
+</resources>

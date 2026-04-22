@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AveGram Brand Colors -->
+    <color name="avegram_primary">#2196F3</color>
+    <color name="avegram_primary_dark">#1565C0</color>
+    <color name="avegram_primary_light">#64B5F6</color>
+    <color name="avegram_accent">#40C4FF</color>
+    <color name="avegram_surface">#F8FAFF</color>
+    <color name="avegram_surface_dark">#0D1117</color>
+
+    <!-- Glass / Frosted UI -->
+    <color name="glass_light">#CCF8FAFF</color>
+    <color name="glass_dark">#CC1A1F2B</color>
+    <color name="glass_border_light">#33FFFFFF</color>
+    <color name="glass_border_dark">#33FFFFFF</color>
+
+    <!-- Widget Colors -->
+    <color name="divider">#E8ECF0</color>
+    <color name="widget_name">#1A1A2E</color>
+    <color name="widget_badge">#FFFFFF</color>
+    <color name="widget_time">#8A94A6</color>
+    <color name="widget_text">#6B7280</color>
+    <color name="widget_divider">#E8ECF0</color>
+    <color name="widget_action_text">#6B7280</color>
+    <color name="widget_edit_text">#9CA3AF</color>
+
+    <!-- Splash -->
+    <color name="SplashBackground">#FFFFFFFF</color>
+
+    <!-- Semantic Colors -->
+    <color name="monetRedLight">#B3261E</color>
+    <color name="monetRedDark">#F2B8B5</color>
+    <color name="monetRedCall">#EF5350</color>
+    <color name="monetGreenCall">#4CAF50</color>
+
+    <!-- Modern UI Backgrounds -->
+    <color name="bg_primary_light">#FFFFFF</color>
+    <color name="bg_secondary_light">#F2F5FA</color>
+    <color name="bg_card_light">#FFFFFF</color>
+    <color name="bg_primary_dark">#0D1117</color>
+    <color name="bg_secondary_dark">#161B22</color>
+    <color name="bg_card_dark">#1C2232</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary_light">#1A1A2E</color>
+    <color name="text_secondary_light">#6B7280</color>
+    <color name="text_primary_dark">#E6EDF3</color>
+    <color name="text_secondary_dark">#8B949E</color>
+
+    <!-- Rounded corners accent -->
+    <color name="ripple_light">#1A2196F3</color>
+    <color name="ripple_dark">#1A64B5F6</color>
+</resources>
