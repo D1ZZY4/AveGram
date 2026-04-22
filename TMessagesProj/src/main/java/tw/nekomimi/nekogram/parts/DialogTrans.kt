@@ -12,7 +12,7 @@ import tw.nekomimi.nekogram.translate.Translator
 import tw.nekomimi.nekogram.translate.code2Locale
 import tw.nekomimi.nekogram.utils.AlertUtil
 import tw.nekomimi.nekogram.utils.uDismiss
-import com.avegram.messenger.NaConfig
+import xyz.nextalone.nagram.NaConfig
 import java.util.concurrent.atomic.AtomicBoolean
 
 @JvmOverloads

@@ -5,7 +5,7 @@ import org.telegram.ui.MainTabsConfigManager;
 
 import java.util.ArrayList;
 
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public final class MainTabsHelper {
     public static final int MAIN_TABS_HEIGHT = 56;

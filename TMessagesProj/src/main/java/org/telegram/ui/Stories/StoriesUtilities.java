@@ -68,7 +68,7 @@ import java.io.File;
 import java.util.Collections;
 
 import tw.nekomimi.nekogram.NekoConfig;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public class StoriesUtilities {
 

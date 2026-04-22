@@ -137,7 +137,7 @@ import tw.nekomimi.nekogram.helpers.ChatsHelper;
 import tw.nekomimi.nekogram.helpers.LocalNameHelper;
 import tw.nekomimi.nekogram.helpers.MessageHelper;
 import tw.nekomimi.nekogram.utils.AlertUtil;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 import com.avegram.messenger.helper.LocalPremiumStatusHelper;
 
 import com.radolyn.ayugram.AyuConstants;

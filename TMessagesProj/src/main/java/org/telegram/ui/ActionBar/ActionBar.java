@@ -77,7 +77,7 @@ import java.util.ArrayList;
 import me.vkryl.android.animator.ReplaceAnimator;
 
 import tw.nekomimi.nekogram.NekoConfig;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public class ActionBar extends FrameLayout implements Theme.Colorable {
 

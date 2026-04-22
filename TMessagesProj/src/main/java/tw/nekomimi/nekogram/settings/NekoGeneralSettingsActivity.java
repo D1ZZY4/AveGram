@@ -41,7 +41,7 @@ import tw.nekomimi.nekogram.config.cell.ConfigCellTextDetail;
 import tw.nekomimi.nekogram.config.cell.ConfigCellTextInput;
 import tw.nekomimi.nekogram.config.cell.ConfigCellTextInput2;
 import tw.nekomimi.nekogram.utils.AndroidUtil;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 @SuppressWarnings({"unused", "FieldCanBeLocal"})
 public class NekoGeneralSettingsActivity extends BaseNekoXSettingsActivity {

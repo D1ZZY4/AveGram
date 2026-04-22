@@ -47,7 +47,7 @@ import java.util.HashSet;
 import java.util.Random;
 
 import tw.nekomimi.nekogram.NekoConfig;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public class EmojiAnimationsOverlay implements NotificationCenter.NotificationCenterDelegate {
 

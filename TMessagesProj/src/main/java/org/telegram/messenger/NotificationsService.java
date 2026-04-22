@@ -21,7 +21,7 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public class NotificationsService extends Service {
 

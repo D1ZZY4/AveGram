@@ -33,7 +33,7 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public class ChatsHelper extends BaseController {
     public static final int LEFT_BUTTON_NOQUOTE = 0;

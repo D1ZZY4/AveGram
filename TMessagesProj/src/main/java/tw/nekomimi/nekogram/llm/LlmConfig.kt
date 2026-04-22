@@ -7,7 +7,7 @@ import tw.nekomimi.nekogram.config.ConfigItem
 import tw.nekomimi.nekogram.llm.preset.LlmPresetRegistry
 import tw.nekomimi.nekogram.llm.utils.LlmUrlNormalizer
 import tw.nekomimi.nekogram.translate.Translator
-import com.avegram.messenger.NaConfig
+import xyz.nextalone.nagram.NaConfig
 
 object LlmConfig {
 

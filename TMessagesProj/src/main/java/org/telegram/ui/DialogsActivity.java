@@ -284,7 +284,7 @@ import tw.nekomimi.nekogram.helpers.PasscodeHelper;
 import tw.nekomimi.nekogram.helpers.TypefaceHelper;
 import tw.nekomimi.nekogram.settings.MainTabsCustomizeActivity;
 import tw.nekomimi.nekogram.ui.BookmarkManagerActivity;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 import com.avegram.messenger.ui.folders.FoldersHelper;
 
 public class DialogsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, FloatingDebugProvider, FactorAnimator.Target, MainTabsActivity.TabFragmentDelegate {

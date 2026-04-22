@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 import tw.nekomimi.nekogram.utils.FileUtil;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public class AyuMessagesController {
     public static final String attachmentsSubfolder = "Saved Attachments";

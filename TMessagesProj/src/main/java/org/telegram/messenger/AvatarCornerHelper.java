@@ -1,6 +1,6 @@
 package org.telegram.messenger;
 
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public final class AvatarCornerHelper {
 

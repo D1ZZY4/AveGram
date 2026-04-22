@@ -35,7 +35,7 @@ import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
 
 import tw.nekomimi.nekogram.utils.AlertUtil;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 import com.radolyn.ayugram.AyuConstants;
 import com.radolyn.ayugram.messages.AyuMessagesController;
 import com.radolyn.ayugram.messages.AyuSavePreferences;

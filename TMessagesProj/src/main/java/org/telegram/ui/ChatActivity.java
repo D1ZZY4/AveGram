@@ -399,7 +399,7 @@ import tw.nekomimi.nekogram.ui.components.GroupedIconsView;
 import tw.nekomimi.nekogram.utils.AlertUtil;
 import tw.nekomimi.nekogram.utils.AndroidUtil;
 import tw.nekomimi.nekogram.utils.ProxyUtil;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 import com.avegram.messenger.ToggleResult;
 import com.avegram.messenger.helper.BookmarksHelper;
 import com.avegram.messenger.helper.DoubleTap;

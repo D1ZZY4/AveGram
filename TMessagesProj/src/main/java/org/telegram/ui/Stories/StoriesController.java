@@ -90,7 +90,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public class StoriesController {
 

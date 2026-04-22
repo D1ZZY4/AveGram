@@ -25,7 +25,7 @@ import org.telegram.ui.Components.UniversalRecyclerView;
 
 import java.util.ArrayList;
 
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 import com.avegram.messenger.nowplaying.LocalNowPlayingController;
 
 public class SetupNowPlayingActivity extends BaseFragment {

@@ -37,7 +37,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import tw.nekomimi.nekogram.DialogConfig;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public class ChatObject {
 

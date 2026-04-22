@@ -22,7 +22,7 @@ import org.telegram.ui.Components.TypefaceSpan;
 
 import java.util.List;
 
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public class TypefaceHelper {
 

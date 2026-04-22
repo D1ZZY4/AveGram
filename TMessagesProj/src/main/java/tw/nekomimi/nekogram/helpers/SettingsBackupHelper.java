@@ -43,7 +43,7 @@ import tw.nekomimi.nekogram.utils.AlertUtil;
 import tw.nekomimi.nekogram.utils.FileUtil;
 import tw.nekomimi.nekogram.utils.GsonUtil;
 import tw.nekomimi.nekogram.utils.ShareUtil;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 import com.avegram.messenger.helper.BookmarksHelper;
 import com.avegram.messenger.helper.LocalPeerColorHelper;
 import com.avegram.messenger.helper.LocalPremiumStatusHelper;

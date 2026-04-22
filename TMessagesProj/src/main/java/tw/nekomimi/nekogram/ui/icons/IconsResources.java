@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 
 import androidx.annotation.Nullable;
 
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 @SuppressLint("UseCompatLoadingForDrawables")
 public class IconsResources extends Resources {

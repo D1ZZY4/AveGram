@@ -25,7 +25,7 @@ import tw.nekomimi.nekogram.translate.locale2code
 import tw.nekomimi.nekogram.translate.source.LLMTranslator
 import tw.nekomimi.nekogram.utils.AlertUtil
 import tw.nekomimi.nekogram.utils.AppScope
-import com.avegram.messenger.NaConfig
+import xyz.nextalone.nagram.NaConfig
 import java.util.Locale
 
 const val TRANSLATE_MODE_APPEND = 0

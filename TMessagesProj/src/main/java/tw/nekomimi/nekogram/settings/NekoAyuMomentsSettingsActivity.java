@@ -81,7 +81,7 @@ import tw.nekomimi.nekogram.helpers.TimeStringHelper;
 import tw.nekomimi.nekogram.ui.cells.DeletedMessagesColorPickerCell;
 import tw.nekomimi.nekogram.ui.cells.DeletedMessagesPreviewCell;
 import tw.nekomimi.nekogram.ui.cells.HeaderCell;
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 @SuppressLint("RtlHardcoded")
 @SuppressWarnings("unused")

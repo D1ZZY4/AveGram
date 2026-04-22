@@ -30,7 +30,7 @@ import org.telegram.ui.Cells.ChatMessageCell;
 
 import java.util.ArrayList;
 
-import com.avegram.messenger.NaConfig;
+import xyz.nextalone.nagram.NaConfig;
 
 public class ReplyMessageLine {
 
