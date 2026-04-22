@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Fix gradlew permission
+        run: chmod +x gradlew
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
@@ -92,7 +94,6 @@ jobs:
           COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
           BUILD_TIMESTAMP: ${{ needs.build.outputs.build_timestamp }}
         run: |
-          # send apk via telegram bot api
           export mini64=$(find artifacts -name "*arm64-v8a.apk")
           echo $mini64
           python -m pip install -r Tools/scripts/requirements.txt
