@@ -76,7 +76,7 @@ import java.util.Map;
 
 import tw.nekomimi.nekogram.ui.cells.BookmarksChatCell;
 import tw.nekomimi.nekogram.utils.AlertUtil;
-import com.avegram.helper.BookmarksHelper;
+import org.avegram.helper.BookmarksHelper;
 
 public class BookmarkManagerActivity extends BaseFragment {
 

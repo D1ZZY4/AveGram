@@ -259,7 +259,7 @@ import tw.nekomimi.nekogram.helpers.TimeStringHelper;
 import tw.nekomimi.nekogram.helpers.TranscribeHelper;
 import tw.nekomimi.nekogram.utils.AndroidUtil;
 import org.avegram.NaConfig;
-import com.avegram.helper.BookmarksHelper;
+import org.avegram.helper.BookmarksHelper;
 
 import static tw.nekomimi.nekogram.helpers.MessageHelper.showForwardDate;
 

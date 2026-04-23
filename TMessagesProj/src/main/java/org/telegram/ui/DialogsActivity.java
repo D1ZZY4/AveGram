@@ -285,7 +285,7 @@ import tw.nekomimi.nekogram.helpers.TypefaceHelper;
 import tw.nekomimi.nekogram.settings.MainTabsCustomizeActivity;
 import tw.nekomimi.nekogram.ui.BookmarkManagerActivity;
 import org.avegram.NaConfig;
-import com.avegram.ui.folders.FoldersHelper;
+import org.avegram.ui.folders.FoldersHelper;
 
 public class DialogsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, FloatingDebugProvider, FactorAnimator.Target, MainTabsActivity.TabFragmentDelegate {
     private final int ADDITIONAL_LIST_HEIGHT_DP = Build.VERSION.SDK_INT >= 31 ? 48 : 0;

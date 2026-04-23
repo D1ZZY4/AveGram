@@ -140,7 +140,7 @@ import java.util.Objects;
 
 import tw.nekomimi.nekogram.helpers.LocalNameHelper;
 import tw.nekomimi.nekogram.helpers.remote.EmojiHelper;
-import com.avegram.helper.BookmarksHelper;
+import org.avegram.helper.BookmarksHelper;
 
 public class CacheControlActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 

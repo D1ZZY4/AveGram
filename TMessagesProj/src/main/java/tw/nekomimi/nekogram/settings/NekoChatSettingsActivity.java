@@ -66,7 +66,7 @@ import tw.nekomimi.nekogram.ui.PopupBuilder;
 import tw.nekomimi.nekogram.ui.cells.EmojiSetCell;
 import tw.nekomimi.nekogram.ui.cells.StickerSizePreviewMessagesCell;
 import org.avegram.NaConfig;
-import com.avegram.helper.DoubleTap;
+import org.avegram.helper.DoubleTap;
 
 @SuppressLint("RtlHardcoded")
 @SuppressWarnings({"unused", "FieldCanBeLocal"})

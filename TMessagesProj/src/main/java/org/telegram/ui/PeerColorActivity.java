@@ -130,7 +130,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.avegram.helper.LocalPeerColorHelper;
+import org.avegram.helper.LocalPeerColorHelper;
 
 public class PeerColorActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 

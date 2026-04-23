@@ -76,7 +76,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.avegram.helper.SystemAiServiceHelper;
+import org.avegram.helper.SystemAiServiceHelper;
 
 public class EditTextBoldCursor extends EditTextEffects {
 

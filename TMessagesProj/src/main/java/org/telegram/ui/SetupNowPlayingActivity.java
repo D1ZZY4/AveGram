@@ -26,7 +26,7 @@ import org.telegram.ui.Components.UniversalRecyclerView;
 import java.util.ArrayList;
 
 import org.avegram.NaConfig;
-import com.avegram.nowplaying.LocalNowPlayingController;
+import org.avegram.nowplaying.LocalNowPlayingController;
 
 public class SetupNowPlayingActivity extends BaseFragment {
 

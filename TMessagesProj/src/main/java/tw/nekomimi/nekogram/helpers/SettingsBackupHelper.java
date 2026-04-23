@@ -44,9 +44,9 @@ import tw.nekomimi.nekogram.utils.FileUtil;
 import tw.nekomimi.nekogram.utils.GsonUtil;
 import tw.nekomimi.nekogram.utils.ShareUtil;
 import org.avegram.NaConfig;
-import com.avegram.helper.BookmarksHelper;
-import com.avegram.helper.LocalPeerColorHelper;
-import com.avegram.helper.LocalPremiumStatusHelper;
+import org.avegram.helper.BookmarksHelper;
+import org.avegram.helper.LocalPeerColorHelper;
+import org.avegram.helper.LocalPremiumStatusHelper;
 
 public final class SettingsBackupHelper {
     public static String backupSettingsJson(boolean isCloud, int indentSpaces) throws JSONException {

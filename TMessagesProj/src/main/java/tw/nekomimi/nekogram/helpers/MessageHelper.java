@@ -878,7 +878,7 @@ public class MessageHelper extends BaseController {
                 newMessage.restriction_reason != null && !newMessage.restriction_reason.isEmpty();
     }
 
-    // Merged from com.avegram.helper.MessageHelper.kt
+    // Merged from org.avegram.helper.MessageHelper.kt
 
     private static final SpannableStringBuilder[] spannedStrings = new SpannableStringBuilder[5];
     private static final Pattern ZALGO_PATTERN = Pattern.compile("\\p{M}{4}");

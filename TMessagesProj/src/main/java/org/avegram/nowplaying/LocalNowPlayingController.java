@@ -1,4 +1,4 @@
-package com.avegram.nowplaying;
+package org.avegram.nowplaying;
 
 import android.net.Uri;
 import android.text.TextUtils;

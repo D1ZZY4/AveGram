@@ -116,7 +116,7 @@ import java.util.regex.Pattern;
 
 import tw.nekomimi.nekogram.NekoConfig;
 import org.avegram.NaConfig;
-import com.avegram.helper.StickerSetHelper;
+import org.avegram.helper.StickerSetHelper;
 
 public class StickersAlert extends BottomSheet implements NotificationCenter.NotificationCenterDelegate {
 

@@ -76,7 +76,7 @@ import tw.nekomimi.nekogram.translate.TranslatorKt;
 import tw.nekomimi.nekogram.utils.AlertUtil;
 import tw.nekomimi.nekogram.utils.ProxyUtil;
 import org.avegram.NaConfig;
-import com.avegram.helper.SystemAiServiceHelper;
+import org.avegram.helper.SystemAiServiceHelper;
 
 import static com.google.zxing.common.detector.MathUtils.distance;
 import static org.telegram.ui.ActionBar.FloatingToolbar.STYLE_THEME;
