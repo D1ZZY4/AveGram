@@ -43,10 +43,10 @@ import tw.nekomimi.nekogram.utils.AlertUtil;
 import tw.nekomimi.nekogram.utils.FileUtil;
 import tw.nekomimi.nekogram.utils.GsonUtil;
 import tw.nekomimi.nekogram.utils.ShareUtil;
-import xyz.nextalone.nagram.NaConfig;
-import com.avegram.messenger.helper.BookmarksHelper;
-import com.avegram.messenger.helper.LocalPeerColorHelper;
-import com.avegram.messenger.helper.LocalPremiumStatusHelper;
+import org.avegram.NaConfig;
+import com.avegram.helper.BookmarksHelper;
+import com.avegram.helper.LocalPeerColorHelper;
+import com.avegram.helper.LocalPremiumStatusHelper;
 
 public final class SettingsBackupHelper {
     public static String backupSettingsJson(boolean isCloud, int indentSpaces) throws JSONException {

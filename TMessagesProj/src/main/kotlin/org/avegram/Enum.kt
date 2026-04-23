@@ -1,4 +1,4 @@
-package xyz.nextalone.nagram
+package org.avegram
 
 enum class ToggleResult {
     ADDED,

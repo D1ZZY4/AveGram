@@ -65,7 +65,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class WebBrowserSettings extends UniversalFragment implements NotificationCenter.NotificationCenterDelegate {
 

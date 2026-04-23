@@ -108,7 +108,7 @@ import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.filters.AyuFilter;
 import tw.nekomimi.nekogram.helpers.EntitiesHelper;
 import tw.nekomimi.nekogram.helpers.MessageHelper;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 @SuppressWarnings("unchecked")
 public class MediaDataController extends BaseController {

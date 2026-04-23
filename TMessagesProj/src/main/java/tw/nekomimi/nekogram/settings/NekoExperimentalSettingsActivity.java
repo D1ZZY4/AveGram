@@ -41,7 +41,7 @@ import tw.nekomimi.nekogram.config.cell.ConfigCellHeader;
 import tw.nekomimi.nekogram.config.cell.ConfigCellSelectBox;
 import tw.nekomimi.nekogram.config.cell.ConfigCellTextCheck;
 import tw.nekomimi.nekogram.ui.PopupBuilder;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 @SuppressWarnings("unused")
 public class NekoExperimentalSettingsActivity extends BaseNekoXSettingsActivity {

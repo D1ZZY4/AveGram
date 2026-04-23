@@ -100,7 +100,7 @@ import java.util.function.Consumer;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.NekoXConfig;
 import tw.nekomimi.nekogram.filters.AyuFilter;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class NotificationsController extends BaseController {
 

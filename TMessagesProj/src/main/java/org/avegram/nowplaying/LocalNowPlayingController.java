@@ -1,4 +1,4 @@
-package com.avegram.messenger.nowplaying;
+package com.avegram.nowplaying;
 
 import android.net.Uri;
 import android.text.TextUtils;
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class LocalNowPlayingController {
 

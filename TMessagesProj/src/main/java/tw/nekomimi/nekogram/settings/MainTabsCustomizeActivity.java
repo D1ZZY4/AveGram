@@ -37,7 +37,7 @@ import java.util.ArrayList;
 import tw.nekomimi.nekogram.ui.cells.HeaderCell;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.helpers.MainTabsHelper;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class MainTabsCustomizeActivity extends BaseNekoSettingsActivity {
 

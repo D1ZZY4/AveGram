@@ -29,7 +29,7 @@ import kotlin.Unit;
 import tw.nekomimi.nekogram.helpers.AppRestartHelper;
 import tw.nekomimi.nekogram.ui.BottomBuilder;
 import tw.nekomimi.nekogram.utils.AndroidUtil;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class NekoXConfig {
 

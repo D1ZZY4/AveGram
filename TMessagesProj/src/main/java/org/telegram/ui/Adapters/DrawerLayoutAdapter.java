@@ -37,7 +37,7 @@ import java.util.Collections;
 
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.helpers.PasscodeHelper;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class DrawerLayoutAdapter extends RecyclerListView.SelectionAdapter implements NotificationCenter.NotificationCenterDelegate {
 

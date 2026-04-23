@@ -40,7 +40,7 @@ import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Cells.BaseCell;
 
 import tw.nekomimi.nekogram.NekoConfig;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 import me.vkryl.android.animator.BoolAnimator;
 
 public class Switch extends View {

@@ -92,7 +92,7 @@ import java.util.List;
 
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.helpers.PinnedElementsHelper;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class ReactionsContainerLayout extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
 

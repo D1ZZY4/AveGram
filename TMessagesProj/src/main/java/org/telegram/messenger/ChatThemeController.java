@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class ChatThemeController extends BaseController {
 

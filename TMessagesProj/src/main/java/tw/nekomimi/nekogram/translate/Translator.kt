@@ -19,7 +19,7 @@ import tw.nekomimi.nekogram.translate.source.*
 import tw.nekomimi.nekogram.ui.PopupBuilder
 import tw.nekomimi.nekogram.utils.AppScope
 import tw.nekomimi.nekogram.utils.receiveLazy
-import xyz.nextalone.nagram.NaConfig
+import org.avegram.NaConfig
 import java.io.IOException
 import java.util.*
 import kotlin.coroutines.resume

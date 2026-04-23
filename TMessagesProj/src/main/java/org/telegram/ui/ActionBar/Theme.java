@@ -153,7 +153,7 @@ import java.util.concurrent.CountDownLatch;
 
 import tw.nekomimi.nekogram.helpers.MonetHelper;
 import tw.nekomimi.nekogram.utils.AndroidUtil;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class Theme {
 

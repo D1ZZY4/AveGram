@@ -32,7 +32,7 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.concurrent.CountDownLatch;
 
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 @Keep
 public class PushListenerController {

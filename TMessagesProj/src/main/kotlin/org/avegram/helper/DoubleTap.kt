@@ -1,4 +1,4 @@
-package xyz.nextalone.nagram.helper
+package org.avegram.helper
 
 import org.telegram.messenger.LocaleController.getString
 import org.telegram.messenger.R

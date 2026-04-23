@@ -226,7 +226,7 @@ import java.util.Locale;
 
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.parts.ArticleTransKt;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class ArticleViewer implements NotificationCenter.NotificationCenterDelegate {
 

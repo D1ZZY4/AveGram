@@ -1,4 +1,4 @@
-package xyz.nextalone.nagram.ui.folders
+package org.avegram.ui.folders
 
 import android.content.Context
 import android.graphics.Canvas
@@ -23,7 +23,7 @@ import org.telegram.ui.Components.blur3.capture.IBlur3Capture
 import org.telegram.ui.Components.blur3.drawable.color.impl.BlurredBackgroundProviderImpl
 import org.telegram.ui.DialogsActivity
 import org.telegram.ui.Stories.DialogStoriesCell
-import xyz.nextalone.nagram.NaConfig
+import org.avegram.NaConfig
 
 object FoldersHelper {
     private const val FLOATING_BUTTONS_OFFSET_WITH_MAIN_TABS_DP = 55f

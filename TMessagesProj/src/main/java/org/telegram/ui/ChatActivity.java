@@ -399,11 +399,11 @@ import tw.nekomimi.nekogram.ui.components.GroupedIconsView;
 import tw.nekomimi.nekogram.utils.AlertUtil;
 import tw.nekomimi.nekogram.utils.AndroidUtil;
 import tw.nekomimi.nekogram.utils.ProxyUtil;
-import xyz.nextalone.nagram.NaConfig;
-import com.avegram.messenger.ToggleResult;
-import com.avegram.messenger.helper.BookmarksHelper;
-import com.avegram.messenger.helper.DoubleTap;
-import com.avegram.messenger.helper.SystemAiServiceHelper;
+import org.avegram.NaConfig;
+import com.avegram.ToggleResult;
+import com.avegram.helper.BookmarksHelper;
+import com.avegram.helper.DoubleTap;
+import com.avegram.helper.SystemAiServiceHelper;
 
 @SuppressWarnings("unchecked")
 public class ChatActivity extends BaseFragment implements

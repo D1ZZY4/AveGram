@@ -64,7 +64,7 @@ import java.util.Calendar;
 import java.util.Collections;
 
 import tw.nekomimi.nekogram.helpers.PasscodeHelper;
-import com.avegram.messenger.nowplaying.LocalNowPlayingController;
+import com.avegram.nowplaying.LocalNowPlayingController;
 
 public class UserInfoActivity extends UniversalFragment implements NotificationCenter.NotificationCenterDelegate {
 

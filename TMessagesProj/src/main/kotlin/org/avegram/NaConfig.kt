@@ -1,4 +1,4 @@
-package xyz.nextalone.nagram
+package org.avegram
 
 import android.content.SharedPreferences
 import android.util.Base64

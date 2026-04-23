@@ -1,4 +1,4 @@
-package xyz.nextalone.nagram.helper
+package org.avegram.helper
 
 import android.app.Activity
 import android.content.ComponentName

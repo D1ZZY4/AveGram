@@ -13,7 +13,7 @@ import java.util.EnumSet;
 import java.util.List;
 
 import tw.nekomimi.nekogram.NekoConfig;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class MainTabsConfigManager {
 

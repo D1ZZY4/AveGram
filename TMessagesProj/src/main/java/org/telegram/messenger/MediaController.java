@@ -137,8 +137,8 @@ import java.util.concurrent.CountDownLatch;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.SaveToDownloadReceiver;
 import tw.nekomimi.nekogram.helpers.ChatsHelper;
-import xyz.nextalone.nagram.NaConfig;
-import com.avegram.messenger.helper.AudioEnhance;
+import org.avegram.NaConfig;
+import com.avegram.helper.AudioEnhance;
 
 public class MediaController implements AudioManager.OnAudioFocusChangeListener, NotificationCenter.NotificationCenterDelegate, SensorEventListener {
 

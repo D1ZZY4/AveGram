@@ -1,11 +1,11 @@
-package xyz.nextalone.nagram.helper
+package org.avegram.helper
 
 import androidx.core.content.edit
 import com.google.gson.Gson
 import org.telegram.messenger.UserConfig
 import org.telegram.tgnet.TLRPC
 import tw.nekomimi.nekogram.NekoConfig
-import xyz.nextalone.nagram.NaConfig
+import org.avegram.NaConfig
 
 data class LocalEmojiStatusData(
     var documentId: Long?, var until: Int?

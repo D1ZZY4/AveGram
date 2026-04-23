@@ -57,7 +57,7 @@ import tw.nekomimi.nekogram.helpers.MessageHelper;
 import tw.nekomimi.nekogram.translate.Translator;
 import tw.nekomimi.nekogram.translate.TranslatorKt;
 import tw.nekomimi.nekogram.translate.source.LLMTranslator;
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 public class TranslateController extends BaseController {
 

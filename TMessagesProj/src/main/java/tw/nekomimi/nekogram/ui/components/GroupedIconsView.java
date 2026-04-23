@@ -14,7 +14,7 @@ import org.telegram.ui.ChatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import xyz.nextalone.nagram.NaConfig;
+import org.avegram.NaConfig;
 
 @SuppressLint("ViewConstructor")
 public class GroupedIconsView extends ActionRow {
