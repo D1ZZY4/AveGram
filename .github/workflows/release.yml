@@ -85,41 +85,18 @@ jobs:
           find ~/.gradle/daemon -type f -name "*.out.log" -exec cp {} build-logs/ \; 2>/dev/null || true
           ARCHIVE="build-logs-${{ github.run_id }}.zip"
           ( cd build-logs && zip -r "../$ARCHIVE" . ) || true
-          echo "LOG_ARCHIVE=$ARCHIVE" >> $GITHUB_ENV
       - name: Upload build log archive artifact
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: build-logs-${{ github.run_id }}
-          path: ${{ env.LOG_ARCHIVE }}
+          path: build-logs-${{ github.run_id }}.zip
           retention-days: 14
           if-no-files-found: warn
-      - name: Send build log archive to Telegram
-        if: failure() && env.LOG_ARCHIVE != ''
-        env:
-          TG_BOT_TOKEN: ${{ secrets.HELPER_BOT_TOKEN }}
-          TG_CHAT_ID: ${{ secrets.HELPER_BOT_TARGET }}
-          COMMIT_ID: ${{ github.event.head_commit.id }}
-          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          if [ -z "$TG_BOT_TOKEN" ] || [ -z "$TG_CHAT_ID" ]; then
-            echo "Telegram secrets not configured; skipping log upload."
-            exit 0
-          fi
-          {
-            printf 'AveGram build failed\n'
-            printf 'Commit: %s\n' "${COMMIT_ID}"
-            printf 'Run: %s\n'    "${RUN_URL}"
-            printf 'Message: %s\n' "${COMMIT_MESSAGE}"
-          } > caption.txt
-          curl -sSf -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendDocument" \
-            -F chat_id="${TG_CHAT_ID}" \
-            -F caption="$(cat caption.txt)" \
-            -F document=@"${LOG_ARCHIVE}" || echo "Telegram upload failed (non-fatal)."
+
   upload:
     name: Upload release
-    if: github.event.inputs.upload != 'y' && !contains(github.event.head_commit.message, '[skip upload]')
+    if: success() && github.event.inputs.upload != 'y' && !contains(github.event.head_commit.message, '[skip upload]')
     runs-on: ubuntu-latest
     needs:
       - build
@@ -147,3 +124,43 @@ jobs:
           echo $mini64
           python -m pip install -r Tools/scripts/requirements.txt
           python Tools/scripts/upload.py ${{ secrets.HELPER_BOT_TOKEN }} ${{ secrets.HELPER_BOT_TARGET }} release ${{ secrets.HELPER_BOT_CANARY_TARGET }}
+
+  upload-logs:
+    name: Upload Log Archive
+    if: failure()
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - name: Download log archive
+        uses: actions/download-artifact@v4
+        with:
+          name: build-logs-${{ github.run_id }}
+          path: logs
+      - name: Send log archive to Telegram
+        env:
+          TG_BOT_TOKEN: ${{ secrets.HELPER_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.HELPER_BOT_TARGET }}
+          COMMIT_ID: ${{ github.event.head_commit.id }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$TG_BOT_TOKEN" ] || [ -z "$TG_CHAT_ID" ]; then
+            echo "Telegram secrets not configured; skipping log upload."
+            exit 0
+          fi
+          ARCHIVE=$(find logs -type f -name "*.zip" | head -n 1)
+          if [ -z "$ARCHIVE" ]; then
+            echo "No log archive found."
+            exit 0
+          fi
+          {
+            printf 'AveGram build failed\n'
+            printf 'Commit: %s\n' "${COMMIT_ID}"
+            printf 'Run: %s\n'    "${RUN_URL}"
+            printf 'Message: %s\n' "${COMMIT_MESSAGE}"
+          } > caption.txt
+          curl -sSf -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendDocument" \
+            -F chat_id="${TG_CHAT_ID}" \
+            -F caption="$(cat caption.txt)" \
+            -F document=@"${ARCHIVE}"
