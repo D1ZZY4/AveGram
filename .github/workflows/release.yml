@@ -38,6 +38,17 @@ jobs:
           java-version: '21'
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+      - name: Cache Gradle wrapper and dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', 'gradle/libs.versions.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       - name: Set up Android SDK Tools
         uses: android-actions/setup-android@v3
         with:
@@ -164,3 +175,4 @@ jobs:
             -F chat_id="${TG_CHAT_ID}" \
             -F caption="$(cat caption.txt)" \
             -F document=@"${ARCHIVE}"
+            
