@@ -35,6 +35,14 @@ public class LauncherIconController {
 
     public enum LauncherIcon {
         AVEGRAM("AveGramIcon", R.drawable.ic_launcher_avegram_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGram),
+        AVEGRAM_BLUE("AveGramBlueIcon", R.drawable.ic_launcher_avegram_blue_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramBlue),
+        AVEGRAM_DARKBLUE("AveGramDarkBlueIcon", R.drawable.ic_launcher_avegram_dark_blue_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramDarkBlue),
+        AVEGRAM_BLURBLUE("AveGramBlurBlueIcon", R.drawable.ic_launcher_avegram_blur_blue_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramBlurBlue),
+        AVEGRAM_DARKGREEN("AveGramDarkGreenIcon", R.drawable.ic_launcher_avegram_darkgreen_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramDarkGreen),
+        AVEGRAM_NEON("AveGramNeonIcon", R.drawable.ic_launcher_avegram_neon_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramNeon),
+        AVEGRAM_COLORFUL("AveGramColorfulIcon", R.drawable.ic_launcher_avegram_colorful_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramColorful),
+        AVEGRAM_NIELLO("AveGramNielloIcon", R.drawable.ic_launcher_avegram_niello_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramNiello),
+        AVEGRAM_GOOGLE("AveGramGoogleIcon", R.drawable.ic_launcher_avegram_google_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramGoogle),
         DEFAULT("DefaultIcon", R.mipmap.ic_launcher_nagram, R.mipmap.icon_background_nagram, R.string.AppIconDefault),
         GOOGLE("GoogleIcon", R.mipmap.icon_background_google, R.mipmap.icon_foreground_google, R.string.AppIconGoogle),
         COLORFUL("ColorfulIcon", R.mipmap.icon_background_colorful, R.mipmap.icon_foreground_colorful, R.string.AppIconColorful),
@@ -79,7 +87,16 @@ public class LauncherIconController {
         }
 
         public boolean isAveX() {
-            return this == AVEGRAM || this == DEFAULT;
+            return this == AVEGRAM
+                    || this == AVEGRAM_BLUE
+                    || this == AVEGRAM_DARKBLUE
+                    || this == AVEGRAM_BLURBLUE
+                    || this == AVEGRAM_DARKGREEN
+                    || this == AVEGRAM_NEON
+                    || this == AVEGRAM_COLORFUL
+                    || this == AVEGRAM_NIELLO
+                    || this == AVEGRAM_GOOGLE
+                    || this == DEFAULT;
         }
     }
 }
