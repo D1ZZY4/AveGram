@@ -1,6 +1,6 @@
 package org.avegram.ave.translate.source.fallback;
 
-import app.nekogram.translator.DeepLTranslator;
+import app.avegram.translator.DeepLTranslator;
 
 public class DeepLTranslatorAve {
 
