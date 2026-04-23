@@ -42,22 +42,7 @@ public class LauncherIconController {
         AVEGRAM_NEON("AveGramNeonIcon", R.drawable.ic_launcher_avegram_neon_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramNeon),
         AVEGRAM_COLORFUL("AveGramColorfulIcon", R.drawable.ic_launcher_avegram_colorful_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramColorful),
         AVEGRAM_NIELLO("AveGramNielloIcon", R.drawable.ic_launcher_avegram_niello_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramNiello),
-        AVEGRAM_GOOGLE("AveGramGoogleIcon", R.drawable.ic_launcher_avegram_google_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramGoogle),
-        DEFAULT("DefaultIcon", R.mipmap.ic_launcher_nagram, R.mipmap.icon_background_nagram, R.string.AppIconDefault),
-        GOOGLE("GoogleIcon", R.mipmap.icon_background_google, R.mipmap.icon_foreground_google, R.string.AppIconGoogle),
-        COLORFUL("ColorfulIcon", R.mipmap.icon_background_colorful, R.mipmap.icon_foreground_colorful, R.string.AppIconColorful),
-        DARKGREEN("DarkGreenIcon", R.mipmap.icon_background_darkgreen, R.mipmap.icon_foreground_darkgreen, R.string.AppIconDarkGreen),
-        NEON("NeonIcon", R.mipmap.icon_background_neon, R.mipmap.icon_foreground_neon, R.string.AppIconNeon),
-        NIELLO("NielloIcon", R.drawable.ic_launcher_nagram_round_niello_background, R.drawable.ic_launcher_nagram_round_niello_foreground, R.string.AppIconNiello),
-        BLUE("BlueIcon", R.color.nagram_block_round_background, R.drawable.ic_launcher_nagram_blue_foreground, R.string.AppIconBlue),
-        DARKBLUE("DarkBlueIcon", R.color.nagram_dark_blue_background, R.drawable.ic_launcher_nagram_dark_blue_foreground, R.string.AppIconDarkBlue),
-        BLURBLUE("BlurBlueIcon", R.drawable.ic_launcher_nagram_blur_blue_background, R.drawable.ic_launcher_nagram_blur_blue_foreground, R.string.AppIconBlurBlue),
-        TELEGRAM("TelegramIcon", R.drawable.icon_background_sa, R.mipmap.icon_foreground_sa, R.string.AppIconTelegramOriginal),
-        VINTAGE("VintageIcon", R.drawable.icon_6_background_sa, R.mipmap.icon_6_foreground_sa, R.string.AppIconVintage),
-        AQUA("AquaIcon", R.drawable.icon_4_background_sa, R.mipmap.icon_foreground_sa, R.string.AppIconAqua),
-        PREMIUM("PremiumIcon", R.drawable.icon_3_background_sa, R.mipmap.icon_3_foreground_sa, R.string.AppIconPremium),
-        TURBO("TurboIcon", R.drawable.icon_5_background_sa, R.mipmap.icon_5_foreground_sa, R.string.AppIconTurbo),
-        NOX("NoxIcon", R.mipmap.icon_2_background_sa, R.mipmap.icon_foreground_sa, R.string.AppIconNox);
+        AVEGRAM_GOOGLE("AveGramGoogleIcon", R.drawable.ic_launcher_avegram_google_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramGoogle);
 
         public final String key;
         public final int background;
@@ -87,16 +72,7 @@ public class LauncherIconController {
         }
 
         public boolean isAveX() {
-            return this == AVEGRAM
-                    || this == AVEGRAM_BLUE
-                    || this == AVEGRAM_DARKBLUE
-                    || this == AVEGRAM_BLURBLUE
-                    || this == AVEGRAM_DARKGREEN
-                    || this == AVEGRAM_NEON
-                    || this == AVEGRAM_COLORFUL
-                    || this == AVEGRAM_NIELLO
-                    || this == AVEGRAM_GOOGLE
-                    || this == DEFAULT;
+            return true;
         }
     }
 }

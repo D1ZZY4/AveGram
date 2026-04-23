@@ -348,7 +348,7 @@ public class DrawerLayoutAdapter extends RecyclerListView.SelectionAdapter imple
             items.add(null);
         }
         if (showNSettings) {
-            items.add(new Item(nkbtnSettings, LocaleController.getString(R.string.AveSettings), R.drawable.nagramx_outline));
+            items.add(new Item(nkbtnSettings, LocaleController.getString(R.string.AveSettings), R.drawable.avegram_drawer_outline));
         }
         if (showBrowser) {
             items.add(new Item(nkbtnBrowser, LocaleController.getString(R.string.InappBrowser), R.drawable.web_browser));
