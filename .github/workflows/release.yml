@@ -14,6 +14,10 @@ on:
         description: 'Skip Upload: Set to "y" to skip uploading the build.'
         required: false
 
+concurrency:
+  group: release-build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Gradle Build
@@ -66,8 +70,10 @@ jobs:
           echo "APK=$APK" >> $GITHUB_ENV
       - uses: actions/upload-artifact@v4
         with:
-          name: Release
+          name: AveGram-Release-${{ steps.release_build_step.outputs.build_timestamp }}
           path: ${{ env.APK }}
+          retention-days: 30
+          if-no-files-found: error
   upload:
     name: Upload release
     if: github.event.inputs.upload != 'y' && !contains(github.event.head_commit.message, '[skip upload]')
