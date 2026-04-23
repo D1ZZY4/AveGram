@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.R;
+import org.telegram.messenger.browser.Browser;
 import org.telegram.ui.Cells.TextSettingsCell;
 
 public class AveAboutActivity extends BaseAveSettingsActivity {
@@ -17,6 +18,7 @@ public class AveAboutActivity extends BaseAveSettingsActivity {
     private int channelRow;
     private int forkChannelRow;
     private int xChannelRow;
+    private int sourceCodeRow;
 
     @Override
     protected void updateRows() {
@@ -25,6 +27,7 @@ public class AveAboutActivity extends BaseAveSettingsActivity {
         channelRow = addRow();
         forkChannelRow = addRow();
         xChannelRow = addRow();
+        sourceCodeRow = addRow();
     }
 
     @Override
@@ -40,6 +43,8 @@ public class AveAboutActivity extends BaseAveSettingsActivity {
             MessagesController.getInstance(currentAccount).openByUserName("AveGramCloud", AveAboutActivity.this, 1);
         } else if (position == xChannelRow) {
             MessagesController.getInstance(currentAccount).openByUserName("AveGramCommunity", AveAboutActivity.this, 1);
+        } else if (position == sourceCodeRow) {
+            Browser.openUrl(getParentActivity(), "https://github.com/D1ZZY4/AveGram");
         }
     }
 
@@ -63,7 +68,9 @@ public class AveAboutActivity extends BaseAveSettingsActivity {
                 } else if (position == forkChannelRow) {
                     textCell.setTextAndValue(getString(R.string.AveGramorkChannel), "@AveGramCloud", true);
                 } else if (position == xChannelRow) {
-                    textCell.setTextAndValue(getString(R.string.XChannel), "@AveGramCommunity", false);
+                    textCell.setTextAndValue(getString(R.string.XChannel), "@AveGramCommunity", true);
+                } else if (position == sourceCodeRow) {
+                    textCell.setTextAndValue(getString(R.string.SourceCode), "Github", false);
                 }
             }
         }
