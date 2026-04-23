@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_nagram_dark_blue.png" width="120" alt="AveGram Logo"/>
+  <img src="TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_avegram.png" width="120" alt="AveGram Logo"/>
 
   # AveGram
 
