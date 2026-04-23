@@ -5621,14 +5621,6 @@
     <string name="BioLimitSubtitle">Add more symbols and use links in your bio.</string>
     <string name="AppIcon">App Icon</string>
     <string name="AppIconAveGram">AveGram</string>
-    <string name="AppIconAveGramBlue">AveGram Blue</string>
-    <string name="AppIconAveGramDarkBlue">AveGram Dark Blue</string>
-    <string name="AppIconAveGramBlurBlue">AveGram Blur Blue</string>
-    <string name="AppIconAveGramDarkGreen">AveGram Dark Green</string>
-    <string name="AppIconAveGramNeon">AveGram Neon</string>
-    <string name="AppIconAveGramColorful">AveGram Colorful</string>
-    <string name="AppIconAveGramNiello">AveGram Niello</string>
-    <string name="AppIconAveGramGoogle">AveGram Google</string>
     <string name="AppIconChangedTo">App icon has been changed to %1$s</string>
     <string name="FileTooLarge">File Too Large</string>
     <string name="PremiumPreviewAppIcon">Premium App Icon</string>
