@@ -46,11 +46,11 @@ public class NekoAboutActivity extends BaseNekoSettingsActivity {
     @Override
     protected void onItemClick(View view, int position, float x, float y) {
         if (position == xChannelRow) {
-            MessagesController.getInstance(currentAccount).openByUserName("AveGram", NekoAboutActivity.this, 1);
+            MessagesController.getInstance(currentAccount).openByUserName("AveGramCommunity", NekoAboutActivity.this, 1);
         } else if (position == forkChannelRow) {
-            MessagesController.getInstance(currentAccount).openByUserName("AveGram_Fork", NekoAboutActivity.this, 1);
+            MessagesController.getInstance(currentAccount).openByUserName("AveGramCloud", NekoAboutActivity.this, 1);
         } else if (position == channelRow) {
-            MessagesController.getInstance(currentAccount).openByUserName("avegram_channel", NekoAboutActivity.this, 1);
+            MessagesController.getInstance(currentAccount).openByUserName("AveGramOfficial", NekoAboutActivity.this, 1);
         } else if (position == channelTipsRow) {
             MessagesController.getInstance(currentAccount).openByUserName("AveGramTips", NekoAboutActivity.this, 1);
         } else if (position == translationRow) {
@@ -78,11 +78,11 @@ public class NekoAboutActivity extends BaseNekoSettingsActivity {
             if (holder.getItemViewType() == TYPE_SETTINGS) {
                 TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
                 if (position == xChannelRow) {
-                    textCell.setTextAndValue(getString(R.string.XChannel), "@AveGram", true);
+                    textCell.setTextAndValue(getString(R.string.XChannel), "@AveGramCommunity", true);
                 } else if (position == forkChannelRow) {
-                    textCell.setTextAndValue(getString(R.string.AveGramorkChannel), "@AveGram_Fork", true);
+                    textCell.setTextAndValue(getString(R.string.AveGramorkChannel), "@AveGramCloud", true);
                 } else if (position == channelRow) {
-                    textCell.setTextAndValue(getString(R.string.OfficialChannel), "@avegram_channel", true);
+                    textCell.setTextAndValue(getString(R.string.OfficialChannel), "@AveGramOfficial", true);
                 } else if (position == channelTipsRow) {
                     textCell.setTextAndValue(getString(R.string.TipsChannel), "@" + "AveGramTips", true);
                 } else if (position == sourceCodeRow) {
