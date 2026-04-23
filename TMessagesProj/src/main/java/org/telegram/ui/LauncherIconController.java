@@ -35,13 +35,13 @@ public class LauncherIconController {
 
     public enum LauncherIcon {
         AVEGRAM("AveGramIcon", R.drawable.ic_launcher_avegram_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGram),
-        AVEGRAM_BLUE("AveGramBlueIcon", R.drawable.ic_launcher_avegram_blue_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramBlue),
-        AVEGRAM_DARKBLUE("AveGramDarkBlueIcon", R.drawable.ic_launcher_avegram_dark_blue_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramDarkBlue),
-        AVEGRAM_BLURBLUE("AveGramBlurBlueIcon", R.drawable.ic_launcher_avegram_blur_blue_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramBlurBlue),
-        AVEGRAM_DARKGREEN("AveGramDarkGreenIcon", R.drawable.ic_launcher_avegram_darkgreen_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramDarkGreen),
-        AVEGRAM_NEON("AveGramNeonIcon", R.drawable.ic_launcher_avegram_neon_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramNeon),
-        AVEGRAM_COLORFUL("AveGramColorfulIcon", R.drawable.ic_launcher_avegram_colorful_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramColorful),
-        AVEGRAM_NIELLO("AveGramNielloIcon", R.drawable.ic_launcher_avegram_niello_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramNiello),
+        AVEGRAM_BLUE("AveGramBlueIcon", R.drawable.ic_launcher_avegram_blue_background, R.mipmap.ic_launcher_avegram_foreground_white, R.string.AppIconAveGramBlue),
+        AVEGRAM_DARKBLUE("AveGramDarkBlueIcon", R.drawable.ic_launcher_avegram_dark_blue_background, R.mipmap.ic_launcher_avegram_foreground_white, R.string.AppIconAveGramDarkBlue),
+        AVEGRAM_BLURBLUE("AveGramBlurBlueIcon", R.drawable.ic_launcher_avegram_blur_blue_background, R.mipmap.ic_launcher_avegram_foreground_white, R.string.AppIconAveGramBlurBlue),
+        AVEGRAM_DARKGREEN("AveGramDarkGreenIcon", R.drawable.ic_launcher_avegram_darkgreen_background, R.mipmap.ic_launcher_avegram_foreground_white, R.string.AppIconAveGramDarkGreen),
+        AVEGRAM_NEON("AveGramNeonIcon", R.drawable.ic_launcher_avegram_neon_background, R.mipmap.ic_launcher_avegram_foreground_white, R.string.AppIconAveGramNeon),
+        AVEGRAM_COLORFUL("AveGramColorfulIcon", R.drawable.ic_launcher_avegram_colorful_background, R.mipmap.ic_launcher_avegram_foreground_white, R.string.AppIconAveGramColorful),
+        AVEGRAM_NIELLO("AveGramNielloIcon", R.drawable.ic_launcher_avegram_niello_background, R.mipmap.ic_launcher_avegram_foreground_white, R.string.AppIconAveGramNiello),
         AVEGRAM_GOOGLE("AveGramGoogleIcon", R.drawable.ic_launcher_avegram_google_background, R.mipmap.ic_launcher_avegram_foreground_sage, R.string.AppIconAveGramGoogle);
 
         public final String key;
