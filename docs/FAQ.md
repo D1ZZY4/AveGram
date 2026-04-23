@@ -71,6 +71,6 @@ Not currently. Distribution is via GitHub releases.
 
 ### Where's the privacy policy?
 
-`docs/PRIVACY.md` — coming soon. AveGram itself collects nothing; data
-flows are governed by Telegram's privacy policy and (if you enable AI
-translation) your chosen AI provider's policy.
+See [`PRIVACY.md`](PRIVACY.md). Short version: AveGram itself collects
+nothing; data flows are governed by Telegram's privacy policy and (if
+you enable AI translation) your chosen AI provider's policy.

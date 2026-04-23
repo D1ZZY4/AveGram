@@ -89,6 +89,8 @@ Full design tokens, typography, and motion specs in [`docs/DESIGN_SYSTEM.md`](do
 | [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) | How to contribute, code style, PRs |
 | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) | Release history |
 | [`docs/CREDITS.md`](docs/CREDITS.md) | Upstream projects & acknowledgements |
+| [`docs/PRIVACY.md`](docs/PRIVACY.md) | Data handling & third-party services |
+| [`docs/SECURITY.md`](docs/SECURITY.md) | How to report vulnerabilities |
 
 ---
 
