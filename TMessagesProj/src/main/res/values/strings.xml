@@ -10658,4 +10658,6 @@
     <string name="AIEditorEmojify">emojify</string>
     <string name="TranslateCopy">Copy Translation</string>
     <string name="TranslateEntireChat">Translate Entire Chat</string>
+    <string name="AveGramorkChannel">AveGram Fork Channel</string>
+    <string name="AveGramPushService">AveGram Push Service</string>
 </resources>
