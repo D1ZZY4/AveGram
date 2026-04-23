@@ -74,6 +74,47 @@ jobs:
           path: ${{ env.APK }}
           retention-days: 30
           if-no-files-found: error
+      - name: Collect build logs on failure
+        if: failure()
+        run: |
+          mkdir -p build-logs
+          cp -v gradle.properties local.properties build-logs/ 2>/dev/null || true
+          find . -type d -name "reports" -path "*/build/*" -exec cp -r {} build-logs/ \; 2>/dev/null || true
+          find . -type d -name "logs"    -path "*/build/*" -exec cp -r {} build-logs/ \; 2>/dev/null || true
+          find . -type f -name "*.log"   -path "*/build/*" -exec cp    {} build-logs/ \; 2>/dev/null || true
+          find ~/.gradle/daemon -type f -name "*.out.log" -exec cp {} build-logs/ \; 2>/dev/null || true
+          ARCHIVE="build-logs-${{ github.run_id }}.zip"
+          ( cd build-logs && zip -r "../$ARCHIVE" . ) || true
+          echo "LOG_ARCHIVE=$ARCHIVE" >> $GITHUB_ENV
+      - name: Upload build log archive artifact
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-${{ github.run_id }}
+          path: ${{ env.LOG_ARCHIVE }}
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Send build log archive to Telegram
+        if: failure() && env.LOG_ARCHIVE != ''
+        env:
+          TG_BOT_TOKEN: ${{ secrets.HELPER_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.HELPER_BOT_TARGET }}
+          COMMIT_ID: ${{ github.event.head_commit.id }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$TG_BOT_TOKEN" ] || [ -z "$TG_CHAT_ID" ]; then
+            echo "Telegram secrets not configured; skipping log upload."
+            exit 0
+          fi
+          CAPTION="❌ AveGram build failed
+Commit: ${COMMIT_ID}
+Run: ${RUN_URL}
+Message: ${COMMIT_MESSAGE}"
+          curl -sSf -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendDocument" \
+            -F chat_id="${TG_CHAT_ID}" \
+            -F caption="${CAPTION}" \
+            -F document=@"${LOG_ARCHIVE}" || echo "Telegram upload failed (non-fatal)."
   upload:
     name: Upload release
     if: github.event.inputs.upload != 'y' && !contains(github.event.head_commit.message, '[skip upload]')
