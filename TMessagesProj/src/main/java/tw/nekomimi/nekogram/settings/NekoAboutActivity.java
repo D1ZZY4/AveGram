@@ -10,32 +10,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.R;
-import org.telegram.messenger.browser.Browser;
 import org.telegram.ui.Cells.TextSettingsCell;
-
-import tw.nekomimi.nekogram.DatacenterActivity;
 
 public class NekoAboutActivity extends BaseNekoSettingsActivity {
 
-    private int xChannelRow;
-    private int forkChannelRow;
     private int channelRow;
-    private int channelTipsRow;
-    private int sourceCodeRow;
-    private int translationRow;
-    private int datacenterStatusRow;
+    private int forkChannelRow;
+    private int xChannelRow;
 
     @Override
     protected void updateRows() {
         super.updateRows();
 
+        channelRow = addRow();
         forkChannelRow = addRow();
         xChannelRow = addRow();
-        channelRow = addRow();
-        channelTipsRow = addRow();
-        sourceCodeRow = addRow();
-        translationRow = addRow();
-        datacenterStatusRow = addRow();
     }
 
     @Override
@@ -45,20 +34,12 @@ public class NekoAboutActivity extends BaseNekoSettingsActivity {
 
     @Override
     protected void onItemClick(View view, int position, float x, float y) {
-        if (position == xChannelRow) {
-            MessagesController.getInstance(currentAccount).openByUserName("AveGramCommunity", NekoAboutActivity.this, 1);
+        if (position == channelRow) {
+            MessagesController.getInstance(currentAccount).openByUserName("AveGramOfficial", NekoAboutActivity.this, 1);
         } else if (position == forkChannelRow) {
             MessagesController.getInstance(currentAccount).openByUserName("AveGramCloud", NekoAboutActivity.this, 1);
-        } else if (position == channelRow) {
-            MessagesController.getInstance(currentAccount).openByUserName("AveGramOfficial", NekoAboutActivity.this, 1);
-        } else if (position == channelTipsRow) {
-            MessagesController.getInstance(currentAccount).openByUserName("AveGramTips", NekoAboutActivity.this, 1);
-        } else if (position == translationRow) {
-            Browser.openUrl(getParentActivity(), "https://crowdin.com/project/AveGram");
-        } else if (position == sourceCodeRow) {
-            Browser.openUrl(getParentActivity(), "https://github.com/Keeperorowner/AveGram_Fork");
-        } else if (position == datacenterStatusRow) {
-            presentFragment(new DatacenterActivity(0));
+        } else if (position == xChannelRow) {
+            MessagesController.getInstance(currentAccount).openByUserName("AveGramCommunity", NekoAboutActivity.this, 1);
         }
     }
 
@@ -77,20 +58,12 @@ public class NekoAboutActivity extends BaseNekoSettingsActivity {
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position, boolean partial) {
             if (holder.getItemViewType() == TYPE_SETTINGS) {
                 TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
-                if (position == xChannelRow) {
-                    textCell.setTextAndValue(getString(R.string.XChannel), "@AveGramCommunity", true);
+                if (position == channelRow) {
+                    textCell.setTextAndValue(getString(R.string.OfficialChannel), "@AveGramOfficial", true);
                 } else if (position == forkChannelRow) {
                     textCell.setTextAndValue(getString(R.string.AveGramorkChannel), "@AveGramCloud", true);
-                } else if (position == channelRow) {
-                    textCell.setTextAndValue(getString(R.string.OfficialChannel), "@AveGramOfficial", true);
-                } else if (position == channelTipsRow) {
-                    textCell.setTextAndValue(getString(R.string.TipsChannel), "@" + "AveGramTips", true);
-                } else if (position == sourceCodeRow) {
-                    textCell.setTextAndValue(getString(R.string.SourceCode), "Github", true);
-                } else if (position == translationRow) {
-                    textCell.setTextAndValue(getString(R.string.TransSite), "Crowdin", true);
-                } else if (position == datacenterStatusRow) {
-                    textCell.setText(getString(R.string.DatacenterStatus), false);
+                } else if (position == xChannelRow) {
+                    textCell.setTextAndValue(getString(R.string.XChannel), "@AveGramCommunity", false);
                 }
             }
         }
