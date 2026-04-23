@@ -42,7 +42,7 @@ public class LauncherIconController {
         AVEGRAM_NEON("AveGramNeonIcon", R.drawable.ic_launcher_avegram_neon_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramNeon),
         AVEGRAM_COLORFUL("AveGramColorfulIcon", R.drawable.ic_launcher_avegram_colorful_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramColorful),
         AVEGRAM_NIELLO("AveGramNielloIcon", R.drawable.ic_launcher_avegram_niello_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramNiello),
-        AVEGRAM_GOOGLE("AveGramGoogleIcon", R.drawable.ic_launcher_avegram_google_background, R.mipmap.ic_launcher_avegram_foreground, R.string.AppIconAveGramGoogle);
+        AVEGRAM_GOOGLE("AveGramGoogleIcon", R.drawable.ic_launcher_avegram_google_background, R.mipmap.ic_launcher_avegram_foreground_sage, R.string.AppIconAveGramGoogle);
 
         public final String key;
         public final int background;
