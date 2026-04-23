@@ -107,13 +107,15 @@ jobs:
             echo "Telegram secrets not configured; skipping log upload."
             exit 0
           fi
-          CAPTION="❌ AveGram build failed
-Commit: ${COMMIT_ID}
-Run: ${RUN_URL}
-Message: ${COMMIT_MESSAGE}"
+          {
+            printf 'AveGram build failed\n'
+            printf 'Commit: %s\n' "${COMMIT_ID}"
+            printf 'Run: %s\n'    "${RUN_URL}"
+            printf 'Message: %s\n' "${COMMIT_MESSAGE}"
+          } > caption.txt
           curl -sSf -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendDocument" \
             -F chat_id="${TG_CHAT_ID}" \
-            -F caption="${CAPTION}" \
+            -F caption="$(cat caption.txt)" \
             -F document=@"${LOG_ARCHIVE}" || echo "Telegram upload failed (non-fatal)."
   upload:
     name: Upload release
