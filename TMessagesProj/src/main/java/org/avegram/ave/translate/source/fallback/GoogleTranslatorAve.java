@@ -1,6 +1,6 @@
 package org.avegram.ave.translate.source.fallback;
 
-import app.avegram.translator.GoogleAppTranslator;
+import app.nekogram.translator.GoogleAppTranslator;
 
 public class GoogleTranslatorAve {
 
