@@ -129,14 +129,20 @@ android {
         }
     }
 
+    def hasReleaseKeystore = keystorePwd != null && alias != null && pwd != null && project.file('release.keystore').exists()
+
     signingConfigs {
-        release {
-            storeFile project.file('release.keystore')
-            storePassword keystorePwd
-            keyAlias alias
-            keyPassword pwd
+        if (hasReleaseKeystore) {
+            release {
+                storeFile project.file('release.keystore')
+                storePassword keystorePwd
+                keyAlias alias
+                keyPassword pwd
+            }
         }
     }
+
+    def releaseSigningConfig = hasReleaseKeystore ? signingConfigs.release : signingConfigs.debug
 
     buildTypes {
         debug {
@@ -144,7 +150,7 @@ android {
             debuggable = true
             jniDebuggable = false
             multiDexEnabled = true
-            signingConfig = signingConfigs.release
+            signingConfig = releaseSigningConfig
         }
 
         staging {
@@ -155,7 +161,7 @@ android {
             multiDexEnabled = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             matchingFallbacks = ['release', 'staging', 'debug']
-            signingConfig = signingConfigs.release
+            signingConfig = releaseSigningConfig
         }
 
         release {
@@ -166,7 +172,7 @@ android {
             multiDexEnabled = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             matchingFallbacks = ['release', 'staging', 'debug']
-            signingConfig = signingConfigs.release
+            signingConfig = releaseSigningConfig
         }
     }
 
