@@ -172,7 +172,7 @@ android {
 
     sourceSets.main.jniLibs.srcDirs = ['./jni/']
 
-    namespace = 'org.telegram.messenger'
+    namespace = 'com.avegram'
 }
 
 androidComponents {
