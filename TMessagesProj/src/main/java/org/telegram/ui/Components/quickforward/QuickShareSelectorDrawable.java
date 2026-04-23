@@ -46,8 +46,8 @@ import org.telegram.ui.Components.CubicBezierInterpolator;
 
 import java.util.List;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.ui.icons.IconsResources;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.ui.icons.IconsResources;
 import org.avegram.NaConfig;
 
 public class QuickShareSelectorDrawable extends Drawable implements Animator.AnimatorListener {
@@ -139,7 +139,7 @@ public class QuickShareSelectorDrawable extends Drawable implements Animator.Ani
 
         cell.setHideSideButtonByQuickShare(true);
 
-        if (!NekoConfig.disableVibration.Bool()) parent.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+        if (!AveConfig.disableVibration.Bool()) parent.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
 
         updateColors();
 
@@ -595,7 +595,7 @@ public class QuickShareSelectorDrawable extends Drawable implements Animator.Ani
             return;
         }
 
-        if (!NekoConfig.disableVibration.Bool()) parent.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+        if (!AveConfig.disableVibration.Bool()) parent.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
         selectedIndex = index;
         for (int i = 0; i < avatarCells.length; i++) {
             avatarCells[i].setSelected(index == i, true);

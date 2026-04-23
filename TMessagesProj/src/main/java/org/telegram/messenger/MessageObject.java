@@ -119,13 +119,13 @@ import java.util.regex.Pattern;
 
 import me.vkryl.core.BitwiseUtils;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.NekoXConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
-import tw.nekomimi.nekogram.parts.MessageTransKt;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.AveXConfig;
+import org.avegram.ave.filters.AyuFilter;
+import org.avegram.ave.helpers.MessageHelper;
+import org.avegram.ave.parts.MessageTransKt;
 import org.avegram.NaConfig;
-import tw.nekomimi.nekogram.syntaxhighlight.SyntaxHighlight;
+import org.avegram.ave.syntaxhighlight.SyntaxHighlight;
 
 public class MessageObject {
 
@@ -258,7 +258,7 @@ public class MessageObject {
     public boolean expandedExplanation;
     public boolean forceShowPollResults;
 
-    public boolean isSpoilersRevealed = NekoConfig.showSpoilersDirectly.Bool();
+    public boolean isSpoilersRevealed = AveConfig.showSpoilersDirectly.Bool();
     public boolean isMediaSpoilersRevealed;
     public boolean isMediaSpoilersRevealedInSharedMedia;
     public boolean revealingMediaSpoilers;
@@ -640,7 +640,7 @@ public class MessageObject {
         boolean maskMessage = AyuFilter.shouldMaskMessage(this, null);
         boolean hasMaskableMedia = maskMessage && (messageOwner.media != null || needDrawBluredPreview() || isHiddenSensitive());
         boolean hasNativeMediaSpoilers = (!isRepostPreview && ((messageOwner.media != null && messageOwner.media.spoiler) || needDrawBluredPreview())) || isHiddenSensitive();
-        if (NekoConfig.showSpoilersDirectly.Bool() && !hasMaskableMedia) return false;
+        if (AveConfig.showSpoilersDirectly.Bool() && !hasMaskableMedia) return false;
         return hasMaskableMedia || hasNativeMediaSpoilers;
     }
 
@@ -7241,7 +7241,7 @@ public class MessageObject {
             // entities = messageOwner.translatedText.entities;
             entities = MessageHelper.reparseMessageEntities(messageOwner.translatedText.entities);
         } else if (messageOwner.translated) {
-            // NekoX Translate
+            // AveX Translate
             text = messageOwner.translatedMessage;
             entities = MessageHelper.getEntitiesForText(this, text, summarized);
         } else {

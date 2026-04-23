@@ -94,8 +94,8 @@ import java.util.Objects;
 import me.vkryl.android.animator.BoolAnimator;
 import me.vkryl.android.animator.FactorAnimator;
 import me.vkryl.android.animator.ReplaceAnimator;
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.TypefaceHelper;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.TypefaceHelper;
 
 @SuppressLint("ViewConstructor")
 public class DialogStoriesCell extends FrameLayout implements NotificationCenter.NotificationCenterDelegate, FactorAnimator.Target {
@@ -462,7 +462,7 @@ public class DialogStoriesCell extends FrameLayout implements NotificationCenter
             return;
         }
         try {
-            if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+            if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
         } catch (Exception ignored) {}
         if (cell.isSelf && !storiesController.hasSelfStories()) {
             if (!MessagesController.getInstance(currentAccount).storiesEnabled()) {
@@ -1049,7 +1049,7 @@ public class DialogStoriesCell extends FrameLayout implements NotificationCenter
                     public void onAnimationStart(Animator animation) {
                         super.onAnimationStart(animation);
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                            if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                         } catch (Exception ignored) {}
                     }
                 });

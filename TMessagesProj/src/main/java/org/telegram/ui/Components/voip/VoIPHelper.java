@@ -69,7 +69,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class VoIPHelper {
 
@@ -110,7 +110,7 @@ public class VoIPHelper {
             return;
         }
 
-        if (!confirmed && NekoConfig.askBeforeCall.Bool()) {
+        if (!confirmed && AveConfig.askBeforeCall.Bool()) {
             new AlertDialog.Builder(activity)
                     .setTitle(LocaleController.getString(R.string.ConfirmCall))
                     .setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("CallTo", R.string.CallTo,

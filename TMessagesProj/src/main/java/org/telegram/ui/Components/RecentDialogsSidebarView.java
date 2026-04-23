@@ -44,8 +44,8 @@ import org.telegram.ui.ActionBar.Theme;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import tw.nekomimi.nekogram.BackButtonMenuRecent;
-import tw.nekomimi.nekogram.ChatHistoryUtils;
+import org.avegram.ave.BackButtonMenuRecent;
+import org.avegram.ave.ChatHistoryUtils;
 
 public class RecentDialogsSidebarView extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
 

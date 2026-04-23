@@ -54,7 +54,7 @@ import org.telegram.ui.Stories.recorder.HintView2;
 
 import java.util.ArrayList;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class LimitPreviewView extends LinearLayout {
 
@@ -474,7 +474,7 @@ public class LimitPreviewView extends LinearLayout {
                     if (!wasHaptic) {
                         wasHaptic = true;
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) limitIcon.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                            if (!AveConfig.disableVibration.Bool()) limitIcon.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                         } catch (Exception ignored) {}
                     }
                     limitIcon.setRotation(limitIconRotation + (v - 1f) * 60);

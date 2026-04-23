@@ -63,7 +63,7 @@ import org.telegram.ui.Components.SnowflakesEffect;
 import org.telegram.ui.Components.Reactions.HwEmojis;
 import org.telegram.ui.Components.Reactions.ReactionsLayoutInBubble;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class DrawerProfileCell extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
 
@@ -337,7 +337,7 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
 
         updateStatusColors();
 
-        if (!NekoConfig.hidePhone.Bool() && !TextUtils.isEmpty(user.phone)) {
+        if (!AveConfig.hidePhone.Bool() && !TextUtils.isEmpty(user.phone)) {
             phoneTextView.setText(PhoneFormat.getInstance().format("+" + user.phone));
         } else if (!TextUtils.isEmpty(user.username)) {
             phoneTextView.setText("@" + user.username);
@@ -366,7 +366,7 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
     }
 
     private void updateHeaderDecoration() {
-        int decoration = NekoConfig.actionBarDecoration.Int();
+        int decoration = AveConfig.actionBarDecoration.Int();
         if (decoration == 3) {
             snowflakesEffect = null;
             fireworksEffect = null;

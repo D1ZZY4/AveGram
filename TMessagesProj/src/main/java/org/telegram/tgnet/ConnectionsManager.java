@@ -73,12 +73,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.net.ssl.SSLException;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.ErrorDatabase;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.ErrorDatabase;
 
-import tw.nekomimi.nekogram.NekoXConfig;
-import tw.nekomimi.nekogram.utils.DnsFactory;
-import tw.nekomimi.nekogram.utils.ProxyUtil;
+import org.avegram.ave.AveXConfig;
+import org.avegram.ave.utils.DnsFactory;
+import org.avegram.ave.utils.ProxyUtil;
 import org.avegram.NaConfig;
 
 public class ConnectionsManager extends BaseController {
@@ -272,7 +272,7 @@ public class ConnectionsManager extends BaseController {
         if (getUserConfig().getCurrentUser() != null) {
             userPremium = getUserConfig().getCurrentUser().premium;
         }
-        init(SharedConfig.buildVersion(), TLRPC.LAYER, NekoXConfig.currentAppId(), deviceModel, systemVersion, appVersion, langCode, systemLangCode, configPath, FileLog.getNetworkLogPath(), pushString, fingerprint, timezoneOffset, getUserConfig().getClientUserId(), userPremium, enablePushConnection);
+        init(SharedConfig.buildVersion(), TLRPC.LAYER, AveXConfig.currentAppId(), deviceModel, systemVersion, appVersion, langCode, systemLangCode, configPath, FileLog.getNetworkLogPath(), pushString, fingerprint, timezoneOffset, getUserConfig().getClientUserId(), userPremium, enablePushConnection);
     }
 
     private String getRegId() {
@@ -871,7 +871,7 @@ public class ConnectionsManager extends BaseController {
                 }
                 lastDnsRequestTime = System.currentTimeMillis();
 
-                if (NekoConfig.dnsType.Int() == NekoConfig.DNS_TYPE_NAX || NekoConfig.dnsType.Int() == NekoConfig.DNS_TYPE_CUSTOM_DOH) {
+                if (AveConfig.dnsType.Int() == AveConfig.DNS_TYPE_NAX || AveConfig.dnsType.Int() == AveConfig.DNS_TYPE_CUSTOM_DOH) {
                     FileLog.d("start custom dns txt task");
                     DnsTxtLoadTask task = new DnsTxtLoadTask(currentAccount);
                     task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null, null, null);
@@ -1122,7 +1122,7 @@ public class ConnectionsManager extends BaseController {
                 }
             }
             if (hasIpv6) {
-                if (!hasIpv4 || forceTryIpV6 || NekoConfig.useIPv6.Bool()) {
+                if (!hasIpv4 || forceTryIpV6 || AveConfig.useIPv6.Bool()) {
                     return USE_IPV6_ONLY;
                 } else if (hasStrangeIpv4) {
                     return USE_IPV4_IPV6_RANDOM;
@@ -1168,7 +1168,7 @@ public class ConnectionsManager extends BaseController {
         }
 
         protected ResolvedDomain doInBackground(Void... voids) {
-            if (NekoConfig.dnsType.Int() != NekoConfig.DNS_TYPE_DEFAULT) {
+            if (AveConfig.dnsType.Int() != AveConfig.DNS_TYPE_DEFAULT) {
                 return dnsFactoryLookup();
             }
             ByteArrayOutputStream outbuf = null;

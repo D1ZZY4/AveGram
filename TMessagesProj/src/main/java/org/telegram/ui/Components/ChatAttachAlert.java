@@ -174,13 +174,13 @@ import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import kotlin.Unit;
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.ChatsHelper;
-import tw.nekomimi.nekogram.llm.LlmConfig;
-import tw.nekomimi.nekogram.translate.Translator;
-import tw.nekomimi.nekogram.translate.TranslatorKt;
-import tw.nekomimi.nekogram.utils.AlertUtil;
-import tw.nekomimi.nekogram.utils.AndroidUtil;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.ChatsHelper;
+import org.avegram.ave.llm.LlmConfig;
+import org.avegram.ave.translate.Translator;
+import org.avegram.ave.translate.TranslatorKt;
+import org.avegram.ave.utils.AlertUtil;
+import org.avegram.ave.utils.AndroidUtil;
 import org.avegram.NaConfig;
 
 import java.util.Objects;
@@ -3599,7 +3599,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                     AndroidUtilities.shakeView(captionLimitView);
                     AndroidUtilities.shakeView(topCaptionLimitView);
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) writeButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                        if (!AveConfig.disableVibration.Bool()) writeButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     } catch (Exception ignored) {}
                     if (!MessagesController.getInstance(currentAccount).premiumFeaturesBlocked() && MessagesController.getInstance(currentAccount).captionLengthLimitPremium > codepointCount) {
                         showCaptionLimitBulletin(parentFragment);
@@ -4051,7 +4051,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             messageSendPreview.show();
 
             try {
-                if (!NekoConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (!AveConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             } catch (Exception ignored) {}
 
             return true;
@@ -4233,7 +4233,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             AndroidUtilities.shakeView(captionLimitView);
             AndroidUtilities.shakeView(topCaptionLimitView);
             try {
-                if (!NekoConfig.disableVibration.Bool()) {
+                if (!AveConfig.disableVibration.Bool()) {
                     writeButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 }
             } catch (Exception ignored) {}

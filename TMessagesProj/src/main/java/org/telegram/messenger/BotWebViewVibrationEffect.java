@@ -5,7 +5,7 @@ import android.os.VibrationEffect;
 
 import androidx.annotation.RequiresApi;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public enum BotWebViewVibrationEffect {
     IMPACT_LIGHT(new long[] {7}, new int[] {65}, new long[] {60}),
@@ -44,7 +44,7 @@ public enum BotWebViewVibrationEffect {
     }
 
     public void vibrate() {
-        if (NekoConfig.disableVibration.Bool()) return;
+        if (AveConfig.disableVibration.Bool()) return;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             AndroidUtilities.getVibrator().vibrate(getVibrationEffectForOreo());
         } else {

@@ -69,11 +69,11 @@ import org.telegram.ui.bots.BotWebViewAttachedSheet;
 
 import java.util.ArrayList;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.CloudStorageHelper;
-import tw.nekomimi.nekogram.helpers.UserHelper;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
-import tw.nekomimi.nekogram.utils.AndroidUtil;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.CloudStorageHelper;
+import org.avegram.ave.helpers.UserHelper;
+import org.avegram.ave.helpers.MessageHelper;
+import org.avegram.ave.utils.AndroidUtil;
 import org.avegram.NaConfig;
 
 public abstract class BaseFragment {
@@ -356,7 +356,7 @@ public abstract class BaseFragment {
     public void setParentFragment(BaseFragment fragment) {
         setParentLayout(fragment.parentLayout);
         fragmentView = createView(parentLayout.getView().getContext());
-        if (NekoConfig.disableVibration.Bool()) {
+        if (AveConfig.disableVibration.Bool()) {
             AndroidUtil.disableHapticFeedback(fragmentView);
         }
     }

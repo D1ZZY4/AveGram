@@ -45,8 +45,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Objects;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.remote.EmojiHelper;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.remote.EmojiHelper;
 
 public class Emoji {
 
@@ -96,7 +96,7 @@ public class Emoji {
     }
 
     public static boolean isSelectedCustomPack() {
-        return isSelectedEmojiPack || NekoConfig.useSystemEmoji.Bool();
+        return isSelectedEmojiPack || AveConfig.useSystemEmoji.Bool();
     }
 
     public static void reloadEmoji() {
@@ -146,7 +146,7 @@ public class Emoji {
             loadingEmoji[page][page2] = true;
             Utilities.globalQueue.postRunnable(() -> {
                 Bitmap bitmap;
-                if (NekoConfig.useSystemEmoji.Bool() || isSelectedEmojiPack) {
+                if (AveConfig.useSystemEmoji.Bool() || isSelectedEmojiPack) {
                     int emojiSize = 66;
                     bitmap = Bitmap.createBitmap(emojiSize, emojiSize, Bitmap.Config.ARGB_8888);
                     Canvas canvas = new Canvas(bitmap);
@@ -775,7 +775,7 @@ public class Emoji {
     }
 
     public static CharSequence replaceWithRestrictedEmoji(CharSequence cs, Paint.FontMetricsInt fontMetrics, Runnable update) {
-        if (NekoConfig.useSystemEmoji.Bool() || cs == null || cs.length() == 0) {
+        if (AveConfig.useSystemEmoji.Bool() || cs == null || cs.length() == 0) {
             return cs;
         }
 

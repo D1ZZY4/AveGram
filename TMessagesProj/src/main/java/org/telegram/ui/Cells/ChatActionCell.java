@@ -159,7 +159,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import me.vkryl.core.BitwiseUtils;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class ChatActionCell extends BaseCell implements DownloadController.FileDownloadProgressListener, NotificationCenter.NotificationCenterDelegate {
     private final static boolean USE_PREMIUM_GIFT_LOCAL_STICKER = false;
@@ -459,7 +459,7 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
                         forceWasUnread = messageObject.wasUnread = false;
 
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                            if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                         } catch (Exception ignored) {}
 
                         if (getContext() instanceof LaunchActivity) {

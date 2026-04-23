@@ -97,9 +97,9 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.function.Consumer;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.NekoXConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.AveXConfig;
+import org.avegram.ave.filters.AyuFilter;
 import org.avegram.NaConfig;
 
 public class NotificationsController extends BaseController {
@@ -2461,7 +2461,7 @@ public class NotificationsController extends BaseController {
             return null;
         }
         StringBuilder stringBuilder = new StringBuilder(text);
-        if (NekoConfig.showSpoilersDirectly.Bool() && !AyuFilter.shouldMaskMessage(messageObject, null)) {
+        if (AveConfig.showSpoilersDirectly.Bool() && !AyuFilter.shouldMaskMessage(messageObject, null)) {
             return stringBuilder.toString();
         }
         if (messageObject.didSpoilLoginCode()) {
@@ -3625,7 +3625,7 @@ public class NotificationsController extends BaseController {
             } else {
                 icon = IconCompat.createWithResource(ApplicationLoader.applicationContext, R.drawable.book_group);
             }
-            if (supportsBubble && !NekoConfig.disableNotificationBubbles.Bool()) {
+            if (supportsBubble && !AveConfig.disableNotificationBubbles.Bool()) {
                 NotificationCompat.BubbleMetadata.Builder bubbleBuilder =
                         new NotificationCompat.BubbleMetadata.Builder(
                                 PendingIntent.getActivity(ApplicationLoader.applicationContext, 0, intent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT),
@@ -4571,7 +4571,7 @@ public class NotificationsController extends BaseController {
                     .setGroupSummary(true)
                     .setShowWhen(true)
                     .setWhen(((long) lastMessageObject.messageOwner.date) * 1000)
-                    .setColor(NekoXConfig.getNotificationColor());
+                    .setColor(AveXConfig.getNotificationColor());
 
             long[] vibrationPattern = null;
             Uri sound = null;
@@ -5556,7 +5556,7 @@ public class NotificationsController extends BaseController {
                     .setContentText(text.toString())
                     .setAutoCancel(true)
                     .setNumber(dialogKey.story ? storyPushMessages.size() : messageObjects.size())
-                    .setColor(NekoXConfig.getNotificationColor())
+                    .setColor(AveXConfig.getNotificationColor())
                     .setGroupSummary(false)
                     .setWhen(date)
                     .setShowWhen(true)
@@ -6261,7 +6261,7 @@ public class NotificationsController extends BaseController {
             case 2:
                 return R.drawable.nagram_notification;
             case 3:
-                return R.drawable.neko_notification;
+                return R.drawable.ave_notification;
         }
 
         return R.drawable.notification;

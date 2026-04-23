@@ -27,7 +27,7 @@ import org.telegram.ui.Components.Paint.Views.RoundView;
 
 import java.io.File;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class RoundVideoRecorder extends FrameLayout {
 
@@ -99,7 +99,7 @@ public class RoundVideoRecorder extends FrameLayout {
                 invalidate();
 
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                    if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                 } catch (Exception ignore) {}
 
                 AndroidUtilities.runOnUIThread(stopRunnable, MAX_DURATION);

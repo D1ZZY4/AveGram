@@ -165,7 +165,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 @SuppressLint("NewApi")
 public class VoIPService extends Service implements SensorEventListener, AudioManager.OnAudioFocusChangeListener, VoIPController.ConnectionStateListener, NotificationCenter.NotificationCenterDelegate, VoIPServiceState {
@@ -4903,7 +4903,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 		SensorManager sm = (SensorManager) getSystemService(SENSOR_SERVICE);
 		Sensor proximity = sm.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 		try {
-			if (proximity != null && !NekoConfig.disableProximityEvents.Bool()) {
+			if (proximity != null && !AveConfig.disableProximityEvents.Bool()) {
 				proximityWakelock = ((PowerManager) getSystemService(Context.POWER_SERVICE)).newWakeLock(PROXIMITY_SCREEN_OFF_WAKE_LOCK, "telegram-voip-prx");
 				sm.registerListener(this, proximity, SensorManager.SENSOR_DELAY_NORMAL);
 			}
@@ -4942,7 +4942,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 			if (audioRouteToSet != AUDIO_ROUTE_EARPIECE || isHeadsetPlugged || vam.isSpeakerphoneOn() || (isBluetoothHeadsetConnected() && am.isBluetoothScoOn())) {
 				return;
 			}
-			boolean newIsNear = !NekoConfig.disableProximityEvents.Bool() && event.values[0] < Math.min(event.sensor.getMaximumRange(), 3);
+			boolean newIsNear = !AveConfig.disableProximityEvents.Bool() && event.values[0] < Math.min(event.sensor.getMaximumRange(), 3);
 			checkIsNear(newIsNear);
 			NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.nearEarEvent, newIsNear);
 		}
@@ -5451,7 +5451,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 					wasEstablished = true;
 					if (!isProximityNear && !privateCall.video) {
 						try {
-							if (!NekoConfig.disableVibration.Bool()) LaunchActivity.getLastFragment().getFragmentView().performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+							if (!AveConfig.disableVibration.Bool()) LaunchActivity.getLastFragment().getFragmentView().performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
 						} catch (Exception ignore) {}
 					}
 					AndroidUtilities.runOnUIThread(new Runnable() {

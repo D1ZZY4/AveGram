@@ -72,10 +72,10 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
-import tw.nekomimi.nekogram.helpers.AppRestartHelper;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.filters.AyuFilter;
+import org.avegram.ave.helpers.AppRestartHelper;
+import org.avegram.ave.helpers.MessageHelper;
 import org.avegram.NaConfig;
 import com.radolyn.ayugram.AyuConstants;
 import com.radolyn.ayugram.messages.AyuMessagesController;
@@ -474,7 +474,7 @@ public class MessagesStorage extends BaseController {
             "user_contacts_v7",
             "user_phones_v7",
             "dialogs",
-            "dialog_filter_neko",
+            "dialog_filter_ave",
             "dialog_filter_ep",
             "dialog_filter_pin_v2",
             "randoms_v2",
@@ -588,7 +588,7 @@ public class MessagesStorage extends BaseController {
         database.executeFast("CREATE INDEX IF NOT EXISTS folder_id_idx_4_dialogs ON dialogs(folder_id);").stepThis().dispose();
         database.executeFast("CREATE INDEX IF NOT EXISTS flags_idx_4_dialogs ON dialogs(flags);").stepThis().dispose();
 
-        database.executeFast("CREATE TABLE dialog_filter_neko(id INTEGER PRIMARY KEY, ord INTEGER, unread_count INTEGER, flags INTEGER, title TEXT, emoticon TEXT, color INTEGER DEFAULT -1, entities BLOB, noanimate INTEGER)").stepThis().dispose();
+        database.executeFast("CREATE TABLE dialog_filter_ave(id INTEGER PRIMARY KEY, ord INTEGER, unread_count INTEGER, flags INTEGER, title TEXT, emoticon TEXT, color INTEGER DEFAULT -1, entities BLOB, noanimate INTEGER)").stepThis().dispose();
         database.executeFast("CREATE TABLE dialog_filter_ep(id INTEGER, peer INTEGER, PRIMARY KEY (id, peer))").stepThis().dispose();
         database.executeFast("CREATE TABLE dialog_filter_pin_v2(id INTEGER, peer INTEGER, pin INTEGER, PRIMARY KEY (id, peer))").stepThis().dispose();
 
@@ -2576,7 +2576,7 @@ public class MessagesStorage extends BaseController {
 
                 usersToLoad.add(getUserConfig().getClientUserId());
 
-                filtersCursor = database.queryFinalized("SELECT id, ord, unread_count, flags, title, emoticon, color, entities, noanimate FROM dialog_filter_neko WHERE 1");
+                filtersCursor = database.queryFinalized("SELECT id, ord, unread_count, flags, title, emoticon, color, entities, noanimate FROM dialog_filter_ave WHERE 1");
 
                 boolean updateCounters = false;
                 boolean hasDefaultFilter = false;
@@ -2665,7 +2665,7 @@ public class MessagesStorage extends BaseController {
                     dialogFiltersMap.put(filter.id, filter);
                     filtersById.put(filter.id, filter);
 
-                    state = database.executeFast("REPLACE INTO dialog_filter_neko VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    state = database.executeFast("REPLACE INTO dialog_filter_ave VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     state.bindInteger(1, filter.id);
                     state.bindInteger(2, filter.order);
                     state.bindInteger(3, filter.unreadCount);
@@ -2932,7 +2932,7 @@ public class MessagesStorage extends BaseController {
                         continue;
                     }
                     flags = filter.flags;
-                    if (NaConfig.INSTANCE.getIgnoreUnreadCount().Int() == NekoConfig.DIALOG_FILTER_EXCLUDE_MUTED && (flags & MessagesController.DIALOG_FILTER_FLAG_EXCLUDE_MUTED) == 0) {
+                    if (NaConfig.INSTANCE.getIgnoreUnreadCount().Int() == AveConfig.DIALOG_FILTER_EXCLUDE_MUTED && (flags & MessagesController.DIALOG_FILTER_FLAG_EXCLUDE_MUTED) == 0) {
                         flags |= MessagesController.DIALOG_FILTER_FLAG_EXCLUDE_MUTED;
                     }
                 } else {
@@ -3165,7 +3165,7 @@ public class MessagesStorage extends BaseController {
                 dialogFiltersMap.put(filter.id, filter);
             }
 
-            state = database.executeFast("REPLACE INTO dialog_filter_neko VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            state = database.executeFast("REPLACE INTO dialog_filter_ave VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
             state.bindInteger(1, filter.id);
             state.bindInteger(2, filter.order);
             state.bindInteger(3, filter.unreadCount);
@@ -3627,7 +3627,7 @@ public class MessagesStorage extends BaseController {
         try {
             dialogFilters.remove(filter);
             dialogFiltersMap.remove(filter.id);
-            database.executeFast("DELETE FROM dialog_filter_neko WHERE id = " + filter.id).stepThis().dispose();
+            database.executeFast("DELETE FROM dialog_filter_ave WHERE id = " + filter.id).stepThis().dispose();
             database.executeFast("DELETE FROM dialog_filter_ep WHERE id = " + filter.id).stepThis().dispose();
             database.executeFast("DELETE FROM dialog_filter_pin_v2 WHERE id = " + filter.id).stepThis().dispose();
         } catch (Exception e) {
@@ -3658,7 +3658,7 @@ public class MessagesStorage extends BaseController {
     public void saveDialogFiltersOrderInternal() {
         SQLitePreparedStatement state = null;
         try {
-            state = database.executeFast("UPDATE dialog_filter_neko SET ord = ?, flags = ? WHERE id = ?");
+            state = database.executeFast("UPDATE dialog_filter_ave SET ord = ?, flags = ? WHERE id = ?");
             for (int a = 0, N = dialogFilters.size(); a < N; a++) {
                 MessagesController.DialogFilter filter = dialogFilters.get(a);
                 state.requery();
@@ -6143,7 +6143,7 @@ public class MessagesStorage extends BaseController {
                 }
                 unreadCount = filter.pendingUnreadCount;
                 flags = filter.flags;
-                if (NaConfig.INSTANCE.getIgnoreUnreadCount().Int() == NekoConfig.DIALOG_FILTER_EXCLUDE_MUTED && (flags & MessagesController.DIALOG_FILTER_FLAG_EXCLUDE_MUTED) == 0) {
+                if (NaConfig.INSTANCE.getIgnoreUnreadCount().Int() == AveConfig.DIALOG_FILTER_EXCLUDE_MUTED && (flags & MessagesController.DIALOG_FILTER_FLAG_EXCLUDE_MUTED) == 0) {
                     flags |= MessagesController.DIALOG_FILTER_FLAG_EXCLUDE_MUTED;
                 }
             } else {

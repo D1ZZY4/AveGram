@@ -270,23 +270,23 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import kotlin.text.StringsKt;
-import tw.nekomimi.nekogram.ChatHistoryActivity;
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.AppRestartHelper;
-import tw.nekomimi.nekogram.helpers.MonetHelper;
-import tw.nekomimi.nekogram.helpers.SettingsHelper;
-import tw.nekomimi.nekogram.helpers.remote.EmojiHelper;
-import tw.nekomimi.nekogram.helpers.remote.PagePreviewRulesHelper;
-import tw.nekomimi.nekogram.helpers.remote.UpdateHelper;
-import tw.nekomimi.nekogram.settings.GhostModeActivity;
-import tw.nekomimi.nekogram.settings.NekoSettingsActivity;
-import tw.nekomimi.nekogram.ui.BookmarkManagerActivity;
-import tw.nekomimi.nekogram.utils.AlertUtil;
-import tw.nekomimi.nekogram.utils.AndroidUtil;
-import tw.nekomimi.nekogram.utils.BrowserUtils;
-import tw.nekomimi.nekogram.utils.ProxyUtil;
+import org.avegram.ave.ChatHistoryActivity;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.AppRestartHelper;
+import org.avegram.ave.helpers.MonetHelper;
+import org.avegram.ave.helpers.SettingsHelper;
+import org.avegram.ave.helpers.remote.EmojiHelper;
+import org.avegram.ave.helpers.remote.PagePreviewRulesHelper;
+import org.avegram.ave.helpers.remote.UpdateHelper;
+import org.avegram.ave.settings.GhostModeActivity;
+import org.avegram.ave.settings.AveSettingsActivity;
+import org.avegram.ave.ui.BookmarkManagerActivity;
+import org.avegram.ave.utils.AlertUtil;
+import org.avegram.ave.utils.AndroidUtil;
+import org.avegram.ave.utils.BrowserUtils;
+import org.avegram.ave.utils.ProxyUtil;
 import org.avegram.NaConfig;
-import tw.nekomimi.nekogram.ui.icons.IconsResources;
+import org.avegram.ave.ui.icons.IconsResources;
 
 public class LaunchActivity extends BasePermissionsActivity implements INavigationLayout.INavigationLayoutDelegate, NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate, IPipActivity {
     public final static String EXTRA_FORCE_NOT_INTERNAL_APPS = "force_not_internal_apps";
@@ -1577,7 +1577,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         if (drawerLayoutContainer == null || sideMenuContainer == null) {
             return;
         }
-        boolean enabled = NekoConfig.navigationDrawerEnabled.Bool();
+        boolean enabled = AveConfig.navigationDrawerEnabled.Bool();
         sideMenuContainer.setVisibility(enabled ? View.VISIBLE : View.GONE);
         if (!enabled) {
             drawerLayoutContainer.closeDrawer(false);
@@ -1842,7 +1842,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             presentFragment(new ChatHistoryActivity());
             drawerLayoutContainer.closeDrawer(false);
         } else if (id == DrawerLayoutAdapter.nkbtnSettings) {
-            presentFragment(new NekoSettingsActivity());
+            presentFragment(new AveSettingsActivity());
             drawerLayoutContainer.closeDrawer(false);
         } else if (id == DrawerLayoutAdapter.nkbtnBrowser) {
             BrowserUtils.openBrowserHome(() -> drawerLayoutContainer.closeDrawer(true), true);
@@ -1882,10 +1882,10 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             presentFragment(new DialogsActivity(args));
             drawerLayoutContainer.closeDrawer(false);
         } else if (id == DrawerLayoutAdapter.nkbtnGhostMode) {
-            String message = NekoConfig.isGhostModeActive()
+            String message = AveConfig.isGhostModeActive()
                     ? LocaleController.getString(R.string.GhostModeDisabled)
                     : LocaleController.getString(R.string.GhostModeEnabled);
-            NekoConfig.toggleGhostMode();
+            AveConfig.toggleGhostMode();
             BaseFragment lastFragment = getLastFragment();
             if (lastFragment != null) {
                 BulletinFactory.of(lastFragment).createSuccessBulletin(message).show();
@@ -2786,7 +2786,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                                         actionBarLayout.showLastFragment();
                                                         rightActionBarLayout.showLastFragment();
                                                     }
-                                                }, () -> showBulletin(factory -> factory.createErrorBulletin(LocaleController.getString("UnknownNekoSettingsOption", R.string.UnknownNekoSettingsOption))));
+                                                }, () -> showBulletin(factory -> factory.createErrorBulletin(LocaleController.getString("UnknownAveSettingsOption", R.string.UnknownAveSettingsOption))));
                                             } else if (path.startsWith("msg/") || path.startsWith("share/")) {
                                                 message = data.getQueryParameter("url");
                                                 if (message == null) {
@@ -3314,7 +3314,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             open_settings = 8;
                                         } else if (url.contains("?disablelogs")) {
                                             open_settings = 9;
-                                        } else if (url.contains("neko")) {
+                                        } else if (url.contains("ave")) {
                                             open_settings = 100;
                                         } else if (url.contains("premium_sms")) {
                                             open_settings = 13;
@@ -3344,8 +3344,8 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             FileLog.e(e);
                                         }
                                         checkAppUpdate(true, null, updateAlways);
-                                    } else if (url.startsWith("tg:neko") || url.startsWith("tg://neko")) {
-                                        url = url.replace("tg:neko", "tg://t.me/nasettings").replace("tg://neko", "tg://t.me/nasettings");
+                                    } else if (url.startsWith("tg:ave") || url.startsWith("tg://ave")) {
+                                        url = url.replace("tg:ave", "tg://t.me/nasettings").replace("tg://ave", "tg://t.me/nasettings");
                                         data = Uri.parse(url);
                                         SettingsHelper.processDeepLink(this, data, fragment -> {
                                             AndroidUtilities.runOnUIThread(() -> presentFragment(fragment, false, false));
@@ -3353,7 +3353,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                                 actionBarLayout.showLastFragment();
                                                 rightActionBarLayout.showLastFragment();
                                             }
-                                        }, () -> showBulletin(factory -> factory.createErrorBulletin(LocaleController.getString("UnknownNekoSettingsOption", R.string.UnknownNekoSettingsOption))));
+                                        }, () -> showBulletin(factory -> factory.createErrorBulletin(LocaleController.getString("UnknownAveSettingsOption", R.string.UnknownAveSettingsOption))));
                                     } else if ((url.startsWith("tg:search") || url.startsWith("tg://search"))) {
                                         url = url.replace("tg:search", "tg://telegram.org").replace("tg://search", "tg://telegram.org");
                                         data = Uri.parse(url);
@@ -3894,7 +3894,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
 
                     fragment = null;
                 } else if (open_settings == 100) {
-                    fragment = new NekoSettingsActivity();
+                    fragment = new AveSettingsActivity();
                 } else if (ApplicationLoader.applicationLoaderInstance != null) {
                     fragment = ApplicationLoader.applicationLoaderInstance.openSettings(open_settings);
                 } else {
@@ -4088,7 +4088,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             if (fragment != null) {
                 Bulletin.make(fragment, layout, duration).show();
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) fragment.fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) fragment.fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 } catch (Exception ignored) {}
             }
         });

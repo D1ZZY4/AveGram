@@ -108,7 +108,7 @@ import java.util.Collections;
 
 import me.vkryl.android.animator.BoolAnimator;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class StarsReactionsSheet extends BottomSheet implements NotificationCenter.NotificationCenterDelegate {
 
@@ -958,7 +958,7 @@ public class StarsReactionsSheet extends BottomSheet implements NotificationCent
                 doneRipple[0] = true;
                 LaunchActivity.makeRipple(to.centerX(), to.centerY(), 1.5f);
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) container.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) container.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                 } catch (Exception ignore) {}
                 if (pushed != null) {
                     pushed.run();
@@ -986,7 +986,7 @@ public class StarsReactionsSheet extends BottomSheet implements NotificationCent
                     doneRipple[0] = true;
                     LaunchActivity.makeRipple(to.centerX(), to.centerY(), 1.5f);
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) container.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                        if (!AveConfig.disableVibration.Bool()) container.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                     } catch (Exception ignore) {}
                     if (pushed != null) {
                         pushed.run();

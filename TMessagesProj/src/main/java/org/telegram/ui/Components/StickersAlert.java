@@ -114,7 +114,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 import org.avegram.NaConfig;
 import org.avegram.helper.StickerSetHelper;
 
@@ -1837,7 +1837,7 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
                 if (!lastNameAvailable) {
                     AndroidUtilities.shakeView(editText);
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) editText.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                        if (!AveConfig.disableVibration.Bool()) editText.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     } catch (Exception ignored) {}
                 }
                 AndroidUtilities.hideKeyboard(editText);

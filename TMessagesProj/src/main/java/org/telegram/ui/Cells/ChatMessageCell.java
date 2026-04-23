@@ -251,17 +251,17 @@ import me.vkryl.android.animator.BoolAnimator;
 import me.vkryl.android.animator.FactorAnimator;
 import me.vkryl.core.BitwiseUtils;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.NekoXConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
-import tw.nekomimi.nekogram.helpers.TimeStringHelper;
-import tw.nekomimi.nekogram.helpers.TranscribeHelper;
-import tw.nekomimi.nekogram.utils.AndroidUtil;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.AveXConfig;
+import org.avegram.ave.filters.AyuFilter;
+import org.avegram.ave.helpers.MessageHelper;
+import org.avegram.ave.helpers.TimeStringHelper;
+import org.avegram.ave.helpers.TranscribeHelper;
+import org.avegram.ave.utils.AndroidUtil;
 import org.avegram.NaConfig;
 import org.avegram.helper.BookmarksHelper;
 
-import static tw.nekomimi.nekogram.helpers.MessageHelper.showForwardDate;
+import static org.avegram.ave.helpers.MessageHelper.showForwardDate;
 
 public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate, ImageReceiver.ImageReceiverDelegate,
         DownloadController.FileDownloadProgressListener, TextSelectionHelper.SelectableView,
@@ -411,7 +411,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     public boolean hasSpoilers() {
-        if (NekoConfig.showSpoilersDirectly.Bool() && !hasMaskedSpoilers(captionLayout != null ? captionLayout.textLayoutBlocks : null) && !hasMaskedSpoilers(getMessageObject() != null ? getMessageObject().textLayoutBlocks : null)) {
+        if (AveConfig.showSpoilersDirectly.Bool() && !hasMaskedSpoilers(captionLayout != null ? captionLayout.textLayoutBlocks : null) && !hasMaskedSpoilers(getMessageObject() != null ? getMessageObject().textLayoutBlocks : null)) {
             return false;
         }
 
@@ -4218,7 +4218,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             if (Math.abs(currentMessageObject.audioProgress - p) > 0.9f) {
                 if (roundSeekbarOutAlpha == 0) {
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                        if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                     } catch (Exception ignored) {}
                 }
                 roundSeekbarOutAlpha = 1f;
@@ -5531,7 +5531,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         final PollButton button = pollButtons.get(index);
         if (delegate.didPressToDoButton(this, button.task, !button.chosen)) {
             try {
-                if (vibrate && !NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (vibrate && !AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             } catch (Exception ignored) {}
             final long dialogId = currentMessageObject.getDialogId();
             final long send_as = ChatObject.getSendAsPeerId(MessagesController.getInstance(currentAccount).getChat(dialogId), MessagesController.getInstance(currentAccount).getChatFull(dialogId), true);
@@ -9440,9 +9440,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             currentMapProvider = -1;
                         }
                     } else {
-                        if (NekoConfig.mapPreviewProvider.Int() == 0) {
+                        if (AveConfig.mapPreviewProvider.Int() == 0) {
                             currentMapProvider = 2;
-                        } else if (NekoConfig.mapPreviewProvider.Int() == 1) {
+                        } else if (AveConfig.mapPreviewProvider.Int() == 1) {
                             currentMapProvider = 1;
                         } else {
                             currentMapProvider = -1;
@@ -9545,10 +9545,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     float maxHeight;
                     int maxWidth;
                     if (AndroidUtilities.isTablet()) {
-                        maxHeight = AndroidUtilities.getMinTabletSide() * (0.4f + (NekoConfig.stickerSize.Float() - 14.0f) / 40);
+                        maxHeight = AndroidUtilities.getMinTabletSide() * (0.4f + (AveConfig.stickerSize.Float() - 14.0f) / 40);
                         maxWidth = (int) maxHeight;
                     } else {
-                        maxHeight = Math.min(getParentWidth(), AndroidUtilities.displaySize.y) * (0.5f + (NekoConfig.stickerSize.Float() - 14.0f) / 30);
+                        maxHeight = Math.min(getParentWidth(), AndroidUtilities.displaySize.y) * (0.5f + (AveConfig.stickerSize.Float() - 14.0f) / 30);
                         maxWidth = (int) maxHeight;
                     }
                     String filter;
@@ -23676,7 +23676,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (currentMessageObject != null && currentMessageObject.type == MessageObject.TYPE_JOINED_CHANNEL) {
             return;
         }
-        if (NekoConfig.hideTimeForSticker.Bool() && currentMessageObject != null && currentMessageObject.isAnyKindOfSticker() && !isDrawSelectionBackground() && !currentMessageObject.isAyuDeleted()) {
+        if (AveConfig.hideTimeForSticker.Bool() && currentMessageObject != null && currentMessageObject.isAnyKindOfSticker() && !isDrawSelectionBackground() && !currentMessageObject.isAyuDeleted()) {
             return;
         }
         for (int i = 0; i < 2; i++) {

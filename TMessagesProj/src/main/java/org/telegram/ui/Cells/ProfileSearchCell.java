@@ -71,7 +71,7 @@ import org.telegram.ui.Stories.StoriesUtilities;
 import java.util.Locale;
 
 import org.avegram.NaConfig;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
+import org.avegram.ave.helpers.MessageHelper;
 
 public class ProfileSearchCell extends BaseCell implements NotificationCenter.NotificationCenterDelegate, Theme.Colorable {
 

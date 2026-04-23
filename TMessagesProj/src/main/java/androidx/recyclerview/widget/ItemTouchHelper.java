@@ -44,7 +44,7 @@ import org.telegram.messenger.AndroidUtilities;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 /**
  * This is a utility class to add swipe to dismiss and drag & drop support to RecyclerView.
@@ -695,7 +695,7 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
 
             if (actionState == ACTION_STATE_DRAG) {
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) mSelected.itemView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) mSelected.itemView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 } catch (Exception ignore) {}
             }
         }

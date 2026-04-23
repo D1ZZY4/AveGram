@@ -61,8 +61,8 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.shamsicalendar.PersianDate;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.shamsicalendar.PersianDate;
 import com.radolyn.ayugram.utils.LastSeenHelper;
 
 public class LocaleController {
@@ -89,7 +89,7 @@ public class LocaleController {
                         lang = "en";
                     }
                     lang = lang.toLowerCase();
-                    formatterDay = createFormatter(lang.toLowerCase().equals("ar") || lang.toLowerCase().equals("ko") ? locale : Locale.US, (is24HourFormat ? getStringInternal("formatterDay24H", R.string.formatterDay24H) : getStringInternal("formatterDay12H", R.string.formatterDay12H)).replace(":mm", NekoConfig.showSeconds.Bool() ? ":mm:ss" : ":mm"), (is24HourFormat ? "HH:mm" : "h:mm a").replace(":mm", NekoConfig.showSeconds.Bool() ? ":mm:ss" : ":mm"));
+                    formatterDay = createFormatter(lang.toLowerCase().equals("ar") || lang.toLowerCase().equals("ko") ? locale : Locale.US, (is24HourFormat ? getStringInternal("formatterDay24H", R.string.formatterDay24H) : getStringInternal("formatterDay12H", R.string.formatterDay12H)).replace(":mm", AveConfig.showSeconds.Bool() ? ":mm:ss" : ":mm"), (is24HourFormat ? "HH:mm" : "h:mm a").replace(":mm", AveConfig.showSeconds.Bool() ? ":mm:ss" : ":mm"));
                 }
             }
         }
@@ -125,7 +125,7 @@ public class LocaleController {
                         lang = "en";
                     }
                     lang = lang.toLowerCase();
-                    formatterConstDay = createFormatter(lang.toLowerCase().equals("ar") || lang.toLowerCase().equals("ko") ? locale : Locale.US, (is24HourFormat ? "HH:mm" : "h:mm a").replace(":mm", NekoConfig.showSeconds.Bool() ? ":mm:ss" : ":mm"), (is24HourFormat ? "HH:mm" : "h:mm a").replace(":mm", NekoConfig.showSeconds.Bool() ? ":mm:ss" : ":mm"));
+                    formatterConstDay = createFormatter(lang.toLowerCase().equals("ar") || lang.toLowerCase().equals("ko") ? locale : Locale.US, (is24HourFormat ? "HH:mm" : "h:mm a").replace(":mm", AveConfig.showSeconds.Bool() ? ":mm:ss" : ":mm"), (is24HourFormat ? "HH:mm" : "h:mm a").replace(":mm", AveConfig.showSeconds.Bool() ? ":mm:ss" : ":mm"));
                 }
             }
         }
@@ -429,7 +429,7 @@ public class LocaleController {
     private HashMap<String, String> translitChars;
     private HashMap<String, String> ruTranslitChars;
 
-    public static boolean usePersianCalendar = NekoConfig.usePersianCalendar.Bool();
+    public static boolean usePersianCalendar = AveConfig.usePersianCalendar.Bool();
 
     private class TimeZoneChangedReceiver extends BroadcastReceiver {
         @Override
@@ -2970,7 +2970,7 @@ public class LocaleController {
     }
 
     public static String formatShortNumber(int number, int[] rounded) {
-        if (NekoConfig.disableNumberRounding.Bool()) {
+        if (AveConfig.disableNumberRounding.Bool()) {
             if (rounded != null) {
                 rounded[0] = number;
             }

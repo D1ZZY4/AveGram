@@ -61,8 +61,8 @@ import java.util.Locale;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicReference;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.filters.AyuFilter;
 
 public class SharedLinkCell extends FrameLayout {
     private final static int SPOILER_TYPE_LINK = 0,
@@ -97,7 +97,7 @@ public class SharedLinkCell extends FrameLayout {
             if (checkingForLongPress && getParent() != null && currentPressCount == pressCount) {
                 checkingForLongPress = false;
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                    if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
                 } catch (Exception ignored) {}
                 if (pressedLinkIndex >= 0) {
                     delegate.onLinkPress(links.get(pressedLinkIndex).toString(), true);
@@ -342,7 +342,7 @@ public class SharedLinkCell extends FrameLayout {
                         }
                         for (TLRPC.MessageEntity e : entities) {
                             int ss = e.offset, se = e.offset + e.length;
-                            if (NekoConfig.showSpoilersDirectly.Bool() && e instanceof TLRPC.TL_messageEntitySpoiler && start <= se && end >= ss) {
+                            if (AveConfig.showSpoilersDirectly.Bool() && e instanceof TLRPC.TL_messageEntitySpoiler && start <= se && end >= ss) {
                                 TextStyleSpan.TextStyleRun run = new TextStyleSpan.TextStyleRun();
                                 run.flags |= TextStyleSpan.FLAG_STYLE_SPOILER;
                                 sb.setSpan(new TextStyleSpan(run), Math.max(start, ss), Math.min(end, se) + offset, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

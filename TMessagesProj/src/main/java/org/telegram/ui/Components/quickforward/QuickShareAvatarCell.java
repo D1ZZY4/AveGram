@@ -27,7 +27,7 @@ import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Cells.ChatMessageCell;
 import org.telegram.ui.Components.AvatarDrawable;
 
-import tw.nekomimi.nekogram.ui.icons.IconsResources;
+import org.avegram.ave.ui.icons.IconsResources;
 import org.avegram.NaConfig;
 
 class QuickShareAvatarCell implements ValueAnimator.AnimatorUpdateListener {

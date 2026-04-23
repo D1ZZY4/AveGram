@@ -57,7 +57,7 @@ import java.io.File;
 import java.util.Locale;
 import java.util.concurrent.CountDownLatch;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 import org.avegram.NaConfig;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
@@ -103,7 +103,7 @@ public class ApplicationLoader extends Application {
         } catch (Throwable ignore) {
         }
         Thread.currentThread().setUncaughtExceptionHandler((thread, error) -> {
-            Log.e("nekox", "from " + thread.toString(), error);
+            Log.e("avex", "from " + thread.toString(), error);
         });
     }
 
@@ -120,7 +120,7 @@ public class ApplicationLoader extends Application {
 
     public static IMapsProvider getMapsProvider() {
         if (mapsProvider == null) {
-            if (NekoConfig.useOSMDroidMap.Bool())
+            if (AveConfig.useOSMDroidMap.Bool())
                 mapsProvider = new OSMDroidMapsProvider();
             else {
                 mapsProvider = new GoogleMapsProvider();
@@ -272,7 +272,7 @@ public class ApplicationLoader extends Application {
         }
 
         SharedConfig.loadConfig();
-        NekoConfig.init();
+        AveConfig.init();
         NaConfig.init();
         SharedPrefsHelper.init(applicationContext);
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!NaConfig.INSTANCE.getDisableCrashlyticsCollection().Bool());
@@ -371,7 +371,7 @@ public class ApplicationLoader extends Application {
 
         applicationHandler = new Handler(applicationContext.getMainLooper());
 
-        org.osmdroid.config.Configuration.getInstance().setUserAgentValue("Telegram-FOSS ( NekoX ) " + BuildConfig.VERSION_NAME);
+        org.osmdroid.config.Configuration.getInstance().setUserAgentValue("Telegram-FOSS ( AveX ) " + BuildConfig.VERSION_NAME);
         org.osmdroid.config.Configuration.getInstance().setOsmdroidBasePath(new File(ApplicationLoader.applicationContext.getCacheDir(), "osmdroid"));
 
         LauncherIconController.tryFixLauncherIconIfNeeded();

@@ -151,8 +151,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 
-import tw.nekomimi.nekogram.helpers.MonetHelper;
-import tw.nekomimi.nekogram.utils.AndroidUtil;
+import org.avegram.ave.helpers.MonetHelper;
+import org.avegram.ave.utils.AndroidUtil;
 import org.avegram.NaConfig;
 
 public class Theme {
@@ -4889,7 +4889,7 @@ public class Theme {
             final ThemeInfo themeDarkBlue = themesDict.get("Night");
 
             String theme = preferences.getString("theme", null);
-            if ("NekoX".equals(theme)) {
+            if ("AveX".equals(theme)) {
                 theme = "Blue";
                 preferences.edit().putString("theme", theme).apply();
             }
@@ -4929,7 +4929,7 @@ public class Theme {
             }
 
             String lastDayTheme = themeConfig.getString("lastDayTheme", null);
-            if ("NekoX".equals(lastDayTheme)) {
+            if ("AveX".equals(lastDayTheme)) {
                 themeConfig.edit().putString("lastDayTheme", "Blue").apply();
             }
 

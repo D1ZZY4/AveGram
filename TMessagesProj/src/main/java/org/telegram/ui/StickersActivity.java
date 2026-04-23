@@ -125,12 +125,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 import kotlin.Unit;
-import tw.nekomimi.nekogram.ui.BottomBuilder;
-import tw.nekomimi.nekogram.ui.PinnedReactionsActivity;
-import tw.nekomimi.nekogram.utils.AlertUtil;
-import tw.nekomimi.nekogram.utils.FileUtil;
-import tw.nekomimi.nekogram.utils.ShareUtil;
-import tw.nekomimi.nekogram.utils.StickersUtil;
+import org.avegram.ave.ui.BottomBuilder;
+import org.avegram.ave.ui.PinnedReactionsActivity;
+import org.avegram.ave.utils.AlertUtil;
+import org.avegram.ave.utils.FileUtil;
+import org.avegram.ave.utils.ShareUtil;
+import org.avegram.ave.utils.StickersUtil;
 
 public class StickersActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
@@ -1000,7 +1000,7 @@ public class StickersActivity extends BaseFragment implements NotificationCenter
 
                 Utilities.globalQueue.postRunnable(() -> {
                     JsonObject exportObj = StickersUtil.exportStickers(stickerSetList);
-                    File cacheFile = new File(AndroidUtilities.getCacheDir(), new Date().toLocaleString() + ".nekox-stickers.json");
+                    File cacheFile = new File(AndroidUtilities.getCacheDir(), new Date().toLocaleString() + ".avex-stickers.json");
 
                     StringWriter stringWriter = new StringWriter();
                     JsonWriter jsonWriter = new JsonWriter(stringWriter);
@@ -1230,7 +1230,7 @@ public class StickersActivity extends BaseFragment implements NotificationCenter
             Uri uri = data.getData();
             if (uri != null) {
                 File cacheDir = AndroidUtilities.getCacheDir();
-                String tempFile = UUID.randomUUID().toString().replace("-", "") + ".nekox-stickers.json";
+                String tempFile = UUID.randomUUID().toString().replace("-", "") + ".avex-stickers.json";
                 File file = new File(cacheDir.getPath(), tempFile);
                 try {
                     final InputStream inputStream = ApplicationLoader.applicationContext.getContentResolver().openInputStream(uri);
@@ -1344,7 +1344,7 @@ public class StickersActivity extends BaseFragment implements NotificationCenter
         Utilities.globalQueue.postRunnable(() -> {
             Activity ctx = getParentActivity();
             JsonObject exportObj = StickersUtil.exportStickers(currentAccount, exportSets, exportArchived);
-            File cacheFile = new File(AndroidUtilities.getCacheDir(), new Date().toLocaleString() + ".nekox-stickers.json");
+            File cacheFile = new File(AndroidUtilities.getCacheDir(), new Date().toLocaleString() + ".avex-stickers.json");
 
             StringWriter stringWriter = new StringWriter();
             JsonWriter jsonWriter = new JsonWriter(stringWriter);

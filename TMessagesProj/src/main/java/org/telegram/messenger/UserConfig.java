@@ -21,7 +21,7 @@ import org.telegram.tgnet.tl.TL_account;
 
 import java.util.Arrays;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class UserConfig extends BaseController {
 
@@ -582,7 +582,7 @@ public class UserConfig extends BaseController {
         if (user == null) {
             return false;
         }
-        return user.premium || NekoConfig.localPremium.Bool();
+        return user.premium || AveConfig.localPremium.Bool();
     }
 
     public Long getEmojiStatus() {

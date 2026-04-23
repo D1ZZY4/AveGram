@@ -9,7 +9,7 @@
 
 package com.radolyn.ayugram;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class AyuConstants {
 
@@ -31,5 +31,5 @@ public class AyuConstants {
 
     public static String AYU_DATABASE = "ayu-data";
 
-    public static String APP_NAME = NekoConfig.customSavePath.String();
+    public static String APP_NAME = AveConfig.customSavePath.String();
 }

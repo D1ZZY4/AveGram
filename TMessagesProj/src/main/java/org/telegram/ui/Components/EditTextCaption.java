@@ -66,10 +66,10 @@ import org.telegram.ui.LaunchActivity;
 import java.util.List;
 import java.util.Locale;
 
-import tw.nekomimi.nekogram.helpers.ChatsHelper;
-import tw.nekomimi.nekogram.llm.LlmConfig;
-import tw.nekomimi.nekogram.translate.Translator;
-import tw.nekomimi.nekogram.utils.AlertUtil;
+import org.avegram.ave.helpers.ChatsHelper;
+import org.avegram.ave.llm.LlmConfig;
+import org.avegram.ave.translate.Translator;
+import org.avegram.ave.utils.AlertUtil;
 
 public class EditTextCaption extends EditTextBoldCursor {
 
@@ -933,7 +933,7 @@ public class EditTextCaption extends EditTextBoldCursor {
             makeSelectedSpoiler();
             return true;
         } else if (itemId == R.id.menu_translate) {
-            // NekoX
+            // AveX
             makeSelectedTranslate();
             return true;
         } else if (itemId == R.id.menu_quote) {

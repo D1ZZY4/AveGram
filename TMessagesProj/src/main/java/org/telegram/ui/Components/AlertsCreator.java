@@ -171,9 +171,9 @@ import java.util.stream.Collectors;
 
 import me.vkryl.core.BitwiseUtils;
 
-import tw.nekomimi.nekogram.helpers.PasscodeHelper;
-import tw.nekomimi.nekogram.NekoConfig;
-import static tw.nekomimi.nekogram.settings.NekoChatSettingsActivity.getDeleteMenuChecks;
+import org.avegram.ave.helpers.PasscodeHelper;
+import org.avegram.ave.AveConfig;
+import static org.avegram.ave.settings.AveChatSettingsActivity.getDeleteMenuChecks;
 import org.avegram.NaConfig;
 
 import com.radolyn.ayugram.AyuConstants;
@@ -957,7 +957,7 @@ public class AlertsCreator {
                     s.delete(MAX_LENGTH, s.length());
                     AndroidUtilities.shakeView(editText);
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) editText.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                        if (!AveConfig.disableVibration.Bool()) editText.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     } catch (Exception ignore) {}
                     ignoreTextChange = false;
                 }
@@ -1465,7 +1465,7 @@ public class AlertsCreator {
         }
         long inlineReturn = (fragment instanceof ChatActivity) ? ((ChatActivity) fragment).getInlineReturn() : 0;
         final String scheme = url == null ? null : Uri.parse(url).getScheme();
-        if ((Browser.isInternalUrl(url, null) || !ask || "mailto".equalsIgnoreCase(scheme) || NekoConfig.skipOpenLinkConfirm.Bool()) && !NaConfig.INSTANCE.getConfirmAllLinks().Bool()) {
+        if ((Browser.isInternalUrl(url, null) || !ask || "mailto".equalsIgnoreCase(scheme) || AveConfig.skipOpenLinkConfirm.Bool()) && !NaConfig.INSTANCE.getConfirmAllLinks().Bool()) {
             Browser.openUrl(fragment.getParentActivity(), Uri.parse(url), inlineReturn == 0, tryTelegraph, forceNotInternalForApps && checkInternalBotApp(url), progress, null, false, true, false);
         } else {
             String urlFinal;

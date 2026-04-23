@@ -142,10 +142,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Stack;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
-import tw.nekomimi.nekogram.utils.AndroidUtil;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.filters.AyuFilter;
+import org.avegram.ave.helpers.MessageHelper;
+import org.avegram.ave.utils.AndroidUtil;
 import org.avegram.NaConfig;
 import me.vkryl.android.animator.BoolAnimator;
 
@@ -1801,7 +1801,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                                             if (message != null) {
                                                 message.spoilLoginCode();
                                             }
-                                            if (!NekoConfig.showSpoilersDirectly.Bool() || AyuFilter.shouldMaskMessage(message, null))
+                                            if (!AveConfig.showSpoilersDirectly.Bool() || AyuFilter.shouldMaskMessage(message, null))
                                                 MediaDataController.addTextStyleRuns(message, message.caption, msgBuilder, TextStyleSpan.FLAG_STYLE_SPOILER | TextStyleSpan.FLAG_STYLE_STRIKE);
                                             MediaDataController.addAnimatedEmojiSpans(message.messageOwner.entities, msgBuilder, currentMessagePaint == null ? null : currentMessagePaint.getFontMetricsInt());
                                         }
@@ -1892,7 +1892,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                                             if (message != null) {
                                                 message.spoilLoginCode();
                                             }
-                                            if (!NekoConfig.showSpoilersDirectly.Bool() || AyuFilter.shouldMaskMessage(message, null))
+                                            if (!AveConfig.showSpoilersDirectly.Bool() || AyuFilter.shouldMaskMessage(message, null))
                                                 MediaDataController.addTextStyleRuns(message, stringBuilder, TextStyleSpan.FLAG_STYLE_SPOILER | TextStyleSpan.FLAG_STYLE_STRIKE);
                                             if (message != null && message.messageOwner != null) {
                                                 MediaDataController.addAnimatedEmojiSpans(message.messageOwner.entities, stringBuilder, currentMessagePaint == null ? null : currentMessagePaint.getFontMetricsInt());
@@ -2677,7 +2677,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
             }
             spoilersPool.addAll(spoilers);
             spoilers.clear();
-            if (!NekoConfig.showSpoilersDirectly.Bool() || AyuFilter.hasMaskedFilterSpan(messageLayout.getText()))
+            if (!AveConfig.showSpoilersDirectly.Bool() || AyuFilter.hasMaskedFilterSpan(messageLayout.getText()))
                 SpoilerEffect.addSpoilers(this, messageLayout, -2, -2, spoilersPool, spoilers);
         } catch (Exception e) {
             messageLayout = null;
@@ -3759,7 +3759,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
             drawRevealBackground = Math.abs(translationX) >= getMeasuredWidth() * 0.45f;
             if (prevValue != drawRevealBackground && archiveHidden == SharedConfig.archiveHidden) {
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 } catch (Exception ignore) {}
             }
         }
@@ -5667,7 +5667,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
         if (message == null) {
             return;
         }
-        if (!NekoConfig.mediaPreview.Bool())  {
+        if (!AveConfig.mediaPreview.Bool())  {
             return;
         }
         String restrictionReason = MessagesController.getInstance(message.currentAccount).getRestrictionReason(message.messageOwner.restriction_reason);
@@ -5961,7 +5961,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                 if (message != null) {
                     message.spoilLoginCode();
                 }
-                if (!NekoConfig.showSpoilersDirectly.Bool() || AyuFilter.shouldMaskMessage(message, null))
+                if (!AveConfig.showSpoilersDirectly.Bool() || AyuFilter.shouldMaskMessage(message, null))
                     MediaDataController.addTextStyleRuns(message, mess, msgBuilder, TextStyleSpan.FLAG_STYLE_SPOILER | TextStyleSpan.FLAG_STYLE_STRIKE);
                 if (message != null && message.messageOwner != null) {
                     MediaDataController.addAnimatedEmojiSpans(message.messageOwner.entities, msgBuilder, currentMessagePaint == null ? null : currentMessagePaint.getFontMetricsInt());
@@ -6064,7 +6064,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
             if (message != null) {
                 message.spoilLoginCode();
             }
-            if (!NekoConfig.showSpoilersDirectly.Bool() || AyuFilter.hasMaskedFilterSpan(mess))
+            if (!AveConfig.showSpoilersDirectly.Bool() || AyuFilter.hasMaskedFilterSpan(mess))
                 MediaDataController.addTextStyleRuns(message, (Spannable) mess, TextStyleSpan.FLAG_STYLE_SPOILER | TextStyleSpan.FLAG_STYLE_STRIKE);
             if (message != null && message.messageOwner != null) {
                 MediaDataController.addAnimatedEmojiSpans(message.messageOwner.entities, mess, currentMessagePaint == null ? null : currentMessagePaint.getFontMetricsInt());

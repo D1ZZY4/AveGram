@@ -49,7 +49,7 @@
     <string name="CheckAllForum">Aggiungi forum</string>
     <string name="DecorationNone">Nessuno</string>
     <string name="ChatDecoration">Decorazioni Chat</string>
-    <string name="NeedChangeNekoSettings">Hai bisogno di cambiare le N-Config</string>
+    <string name="NeedChangeAveSettings">Hai bisogno di cambiare le N-Config</string>
     <string name="DoNotUnarchiveBySwipe">Disabilita scorri per togliere dall\'archivio</string>
     <string name="DefaultDeleteMenu">Menù di Eliminazione Predefinito</string>
     <string name="DisableStories">Disabilita le Storie</string>

@@ -53,7 +53,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 @SuppressLint("ViewConstructor")
 public class ProfileActionsView extends View {
@@ -559,7 +559,7 @@ public class ProfileActionsView extends View {
                 if (eventAction == MotionEvent.ACTION_UP && hit.rect.contains(x, y)) {
                     if (System.currentTimeMillis() - downTime > 250) {
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                            if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                         } catch (Exception ignore) {
                         }
                     }

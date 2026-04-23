@@ -242,8 +242,8 @@ import java.util.zip.GZIPOutputStream;
 
 import me.vkryl.core.BitwiseUtils;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.TypefaceHelper;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.TypefaceHelper;
 import org.avegram.NaConfig;
 
 public class AndroidUtilities {
@@ -2408,7 +2408,7 @@ public class AndroidUtilities {
     public static Typeface getTypeface(String assetPath) {
         return typefaceCache.computeIfAbsent(assetPath, path -> {
             try {
-                if (NekoConfig.typeface.Bool()) {
+                if (AveConfig.typeface.Bool()) {
                     return TypefaceHelper.createTypeface(path);
                 }
                 return TypefaceHelper.createTypefaceFromAsset(path);
@@ -2865,7 +2865,7 @@ public class AndroidUtilities {
                 provider = 1;
             }
         } else {
-            if (NekoConfig.mapPreviewProvider.Int() == 1) {
+            if (AveConfig.mapPreviewProvider.Int() == 1) {
                 provider = 1;
             }
         }
@@ -2951,8 +2951,8 @@ public class AndroidUtilities {
     }
 
     public static boolean isTabletForce() {
-        if (NekoConfig.tabletMode.Int() != NekoConfig.TABLET_AUTO) {
-            return NekoConfig.tabletMode.Int() == NekoConfig.TABLET_ENABLE;
+        if (AveConfig.tabletMode.Int() != AveConfig.TABLET_AUTO) {
+            return AveConfig.tabletMode.Int() == AveConfig.TABLET_ENABLE;
         }
         return ApplicationLoader.applicationContext != null && ApplicationLoader.applicationContext.getResources().getBoolean(R.bool.isTablet);
     }
@@ -5555,7 +5555,7 @@ public class AndroidUtilities {
     }
 
     public static boolean shouldShowUrlInAlert(String url) {
-        if (NekoConfig.skipOpenLinkConfirm.Bool()) {
+        if (AveConfig.skipOpenLinkConfirm.Bool()) {
             return false;
         }
         try {
@@ -6536,22 +6536,22 @@ public class AndroidUtilities {
     }
 
     public static void vibrateCursor(View view) {
-        if (NekoConfig.disableVibration.Bool()) return;
+        if (AveConfig.disableVibration.Bool()) return;
         try {
             if (view == null || view.getContext() == null) return;
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return;
             if (!((Vibrator) view.getContext().getSystemService(Context.VIBRATOR_SERVICE)).hasAmplitudeControl()) return;
-            if (!NekoConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.TEXT_HANDLE_MOVE, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+            if (!AveConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.TEXT_HANDLE_MOVE, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
         } catch (Exception ignore) {}
     }
 
     public static void vibrate(View view) {
-        if (NekoConfig.disableVibration.Bool()) return;
+        if (AveConfig.disableVibration.Bool()) return;
         try {
             if (view == null || view.getContext() == null) return;
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return;
             if (!((Vibrator) view.getContext().getSystemService(Context.VIBRATOR_SERVICE)).hasAmplitudeControl()) return;
-            if (!NekoConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+            if (!AveConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
         } catch (Exception ignore) {}
     }
 

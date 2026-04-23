@@ -62551,7 +62551,7 @@ public class TLRPC {
         public String translatedSummaryLanguage; //custom
         public TL_textWithEntities translatedSummaryText; //custom
 
-        // NekoX Customs
+        // AveX Customs
         public String translatedMessage; //custom
         public boolean translated; // custom
         public boolean hide; // custom

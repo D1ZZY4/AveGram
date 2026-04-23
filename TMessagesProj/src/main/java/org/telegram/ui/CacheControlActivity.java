@@ -138,8 +138,8 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Objects;
 
-import tw.nekomimi.nekogram.helpers.LocalNameHelper;
-import tw.nekomimi.nekogram.helpers.remote.EmojiHelper;
+import org.avegram.ave.helpers.LocalNameHelper;
+import org.avegram.ave.helpers.remote.EmojiHelper;
 import org.avegram.helper.BookmarksHelper;
 
 public class CacheControlActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {

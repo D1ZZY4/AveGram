@@ -224,8 +224,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.parts.ArticleTransKt;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.parts.ArticleTransKt;
 import org.avegram.NaConfig;
 
 public class ArticleViewer implements NotificationCenter.NotificationCenterDelegate {
@@ -1259,7 +1259,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
                 checkingForLongPress = false;
                 if (pressedLink != null) {
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) windowView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                        if (!AveConfig.disableVibration.Bool()) windowView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     } catch (Exception ignored) {}
                     showCopyPopup(pressedLink.getSpan().getUrl());
                     pressedLink = null;
@@ -1275,12 +1275,12 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
                     }
                     if (textSelectionHelper.isInSelectionMode()) {
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) windowView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                            if (!AveConfig.disableVibration.Bool()) windowView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                         } catch (Exception ignored) {}
                     }
                 } else if (pressedLinkOwnerLayout != null && pressedLinkOwnerView != null) {
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) windowView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                        if (!AveConfig.disableVibration.Bool()) windowView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     } catch (Exception ignored) {}
 
                     int[] location = new int[2];
@@ -11619,9 +11619,9 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
                 String currentUrl = AndroidUtilities.formapMapUrl(false, currentBlock.geo.lat, currentBlock.geo._long, (int) (photoWidth / AndroidUtilities.density), (int) (height / AndroidUtilities.density), true, 15);
                 WebFile currentWebFile = WebFile.createWithGeoPoint(currentBlock.geo, (int) (photoWidth / AndroidUtilities.density), (int) (height / AndroidUtilities.density), 15, Math.min(2, (int) Math.ceil(AndroidUtilities.density)));
 
-                if (NekoConfig.mapPreviewProvider.Int() == 0) {
+                if (AveConfig.mapPreviewProvider.Int() == 0) {
                     currentMapProvider = 2;
-                } else if (NekoConfig.mapPreviewProvider.Int() == 1) {
+                } else if (AveConfig.mapPreviewProvider.Int() == 1) {
                     currentMapProvider = 1;
                 } else {
                     currentMapProvider = -1;

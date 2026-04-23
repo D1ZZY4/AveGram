@@ -220,14 +220,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 import kotlin.Unit;
-import tw.nekomimi.nekogram.BackButtonMenuRecent;
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.NekoXConfig;
-import tw.nekomimi.nekogram.helpers.AppRestartHelper;
-import tw.nekomimi.nekogram.helpers.PasscodeHelper;
-import tw.nekomimi.nekogram.ui.BottomBuilder;
-import tw.nekomimi.nekogram.ui.EditTextAutoFill;
-import tw.nekomimi.nekogram.ui.QrView;
+import org.avegram.ave.BackButtonMenuRecent;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.AveXConfig;
+import org.avegram.ave.helpers.AppRestartHelper;
+import org.avegram.ave.helpers.PasscodeHelper;
+import org.avegram.ave.ui.BottomBuilder;
+import org.avegram.ave.ui.EditTextAutoFill;
+import org.avegram.ave.ui.QrView;
 
 @SuppressLint("HardwareIds")
 public class LoginActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
@@ -804,7 +804,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 setPage(VIEW_QR_LOGIN, true, null, false);
             } else if (id == 2) {
                 try {
-                    NekoXConfig.showCustomApiBottomSheet(this);
+                    AveXConfig.showCustomApiBottomSheet(this);
                 } catch (Exception e) {
                     FileLog.e(e);
                 }
@@ -1220,7 +1220,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
     private void onFieldError(View view, boolean allowErrorSelection) {
         try {
-            if (!NekoConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+            if (!AveConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         } catch (Exception ignored) {}
         AndroidUtilities.shakeViewSpring(view, 3.5f);
 
@@ -3241,8 +3241,8 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 ConnectionsManager.getInstance(currentAccount).cleanup(false);
 
                 TLRPC.TL_auth_sendCode sendCode = new TLRPC.TL_auth_sendCode();
-                sendCode.api_hash = NekoXConfig.currentAppHash();
-                sendCode.api_id = NekoXConfig.currentAppId();
+                sendCode.api_hash = AveXConfig.currentAppHash();
+                sendCode.api_id = AveXConfig.currentAppId();
                 sendCode.phone_number = phone;
                 sendCode.settings = settings;
                 req = sendCode;
@@ -4861,7 +4861,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
                             animateSuccess(()-> {
                                 try {
-                                    if (!NekoConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                                    if (!AveConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                                 } catch (Exception ignored) {}
                                 new AlertDialog.Builder(getContext())
                                         .setTitle(getString(R.string.YourPasswordSuccess))
@@ -5123,7 +5123,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
         private void shakeWrongCode() {
             try {
-                if (!NekoConfig.disableVibration.Bool()) codeFieldContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (!AveConfig.disableVibration.Bool()) codeFieldContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             } catch (Exception ignore) {}
 
             for (int a = 0; a < codeFieldContainer.codeField.length; a++) {
@@ -6178,7 +6178,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 return;
             }
             try {
-                if (!NekoConfig.disableVibration.Bool()) emailOutlineView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (!AveConfig.disableVibration.Bool()) emailOutlineView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             } catch (Exception ignore) {}
             if (clear) {
                 emailField.setText("");
@@ -6876,7 +6876,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 return;
             }
             try {
-                if (!NekoConfig.disableVibration.Bool()) codeFieldContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (!AveConfig.disableVibration.Bool()) codeFieldContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             } catch (Exception ignore) {}
             if (clear) {
                 for (CodeNumberField f : codeFieldContainer.codeField) {
@@ -7084,7 +7084,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
         private void shakeWrongCode() {
             try {
-                if (!NekoConfig.disableVibration.Bool()) codeFieldContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (!AveConfig.disableVibration.Bool()) codeFieldContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             } catch (Exception ignore) {}
 
             for (int a = 0; a < codeFieldContainer.codeField.length; a++) {
@@ -7330,7 +7330,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 return;
             }
             try {
-                if (!NekoConfig.disableVibration.Bool()) codeFieldContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (!AveConfig.disableVibration.Bool()) codeFieldContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             } catch (Exception ignore) {}
             if (clear) {
                 for (CodeNumberField f : codeFieldContainer.codeField) {
@@ -7667,7 +7667,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 return;
             }
             try {
-                if (!NekoConfig.disableVibration.Bool()) codeField[num].performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (!AveConfig.disableVibration.Bool()) codeField[num].performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             } catch (Exception ignore) {}
             AndroidUtilities.shakeView(codeField[num]);
         }
@@ -8551,8 +8551,8 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             }
 
             TLRPC.TL_auth_exportLoginToken req = new TLRPC.TL_auth_exportLoginToken();
-            req.api_hash = NekoXConfig.currentAppHash();
-            req.api_id = NekoXConfig.currentAppId();
+            req.api_hash = AveXConfig.currentAppHash();
+            req.api_id = AveXConfig.currentAppId();
             for (int a = 0; a < UserConfig.MAX_ACCOUNT_COUNT; a++) {
                 UserConfig userConfig = UserConfig.getInstance(a);
                 if (userConfig.isClientActivated()) {
@@ -9626,7 +9626,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 return;
             }
             try {
-                if (!NekoConfig.disableVibration.Bool()) codeField.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (!AveConfig.disableVibration.Bool()) codeField.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             } catch (Exception ignore) {}
             final int a = currentType == AUTH_TYPE_WORD ? 0 : 1;
             if (asBeginning) {

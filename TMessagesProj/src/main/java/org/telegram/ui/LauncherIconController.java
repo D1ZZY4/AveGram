@@ -77,7 +77,7 @@ public class LauncherIconController {
             this.premium = premium;
         }
 
-        public boolean isNekoX() {
+        public boolean isAveX() {
             return this == DEFAULT;
         }
     }

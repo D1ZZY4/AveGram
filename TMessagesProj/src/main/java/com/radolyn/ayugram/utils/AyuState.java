@@ -13,7 +13,7 @@ import android.util.LongSparseArray;
 
 import java.util.ArrayList;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class AyuState {
     private static final AyuStateVariable allowReadPacket = new AyuStateVariable();
@@ -26,7 +26,7 @@ public class AyuState {
     }
 
     public static boolean getAllowReadPacket() {
-        return NekoConfig.sendReadMessagePackets.Bool() || allowReadPacket.process();
+        return AveConfig.sendReadMessagePackets.Bool() || allowReadPacket.process();
     }
 
     public static void setHideSelection(boolean val, int resetAfter) {

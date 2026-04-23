@@ -87,8 +87,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Executor;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.PasscodeHelper;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.PasscodeHelper;
 
 public class PasscodeView extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
     private final static float BACKGROUND_SPRING_STIFFNESS = 300f;
@@ -173,7 +173,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                 return;
             }
             try {
-                if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
             } catch (Exception e) {
                 FileLog.e(e);
             }
@@ -296,7 +296,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                 return false;
             }
             try {
-                if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
             } catch (Exception e) {
                 FileLog.e(e);
             }
@@ -1386,7 +1386,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                     showPin(true);
                     AndroidUtilities.runOnUIThread(() -> {
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) imageView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                            if (!AveConfig.disableVibration.Bool()) imageView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                         } catch (Exception ignore) {}
                     }, 350);
                     AnimatorSet animatorSet = new AnimatorSet();

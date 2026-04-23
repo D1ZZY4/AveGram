@@ -194,7 +194,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class StarGiftSheet extends BottomSheetWithRecyclerListView implements NotificationCenter.NotificationCenterDelegate {
 
@@ -1344,7 +1344,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                         bulletinFactory.createSimpleBulletin(R.raw.forward, AndroidUtilities.replaceTags(LocaleController.formatPluralString("LinkSharedToManyChats", dids.size(), dids.size()))).hideAfterBottomSheet(false).ignoreDetach().show();
                     }
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) container.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                        if (!AveConfig.disableVibration.Bool()) container.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                     } catch (Exception ignored) {}
                 }
             }

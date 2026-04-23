@@ -160,7 +160,7 @@ import java.util.Objects;
 
 import me.vkryl.android.animator.BoolAnimator;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 import org.avegram.NaConfig;
 
 public class EmojiView extends FrameLayout implements NotificationCenter.NotificationCenterDelegate, InAppKeyboardInsetView {
@@ -2598,7 +2598,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                     if (!backspaceOnce) {
                         if (delegate != null && delegate.onBackspace()) {
                             try {
-                                if (!NekoConfig.disableVibration.Bool()) backspaceButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                                if (!AveConfig.disableVibration.Bool()) backspaceButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                             } catch (Exception ignore) {}
                         }
                     }
@@ -2607,7 +2607,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                 return true;
             }
         };
-        backspaceButton.setHapticFeedbackEnabled(!NekoConfig.disableVibration.Bool());
+        backspaceButton.setHapticFeedbackEnabled(!AveConfig.disableVibration.Bool());
         backspaceButton.setImageResource(R.drawable.smiles_tab_clear);
         backspaceButton.setColorFilter(new PorterDuffColorFilter(glassDesign ? getGlassIconColor(0.6f) : getThemedColor(Theme.key_chat_emojiPanelBackspace), PorterDuff.Mode.MULTIPLY));
         backspaceButton.setScaleType(ImageView.ScaleType.CENTER);
@@ -3033,7 +3033,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                             emojiTouchedView.setImageDrawable(Emoji.getEmojiBigDrawable(code), emojiTouchedView.isRecent);
                             sendEmoji(emojiTouchedView, null);
                             try {
-                                if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                                if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                             } catch (Exception ignore) {}
 
                             Emoji.saveEmojiColors();
@@ -3466,13 +3466,13 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                             ImageViewEmoji viewEmoji = (ImageViewEmoji) view;
                             sendEmoji(viewEmoji, null);
                             try {
-                                if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                                if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                             } catch (Exception ignore) {}
                         } else if (view instanceof EmojiPackExpand) {
                             EmojiPackExpand button = (EmojiPackExpand) view;
                             emojiAdapter.expand(position, button);
                             try {
-                                if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                                if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                             } catch (Exception ignore) {}
                         } else if (view != null) {
                             view.callOnClick();
@@ -5411,7 +5411,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             }
             if (delegate != null && delegate.onBackspace()) {
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) backspaceButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                    if (!AveConfig.disableVibration.Bool()) backspaceButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                 } catch (Exception ignore) {}
             }
             backspaceOnce = true;
@@ -5468,7 +5468,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         if (trendingAdapter != null) {
             trendingAdapter.notifyDataSetChanged();
         }
-        if (!NekoConfig.disableTrending.Bool() && !featured.isEmpty() && (!BuildVars.DEBUG_PRIVATE_VERSION || featuredStickerSets.isEmpty() || preferences.getLong("featured_hidden", 0) == featured.get(0).set.id)) {
+        if (!AveConfig.disableTrending.Bool() && !featured.isEmpty() && (!BuildVars.DEBUG_PRIVATE_VERSION || featuredStickerSets.isEmpty() || preferences.getLong("featured_hidden", 0) == featured.get(0).set.id)) {
             final int id = mediaDataController.getUnreadStickerSets().isEmpty() ? 2 : 3;
             final StickerTabView trendingStickersTabView = stickersTab.addStickerIconTab(id, stickerIcons[id]);
             trendingStickersTabView.textView.setText(getString(R.string.FeaturedStickersShort));
@@ -5540,7 +5540,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 //            stickerTabView.setContentDescription(LocaleController.getString(R.string.PremiumStickers));
 //        }
 
-        if (info != null && (!NekoConfig.hideGroupSticker.Bool())) {
+        if (info != null && (!AveConfig.hideGroupSticker.Bool())) {
             long hiddenStickerSetId = MessagesController.getEmojiSettings(currentAccount).getLong("group_hide_stickers_" + info.id, -1);
             TLRPC.Chat chat = MessagesController.getInstance(currentAccount).getChat(info.id);
             if (chat == null || info.stickerset == null || !ChatObject.hasAdminRights(chat)) {
@@ -5652,7 +5652,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             gifTabs.addIconTab(0, gifIcons[0]).setContentDescription(getString(R.string.RecentStickers));
         }
 
-        if (!NekoConfig.disableTrending.Bool()) {
+        if (!AveConfig.disableTrending.Bool()) {
             gifTrendingTabNum = gifTabsCount++;
             gifTabs.addIconTab(1, gifIcons[1]).setContentDescription(getString(R.string.FeaturedGifs));
         }
@@ -6787,7 +6787,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                         }
                     });
                     containerLayout.setOnLongClickListener(v -> {
-                        NekoConfig.minimizedStickerCreator.toggleConfigBool();
+                        AveConfig.minimizedStickerCreator.toggleConfigBool();
                         checkDocuments(false);
                         return true;
                     });
@@ -6885,13 +6885,13 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                             }
                         } else if (object == recentStickers) {
                             cell.setText(getString(R.string.RecentStickers), R.drawable.msg_close, getString(R.string.ClearRecentStickersAlertTitle));
-                            if (NekoConfig.minimizedStickerCreator.Bool()) {
+                            if (AveConfig.minimizedStickerCreator.Bool()) {
                                 cell.setCreate(v -> {
                                     if (fragment instanceof ChatActivity) {
                                         ((ChatActivity) fragment).openAttachMenuForCreatingSticker();
                                     }
                                 }, v -> {
-                                    NekoConfig.minimizedStickerCreator.toggleConfigBool();
+                                    AveConfig.minimizedStickerCreator.toggleConfigBool();
                                     checkDocuments(false);
                                     return true;
                                 });

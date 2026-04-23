@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
-import tw.nekomimi.nekogram.filters.AyuFilter;
+import org.avegram.ave.filters.AyuFilter;
 
 public class AyuForward {
 

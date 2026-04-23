@@ -66,7 +66,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Timer;
 
-import tw.nekomimi.nekogram.settings.NekoTranslatorSettingsActivity;
+import org.avegram.ave.settings.AveTranslatorSettingsActivity;
 import org.avegram.NaConfig;
 
 public class LanguageSelectActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
@@ -251,7 +251,7 @@ public class LanguageSelectActivity extends BaseFragment implements Notification
                     }
                     return;
                 } else if (view instanceof TextCell) {
-                    presentFragment(new NekoTranslatorSettingsActivity());
+                    presentFragment(new AveTranslatorSettingsActivity());
                     return;
                 } else if (view instanceof TextSettingsCell) {
 //                    if (listAdapter.getItemViewType(position) == VIEW_TYPE_SETTINGS_2) {

@@ -104,10 +104,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
-import tw.nekomimi.nekogram.helpers.EntitiesHelper;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.filters.AyuFilter;
+import org.avegram.ave.helpers.EntitiesHelper;
+import org.avegram.ave.helpers.MessageHelper;
 import org.avegram.NaConfig;
 
 @SuppressWarnings("unchecked")
@@ -910,11 +910,11 @@ public class MediaDataController extends BaseController {
         if (type == TYPE_PREMIUM_STICKERS) {
             return new ArrayList<>(recentStickers[type]);
         }
-        if (type == TYPE_FAVE && NekoConfig.unlimitedFavedStickers.Bool()) {
+        if (type == TYPE_FAVE && AveConfig.unlimitedFavedStickers.Bool()) {
             return new ArrayList<>(recentStickers[type]);
         }
-        ArrayList<TLRPC.Document> result = new ArrayList<>(arrayList.subList(0, Math.min(arrayList.size(), NekoConfig.maxRecentStickerCount.Int())));
-        if (firstEmpty && !result.isEmpty() && !StickersAlert.DISABLE_STICKER_EDITOR && !NekoConfig.minimizedStickerCreator.Bool()) {
+        ArrayList<TLRPC.Document> result = new ArrayList<>(arrayList.subList(0, Math.min(arrayList.size(), AveConfig.maxRecentStickerCount.Int())));
+        if (firstEmpty && !result.isEmpty() && !StickersAlert.DISABLE_STICKER_EDITOR && !AveConfig.minimizedStickerCreator.Bool()) {
             result.add(0, new TLRPC.TL_documentEmpty());
         }
         return result;
@@ -979,10 +979,10 @@ public class MediaDataController extends BaseController {
             if (remove) {
                 NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_STICKER, document, StickerSetBulletinLayout.TYPE_REMOVED_FROM_FAVORITES);
             } else {
-                boolean replace = !NekoConfig.unlimitedFavedStickers.Bool() && recentStickers[type].size() > (getUserConfig().isPremium() ? 10 : getMessagesController().maxFaveStickersCount);
+                boolean replace = !AveConfig.unlimitedFavedStickers.Bool() && recentStickers[type].size() > (getUserConfig().isPremium() ? 10 : getMessagesController().maxFaveStickersCount);
                 NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_STICKER, document, replace ? StickerSetBulletinLayout.TYPE_REPLACED_TO_FAVORITES : StickerSetBulletinLayout.TYPE_ADDED_TO_FAVORITES);
             }
-            if (!NekoConfig.unlimitedFavedStickers.Bool()) {
+            if (!AveConfig.unlimitedFavedStickers.Bool()) {
                 TLRPC.TL_messages_faveSticker req = new TLRPC.TL_messages_faveSticker();
                 req.id = new TLRPC.TL_inputDocument();
                 req.id.id = document.id;
@@ -1002,7 +1002,7 @@ public class MediaDataController extends BaseController {
             } else {
                 AndroidUtilities.runOnUIThread(() -> getMediaDataController().loadRecents(MediaDataController.TYPE_FAVE, false, true, false));
             }
-            maxCount = NekoConfig.unlimitedFavedStickers.Bool() ? Integer.MAX_VALUE : getUserConfig().isPremium() ? 10 : getMessagesController().maxFaveStickersCount;
+            maxCount = AveConfig.unlimitedFavedStickers.Bool() ? Integer.MAX_VALUE : getUserConfig().isPremium() ? 10 : getMessagesController().maxFaveStickersCount;
         } else {
             if (type == TYPE_IMAGE && remove) {
                 NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_STICKER, document, StickerSetBulletinLayout.TYPE_REMOVED_FROM_RECENT);
@@ -1021,7 +1021,7 @@ public class MediaDataController extends BaseController {
                     }
                 });
             }
-            maxCount = NekoConfig.maxRecentStickerCount.Int()/*getMessagesController().maxRecentStickersCount*/;
+            maxCount = AveConfig.maxRecentStickerCount.Int()/*getMessagesController().maxRecentStickersCount*/;
         }
         if (recentStickers[type].size() > maxCount || remove) {
             TLRPC.Document old = remove ? document : recentStickers[type].remove(recentStickers[type].size() - 1);
@@ -2074,14 +2074,14 @@ public class MediaDataController extends BaseController {
                         if (type == TYPE_GREETINGS || type == TYPE_PREMIUM_STICKERS) {
                             maxCount = 200;
                         } else if (type == TYPE_FAVE) {
-                            maxCount = NekoConfig.unlimitedFavedStickers.Bool() ? Integer.MAX_VALUE : getUserConfig().isPremium() ? 10 : getMessagesController().maxFaveStickersCount;
+                            maxCount = AveConfig.unlimitedFavedStickers.Bool() ? Integer.MAX_VALUE : getUserConfig().isPremium() ? 10 : getMessagesController().maxFaveStickersCount;
                         } else {
-                            maxCount = NekoConfig.maxRecentStickerCount.Int()/*getMessagesController().maxRecentStickersCount*/;
+                            maxCount = AveConfig.maxRecentStickerCount.Int()/*getMessagesController().maxRecentStickersCount*/;
                         }
                     }
                     // For unlimited faved stickers, merge with existing database entries
                     ArrayList<TLRPC.Document> finalDocuments = documents;
-                    if (type == TYPE_FAVE && NekoConfig.unlimitedFavedStickers.Bool() && replace) {
+                    if (type == TYPE_FAVE && AveConfig.unlimitedFavedStickers.Bool() && replace) {
                         HashSet<Long> serverIds = new HashSet<>();
                         for (TLRPC.Document doc : documents) {
                             serverIds.add(doc.id);
@@ -2164,7 +2164,7 @@ public class MediaDataController extends BaseController {
                     } else {
                         cacheType = 5;
                     }
-                    if (replace && (type != TYPE_FAVE || !NekoConfig.unlimitedFavedStickers.Bool())) {
+                    if (replace && (type != TYPE_FAVE || !AveConfig.unlimitedFavedStickers.Bool())) {
                         database.executeFast("DELETE FROM web_recent_v3 WHERE type = " + cacheType).stepThis().dispose();
                     }
                     for (int a = 0; a < count; a++) {
@@ -2276,7 +2276,7 @@ public class MediaDataController extends BaseController {
     }
 
     public void loadFeaturedStickers(boolean emoji, boolean cache) {
-        if (loadingFeaturedStickers[emoji ? 1 : 0] || NekoConfig.disableTrending.Bool()) {
+        if (loadingFeaturedStickers[emoji ? 1 : 0] || AveConfig.disableTrending.Bool()) {
             return;
         }
         loadingFeaturedStickers[emoji ? 1 : 0] = true;
@@ -7184,7 +7184,7 @@ public class MediaDataController extends BaseController {
         boolean isPre = false;
         final String mono = "`";
         final String pre = "```";
-        while (NaConfig.INSTANCE.getMarkdownParser().Int() == NekoConfig.MARKDOWN_PARSER_TELEGRAM && (index = TextUtils.indexOf(message[0], !isPre ? mono : pre, lastIndex)) != -1) {
+        while (NaConfig.INSTANCE.getMarkdownParser().Int() == AveConfig.MARKDOWN_PARSER_TELEGRAM && (index = TextUtils.indexOf(message[0], !isPre ? mono : pre, lastIndex)) != -1) {
             if (start == -1) {
                 isPre = message[0].length() - index > 2 && message[0].charAt(index + 1) == '`' && message[0].charAt(index + 2) == '`';
                 start = index;
@@ -7270,7 +7270,7 @@ public class MediaDataController extends BaseController {
             entities.add(entity);
         }
 
-        if (NaConfig.INSTANCE.getMarkdownParser().Int() == NekoConfig.MARKDOWN_PARSER_NEKO)  {
+        if (NaConfig.INSTANCE.getMarkdownParser().Int() == AveConfig.MARKDOWN_PARSER_AVE)  {
             EntitiesHelper.parseMarkdown(message, allowStrike);
         }
 
@@ -7464,7 +7464,7 @@ public class MediaDataController extends BaseController {
 
         CharSequence cs = message[0];
         if (entities == null) entities = new ArrayList<>();
-        if (NaConfig.INSTANCE.getMarkdownParser().Int() == NekoConfig.MARKDOWN_PARSER_NEKO) return entities;
+        if (NaConfig.INSTANCE.getMarkdownParser().Int() == AveConfig.MARKDOWN_PARSER_AVE) return entities;
         cs = parsePattern(cs, BOLD_PATTERN, entities, obj -> new TLRPC.TL_messageEntityBold());
         cs = parsePattern(cs, ITALIC_PATTERN, entities, obj -> new TLRPC.TL_messageEntityItalic());
         cs = parsePattern(cs, SPOILER_PATTERN, entities, obj -> new TLRPC.TL_messageEntitySpoiler());

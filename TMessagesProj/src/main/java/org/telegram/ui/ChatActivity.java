@@ -366,39 +366,39 @@ import me.vkryl.android.animator.FactorAnimator;
 import me.vkryl.core.BitwiseUtils;
 import me.vkryl.core.reference.ReferenceList;
 
-import tw.nekomimi.nekogram.BackButtonMenuRecent;
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
-import tw.nekomimi.nekogram.filters.RegexChatFiltersListActivity;
-import tw.nekomimi.nekogram.filters.RegexFiltersSettingActivity;
-import tw.nekomimi.nekogram.filters.RegexFilterEditActivity;
-import tw.nekomimi.nekogram.helpers.ChatsHelper;
+import org.avegram.ave.BackButtonMenuRecent;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.filters.AyuFilter;
+import org.avegram.ave.filters.RegexChatFiltersListActivity;
+import org.avegram.ave.filters.RegexFiltersSettingActivity;
+import org.avegram.ave.filters.RegexFilterEditActivity;
+import org.avegram.ave.helpers.ChatsHelper;
 import com.radolyn.ayugram.AyuForward;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
-import tw.nekomimi.nekogram.helpers.TranscribeHelper;
-import tw.nekomimi.nekogram.helpers.remote.EmojiHelper;
-import tw.nekomimi.nekogram.helpers.remote.PagePreviewRulesHelper;
-import tw.nekomimi.nekogram.llm.LlmConfig;
-import tw.nekomimi.nekogram.menu.copy.CopyPopupWrapper;
-import tw.nekomimi.nekogram.menu.forward.ForwardPopupWrapper;
-import tw.nekomimi.nekogram.menu.ghostmode.GhostModeExclusionPopupWrapper;
-import tw.nekomimi.nekogram.menu.regexfilters.RegexFiltersExclusionPopupWrapper;
-import tw.nekomimi.nekogram.menu.reply.ReplyPopupWrapper;
-import tw.nekomimi.nekogram.menu.saveDeleted.SaveExclusionPopupWrapper;
-import tw.nekomimi.nekogram.menu.translate.TranslatePopupWrapper;
-import tw.nekomimi.nekogram.parts.DialogTransKt;
-import tw.nekomimi.nekogram.parts.MessageTransKt;
-import tw.nekomimi.nekogram.parts.PollTransUpdatesKt;
-import tw.nekomimi.nekogram.helpers.SettingsBackupHelper;
-import tw.nekomimi.nekogram.translate.Translator;
-import tw.nekomimi.nekogram.translate.TranslatorKt;
-import tw.nekomimi.nekogram.ui.BookmarksActivity;
-import tw.nekomimi.nekogram.ui.BottomBuilder;
-import tw.nekomimi.nekogram.ui.MessageDetailsActivity;
-import tw.nekomimi.nekogram.ui.components.GroupedIconsView;
-import tw.nekomimi.nekogram.utils.AlertUtil;
-import tw.nekomimi.nekogram.utils.AndroidUtil;
-import tw.nekomimi.nekogram.utils.ProxyUtil;
+import org.avegram.ave.helpers.MessageHelper;
+import org.avegram.ave.helpers.TranscribeHelper;
+import org.avegram.ave.helpers.remote.EmojiHelper;
+import org.avegram.ave.helpers.remote.PagePreviewRulesHelper;
+import org.avegram.ave.llm.LlmConfig;
+import org.avegram.ave.menu.copy.CopyPopupWrapper;
+import org.avegram.ave.menu.forward.ForwardPopupWrapper;
+import org.avegram.ave.menu.ghostmode.GhostModeExclusionPopupWrapper;
+import org.avegram.ave.menu.regexfilters.RegexFiltersExclusionPopupWrapper;
+import org.avegram.ave.menu.reply.ReplyPopupWrapper;
+import org.avegram.ave.menu.saveDeleted.SaveExclusionPopupWrapper;
+import org.avegram.ave.menu.translate.TranslatePopupWrapper;
+import org.avegram.ave.parts.DialogTransKt;
+import org.avegram.ave.parts.MessageTransKt;
+import org.avegram.ave.parts.PollTransUpdatesKt;
+import org.avegram.ave.helpers.SettingsBackupHelper;
+import org.avegram.ave.translate.Translator;
+import org.avegram.ave.translate.TranslatorKt;
+import org.avegram.ave.ui.BookmarksActivity;
+import org.avegram.ave.ui.BottomBuilder;
+import org.avegram.ave.ui.MessageDetailsActivity;
+import org.avegram.ave.ui.components.GroupedIconsView;
+import org.avegram.ave.utils.AlertUtil;
+import org.avegram.ave.utils.AndroidUtil;
+import org.avegram.ave.utils.ProxyUtil;
 import org.avegram.NaConfig;
 import org.avegram.ToggleResult;
 import org.avegram.helper.BookmarksHelper;
@@ -430,7 +430,7 @@ public class ChatActivity extends BaseFragment implements
             DEBUG_SHARE_ALERT_MODE_LESS = 1,
             DEBUG_SHARE_ALERT_MODE_MORE = 2;
 
-    // buttons by Neko
+    // buttons by Ave
     private final static int nkactionbarbtn_reply = 2000;
     private final static int nkactionbarbtn_selectBetween = 2001;
     private final static int nkactionbarbtn_action_mode_other = 2002;
@@ -1744,7 +1744,7 @@ public class ChatActivity extends BaseFragment implements
     private final static int scheduled = 63;
     private final static int edit_quick_reply = 64;
 
-    private ActionBarMenuItem actionModeOtherItem; // NekoX
+    private ActionBarMenuItem actionModeOtherItem; // AveX
 
     private final static int copy_business_link = 65;
     private final static int share_business_link = 66;
@@ -2237,7 +2237,7 @@ public class ChatActivity extends BaseFragment implements
             }
         }
 
-        // NekoX
+        // AveX
         @Override
         public void beforeMessageSend(CharSequence message, boolean notify, int scheduleDate, long payStars) {
             ChatActivity.this.beforeMessageSend(notify, scheduleDate, true, payStars);
@@ -5553,7 +5553,7 @@ public class ChatActivity extends BaseFragment implements
                         if (Math.abs(dx) >= AndroidUtilities.dp(50)) {
                             if (!wasTrackingVibrate) {
                                 try {
-                                    if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                                    if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                                 } catch (Exception ignore) {}
                                 wasTrackingVibrate = true;
                             }
@@ -5591,7 +5591,7 @@ public class ChatActivity extends BaseFragment implements
                 if (e.getAction() == MotionEvent.ACTION_DOWN) {
                     scrollByTouch = true;
                 }
-                if (!NekoConfig.disableSwipeToNext.Bool() && pullingDownOffset != 0 && (e.getAction() == MotionEvent.ACTION_UP || e.getAction() == MotionEvent.ACTION_CANCEL)) {
+                if (!AveConfig.disableSwipeToNext.Bool() && pullingDownOffset != 0 && (e.getAction() == MotionEvent.ACTION_UP || e.getAction() == MotionEvent.ACTION_CANCEL)) {
                     float progress = Math.min(1f, pullingDownOffset / AndroidUtilities.dp(110));
                     if (e.getAction() == MotionEvent.ACTION_UP && progress == 1 && pullingDownDrawable != null && !pullingDownDrawable.emptyStub) {
                         if (pullingDownDrawable.animationIsRunning()) {
@@ -5730,7 +5730,7 @@ public class ChatActivity extends BaseFragment implements
                     drawReplyButton(c);
                 }
 
-                if (!NekoConfig.disableSwipeToNext.Bool() && pullingDownOffset != 0 && !isInPreviewMode() && !isInsideContainer && chatMode != MODE_SAVED && chatMode != MODE_SCHEDULED) {
+                if (!AveConfig.disableSwipeToNext.Bool() && pullingDownOffset != 0 && !isInPreviewMode() && !isInsideContainer && chatMode != MODE_SAVED && chatMode != MODE_SCHEDULED) {
                     c.save();
                     float transitionOffset = 0;
                     if (pullingDownAnimateProgress != 0) {
@@ -7086,7 +7086,7 @@ public class ChatActivity extends BaseFragment implements
 
             @Override
             public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
-                if (!NekoConfig.disableSwipeToNext.Bool() && dy < 0 && pullingDownOffset != 0) {
+                if (!AveConfig.disableSwipeToNext.Bool() && dy < 0 && pullingDownOffset != 0) {
                     pullingDownOffset += dy;
                     if (pullingDownOffset < 0) {
                         dy = (int) pullingDownOffset;
@@ -7116,7 +7116,7 @@ public class ChatActivity extends BaseFragment implements
                 if (!foundTopView) {
                     scrolled = super.scrollVerticallyBy(dy, recycler, state);
                 }
-                final boolean allowPullingDownScroll = !NekoConfig.disableSwipeToNext.Bool() && !isInPollAddOptionMode();
+                final boolean allowPullingDownScroll = !AveConfig.disableSwipeToNext.Bool() && !isInPollAddOptionMode();
                 if (allowPullingDownScroll && dy > 0 && scrolled == 0 && (ChatObject.isChannel(currentChat) && !currentChat.megagroup || isTopic && !UserObject.isBotForum(currentUser)) && chatMode != MODE_SAVED && chatMode != MODE_SCHEDULED && chatListView.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING && !chatListView.isFastScrollAnimationRunning() && !chatListView.isMultiselect() && !isReport()) {
                     if (pullingDownOffset == 0 && pullingDownDrawable != null) {
                         if (nextChannels != null && !nextChannels.isEmpty()) {
@@ -7253,7 +7253,7 @@ public class ChatActivity extends BaseFragment implements
                         wasManualScroll = true;
                         scrollingChatListView = true;
                     } else if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                        if (NekoConfig.hideKeyboardOnChatScroll.Bool()) {
+                        if (AveConfig.hideKeyboardOnChatScroll.Bool()) {
                             if (isKeyboardVisible()) {
                                 AndroidUtilities.hideKeyboard(getParentActivity().getCurrentFocus());
                             } else if (chatActivityEnterView != null) {
@@ -8585,7 +8585,7 @@ public class ChatActivity extends BaseFragment implements
         });
         if (!noForwards) {
             actionsButtonsLayout.setReplyButtonOnLongClickListener(v -> {
-                if (!NekoConfig.disableVibration.Bool()) v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (!AveConfig.disableVibration.Bool()) v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 chatsHelper.makeReplyButtonLongClick(this, noForwards, getResourceProvider());
                 return false;
             });
@@ -9710,7 +9710,7 @@ public class ChatActivity extends BaseFragment implements
                             getNotificationCenter().postNotificationName(NotificationCenter.closeChats);
                             finishFragment();
                         });
-                        if (!NekoConfig.disableVibration.Bool() && LaunchActivity.getLastFragment() != null && LaunchActivity.getLastFragment().getFragmentView() != null) {
+                        if (!AveConfig.disableVibration.Bool() && LaunchActivity.getLastFragment() != null && LaunchActivity.getLastFragment().getFragmentView() != null) {
                             LaunchActivity.getLastFragment().getFragmentView().performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                         }
                     });
@@ -9813,7 +9813,7 @@ public class ChatActivity extends BaseFragment implements
         if (cell == null || cell.timeLayout == null || cell.getMessageObject() == null ||
                 cell.getMessageObject().messageOwner == null ||
                 (chatMode != MODE_DEFAULT && chatMode != MODE_PINNED && chatMode != MODE_SAVED) ||
-                (NekoConfig.hideTimeForSticker.Bool() && cell.getMessageObject().isAnyKindOfSticker())
+                (AveConfig.hideTimeForSticker.Bool() && cell.getMessageObject().isAnyKindOfSticker())
         ) {
             return;
         }
@@ -11388,8 +11388,8 @@ public class ChatActivity extends BaseFragment implements
         };
         if (createUnreadMessageAfterId != 0) {
             scrollToMessageId(createUnreadMessageAfterId, 0, false, returnToLoadIndex, true, 0, null, inCaseLoading);
-        } else if (returnToMessageId > 0 || (NekoConfig.rememberAllBackMessages.Bool() && !returnToMessageIdsStack.empty())) {
-            if (NekoConfig.rememberAllBackMessages.Bool() && !returnToMessageIdsStack.empty())
+        } else if (returnToMessageId > 0 || (AveConfig.rememberAllBackMessages.Bool() && !returnToMessageIdsStack.empty())) {
+            if (AveConfig.rememberAllBackMessages.Bool() && !returnToMessageIdsStack.empty())
                 returnToMessageId = returnToMessageIdsStack.pop();
             scrollToMessageId(returnToMessageId, 0, true, returnToLoadIndex, true, 0, null, inCaseLoading);
         } else {
@@ -11633,7 +11633,7 @@ public class ChatActivity extends BaseFragment implements
             item.addSubItem(text_underline, stringBuilder);
         }
         item.addSubItem(text_link, LocaleController.getString(R.string.CreateLink));
-        item.addSubItem(text_mention, LocaleController.getString(R.string.CreateMention)); // NekoX
+        item.addSubItem(text_mention, LocaleController.getString(R.string.CreateMention)); // AveX
         if (currentEncryptedChat == null) {
             item.addSubItem(text_date, LocaleController.getString(R.string.FormattedDate));
         }
@@ -12472,7 +12472,7 @@ public class ChatActivity extends BaseFragment implements
             builder.show();
         });
 
-        // NekoX: long press pinned list button
+        // AveX: long press pinned list button
         pinnedListButton.setOnLongClickListener(v -> {
             if (getParentActivity() == null) {
                 return false;
@@ -13950,7 +13950,7 @@ public class ChatActivity extends BaseFragment implements
         if (getParentActivity() == null || fragmentView == null || hide && voiceHintTextView == null || chatMode != 0 || chatActivityEnterView == null  || chatActivityEnterView.getAudioVideoButtonContainer() == null || chatActivityEnterView.getAudioVideoButtonContainer().getVisibility() != View.VISIBLE || isInPreviewMode()) {
             return;
         }
-        if (NekoConfig.useChatAttachMediaMenu.Bool()) return;
+        if (AveConfig.useChatAttachMediaMenu.Bool()) return;
         if (voiceHintTextView == null) {
             SizeNotifierFrameLayout frameLayout = contentView;
             int index = frameLayout.indexOfChild(chatInputViewsContainer);
@@ -14112,7 +14112,7 @@ public class ChatActivity extends BaseFragment implements
         }
 
         try {
-            if (!NekoConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+            if (!AveConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         } catch (Exception e) {
             FileLog.e(e);
         }
@@ -15022,7 +15022,7 @@ public class ChatActivity extends BaseFragment implements
         }
     }
 
-    private boolean disableLinkPreview = NekoConfig.disableLinkPreviewByDefault.Bool();
+    private boolean disableLinkPreview = AveConfig.disableLinkPreviewByDefault.Bool();
 
     public void searchLinks(final CharSequence charSequence, final boolean force) {
         if (currentEncryptedChat != null && getMessagesController().secretWebpagePreview == 0 || editingMessageObject != null && (!editingMessageObject.isWebpage() || editingMessageObject.messageOwner.media.webpage instanceof TLRPC.TL_webPagePending)) {
@@ -15782,7 +15782,7 @@ public class ChatActivity extends BaseFragment implements
     }
 
     public void beforeMessageSend(boolean notify, int scheduleDate, boolean beforeSend, long payStars) {
-        if (beforeSend != NekoConfig.sendCommentAfterForward.Bool()) return;
+        if (beforeSend != AveConfig.sendCommentAfterForward.Bool()) return;
         if (messagePreviewParams != null && messagePreviewParams.forwardMessages != null) {
             forbidForwardingWithDismiss = false;
             // if (messagePreviewParams.quote == null) {
@@ -17994,7 +17994,7 @@ public class ChatActivity extends BaseFragment implements
             }
         }
         returnToMessageId = fromMessageId;
-        if (NekoConfig.rememberAllBackMessages.Bool() && fromMessageId > 0)
+        if (AveConfig.rememberAllBackMessages.Bool() && fromMessageId > 0)
             returnToMessageIdsStack.push(returnToMessageId);
         returnToLoadIndex = loadIndex;
         needSelectFromMessageId = select;
@@ -18254,7 +18254,7 @@ public class ChatActivity extends BaseFragment implements
 
             final boolean isThemeLight = themeDelegate != null && !themeDelegate.isDark();
             int blurAlpha = isThemeLight ? 216 : ACTION_BAR_BLUR_ALPHA;
-            if (NekoConfig.forceBlurInChat.Bool()) blurAlpha = NekoConfig.chatBlueAlphaValue.Int();
+            if (AveConfig.forceBlurInChat.Bool()) blurAlpha = AveConfig.chatBlueAlphaValue.Int();
             final BlurredBackgroundSource blurSource = glassBackgroundSourceFrostedRenderNode;
             if (blurSource != null && blurAlpha < 255) {
                 canvas.save();
@@ -19994,9 +19994,9 @@ public class ChatActivity extends BaseFragment implements
     private static final int MESSAGE_TYPE_STICKER_PACK_INSTALLED = 9;
     private static final int MESSAGE_TYPE_THEME = 10;
     private static final int MESSAGE_TYPE_SEND_ERROR_TEXT = 20;
-    private static final int MESSAGE_TYPE_NEKOX_JSON = 21;
-    private static final int MESSAGE_TYPE_NEKOX_STICKERS_JSON = 22;
-    private static final int MESSAGE_TYPE_NEKOX_SETTINGS_JSON = 23;
+    private static final int MESSAGE_TYPE_AVEX_JSON = 21;
+    private static final int MESSAGE_TYPE_AVEX_STICKERS_JSON = 22;
+    private static final int MESSAGE_TYPE_AVEX_SETTINGS_JSON = 23;
     private static final int MESSAGE_TYPE_FONT = 100;
 
     private int getMessageType(MessageObject messageObject) {
@@ -20062,12 +20062,12 @@ public class ChatActivity extends BaseFragment implements
                                         return MESSAGE_TYPE_THEME;
                                     } else if (mime.endsWith("/xml")) {
                                         return MESSAGE_TYPE_XML;
-                                    } else if ((messageObject.getDocumentName().toLowerCase().endsWith(".nekox.json"))) {
-                                        return MESSAGE_TYPE_NEKOX_JSON;
-                                    } else if ((messageObject.getDocumentName().toLowerCase().endsWith(".nekox-stickers.json"))) {
-                                        return MESSAGE_TYPE_NEKOX_STICKERS_JSON;
-                                    } else if ((messageObject.getDocumentName().toLowerCase().endsWith(".nekox-settings.json"))) {
-                                        return MESSAGE_TYPE_NEKOX_SETTINGS_JSON;
+                                    } else if ((messageObject.getDocumentName().toLowerCase().endsWith(".avex.json"))) {
+                                        return MESSAGE_TYPE_AVEX_JSON;
+                                    } else if ((messageObject.getDocumentName().toLowerCase().endsWith(".avex-stickers.json"))) {
+                                        return MESSAGE_TYPE_AVEX_STICKERS_JSON;
+                                    } else if ((messageObject.getDocumentName().toLowerCase().endsWith(".avex-settings.json"))) {
+                                        return MESSAGE_TYPE_AVEX_SETTINGS_JSON;
                                     } else if (!messageObject.isNewGif() && mime.endsWith("/mp4") || mime.endsWith("/png") || mime.endsWith("/jpg") || mime.endsWith("/jpeg")) {
                                         return MESSAGE_TYPE_IMAGE_OR_VIDEO;
                                     } else if (mime.startsWith("font/")) {
@@ -20136,7 +20136,7 @@ public class ChatActivity extends BaseFragment implements
                                 return MESSAGE_TYPE_XML;
                             }
                             if (mime != null && mime.endsWith("/json")) {
-                                return MESSAGE_TYPE_NEKOX_JSON;
+                                return MESSAGE_TYPE_AVEX_JSON;
                             }
                         }
                         if (messageObject.messageOwner.ttl <= 0) {
@@ -21367,7 +21367,7 @@ public class ChatActivity extends BaseFragment implements
                     } else {
                         File f = new File(videoPath);
                         if (!f.canRead()) {
-                            // When the video file is located in a protected directory, and NekoX doesn't have the access permission to this directory, i.e. EACCES (Permission denied),
+                            // When the video file is located in a protected directory, and AveX doesn't have the access permission to this directory, i.e. EACCES (Permission denied),
                             //    copy it to the private temp directory
                             FileLog.e("Failed to read input file " + videoPath + ", copy to private directory");
                             try {
@@ -24233,7 +24233,7 @@ public class ChatActivity extends BaseFragment implements
                         }
                         if (hasChosen) {
                             try {
-                                if (!NekoConfig.disableVibration.Bool()) {
+                                if (!AveConfig.disableVibration.Bool()) {
                                     pollView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                                 }
                             } catch (Exception ignored) {
@@ -25393,7 +25393,7 @@ public class ChatActivity extends BaseFragment implements
                     avatarContainer.updateSubtitle();
                 }
             } else if (id == NotificationCenter.dialogsUnreadCounterChanged) {
-                if (actionBar != null) { // NekoX
+                if (actionBar != null) { // AveX
                     actionBar.unreadBadgeSetCount(getMessagesStorage().getMainUnreadCount());
                 }
             }
@@ -29561,7 +29561,7 @@ public class ChatActivity extends BaseFragment implements
                         if (botButton instanceof TLRPC.TL_keyboardButtonUrl) {
                             openClickableLink(null, botButton.url, true, null, buttonMessage, false);
                             try {
-                                if (!NekoConfig.disableVibration.Bool()) buttonTextView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                                if (!AveConfig.disableVibration.Bool()) buttonTextView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                             } catch (Exception ignore) {}
                             return true;
                         }
@@ -32165,7 +32165,7 @@ public class ChatActivity extends BaseFragment implements
                         icons.add(idx, R.drawable.burn_solar);
                     }
                 }
-                if (!NekoConfig.sendReadMessagePackets.Bool()
+                if (!AveConfig.sendReadMessagePackets.Bool()
                         && message.messageOwner.from_id != null
                         && message.messageOwner.from_id.user_id != getAccountInstance().getUserConfig().getClientUserId()
                         && !AyuGhostPreferences.getGhostModeReadExclusion(getDialogId())
@@ -32195,8 +32195,8 @@ public class ChatActivity extends BaseFragment implements
             Rect rect = new Rect();
 
             List<TLRPC.TL_availableReaction> availableReacts = getMediaDataController().getEnabledReactionsList();
-            final boolean nekoXShowReactionsView = !NaConfig.INSTANCE.getHideReactions().Bool() && (NaConfig.INSTANCE.getShowReactions().Bool() || onDoubleTapped); // Show reactions and hide them from tap
-            boolean isReactionsViewAvailable = nekoXShowReactionsView && !suggestEdit && !isSecretChat() && !isInScheduleMode() && currentUser == null && primaryMessage.hasReactions() && (!ChatObject.isChannel(currentChat) || currentChat.megagroup) && !ChatObject.isMonoForum(currentChat) && !availableReacts.isEmpty() && primaryMessage.messageOwner.reactions.can_see_list && !primaryMessage.isSecretMedia();
+            final boolean aveXShowReactionsView = !NaConfig.INSTANCE.getHideReactions().Bool() && (NaConfig.INSTANCE.getShowReactions().Bool() || onDoubleTapped); // Show reactions and hide them from tap
+            boolean isReactionsViewAvailable = aveXShowReactionsView && !suggestEdit && !isSecretChat() && !isInScheduleMode() && currentUser == null && primaryMessage.hasReactions() && (!ChatObject.isChannel(currentChat) || currentChat.megagroup) && !ChatObject.isMonoForum(currentChat) && !availableReacts.isEmpty() && primaryMessage.messageOwner.reactions.can_see_list && !primaryMessage.isSecretMedia();
             final boolean isReactionsAvailable;
             if (suggestEdit) {
                 isReactionsAvailable = false;
@@ -32205,10 +32205,10 @@ public class ChatActivity extends BaseFragment implements
                 if (chatInfo == null) {
                     isReactionsAvailable = !message.isAyuDeleted();
                 } else {
-                    isReactionsAvailable = nekoXShowReactionsView && !isSecretChat() && chatMode != MODE_QUICK_REPLIES && !isInScheduleMode() && primaryMessage.isReactionsAvailable() && (chatInfo != null && (!(chatInfo.available_reactions instanceof TLRPC.TL_chatReactionsNone) || chatInfo.paid_reactions_available)) && !availableReacts.isEmpty() && !message.isAyuDeleted();
+                    isReactionsAvailable = aveXShowReactionsView && !isSecretChat() && chatMode != MODE_QUICK_REPLIES && !isInScheduleMode() && primaryMessage.isReactionsAvailable() && (chatInfo != null && (!(chatInfo.available_reactions instanceof TLRPC.TL_chatReactionsNone) || chatInfo.paid_reactions_available)) && !availableReacts.isEmpty() && !message.isAyuDeleted();
                 }
             } else {
-                isReactionsAvailable = nekoXShowReactionsView && !message.isSecretMedia() && chatMode != MODE_QUICK_REPLIES && !isSecretChat() && !isInScheduleMode() && primaryMessage.isReactionsAvailable() && (chatInfo != null && (!(chatInfo.available_reactions instanceof TLRPC.TL_chatReactionsNone) || chatInfo.paid_reactions_available) || (chatInfo == null && !ChatObject.isChannel(currentChat)) || currentUser != null || ChatObject.isMonoForum(currentChat)) && !availableReacts.isEmpty() && !message.isAyuDeleted();
+                isReactionsAvailable = aveXShowReactionsView && !message.isSecretMedia() && chatMode != MODE_QUICK_REPLIES && !isSecretChat() && !isInScheduleMode() && primaryMessage.isReactionsAvailable() && (chatInfo != null && (!(chatInfo.available_reactions instanceof TLRPC.TL_chatReactionsNone) || chatInfo.paid_reactions_available) || (chatInfo == null && !ChatObject.isChannel(currentChat)) || currentUser != null || ChatObject.isMonoForum(currentChat)) && !availableReacts.isEmpty() && !message.isAyuDeleted();
             }
             final boolean showMessageSeen = !suggestEdit && !isReactionsViewAvailable && !isInScheduleMode() && currentChat != null && message.isOutOwner() && message.isSent() && !message.isEditing() && !message.isSending() && !message.isSendError() && !message.isContentUnread() && !message.isUnread() && (ConnectionsManager.getInstance(currentAccount).getCurrentTime() - message.messageOwner.date < getMessagesController().chatReadMarkExpirePeriod) && (ChatObject.isMegagroup(currentChat) || !ChatObject.isChannel(currentChat)) && chatInfo != null && chatInfo.participants_count <= getMessagesController().chatReadMarkSizeThreshold && !(message.messageOwner.action instanceof TLRPC.TL_messageActionChatJoinedByRequest) && chatMode != MODE_SAVED && message.canSetReaction() && !ChatObject.isMonoForum(currentChat);
             final boolean showMessageAuthor = !suggestEdit && currentChat != null && !message.isOut() && ChatObject.isMonoForum(currentChat) && ChatObject.canManageMonoForum(currentAccount, currentChat) && -currentChat.linked_monoforum_id == message.getFromChatId();
@@ -33963,7 +33963,7 @@ public class ChatActivity extends BaseFragment implements
             if (bigEmoji) {
                 if (cell != null) {
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) cell.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                        if (!AveConfig.disableVibration.Bool()) cell.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
                     } catch (Exception ignored) {}
                 }
                 ArrayList<TLRPC.MessageReactor> reactors = null;
@@ -33985,7 +33985,7 @@ public class ChatActivity extends BaseFragment implements
             }
             if (fragmentView != null) {
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                 } catch (Exception ignore) {}
             }
             final long chatId = -StarsController.MessageId.from(primaryMessage).did;
@@ -34728,14 +34728,14 @@ public class ChatActivity extends BaseFragment implements
                             builder.setOnPreDismissListener(di -> dimBehindView(false));
                             showDialog(builder.create());
                         }
-                    } else if (locFile.getName().toLowerCase().endsWith(".nekox.json")) {
+                    } else if (locFile.getName().toLowerCase().endsWith(".avex.json")) {
                         File finalLocFile1 = locFile;
                         AlertUtil.showConfirm(getParentActivity(),
                                 getString(R.string.ImportProxyList),
                                 R.drawable.menu_secret, getString(R.string.Import),
                                 false, () -> {}
                         );
-                    } else if (locFile.getName().toLowerCase().endsWith(".nekox-stickers.json") || fileName.endsWith(".nekox-stickers.json")) {
+                    } else if (locFile.getName().toLowerCase().endsWith(".avex-stickers.json") || fileName.endsWith(".avex-stickers.json")) {
                         File finalLocFile = locFile;
                         AlertUtil.showConfirm(getParentActivity(),
                                 getString(R.string.ImportStickersList),
@@ -34744,7 +34744,7 @@ public class ChatActivity extends BaseFragment implements
                                     presentFragment(new StickersActivity(finalLocFile));
                                 }
                         );
-                    } else if (locFile.getName().toLowerCase().endsWith(".nekox-settings.json") || fileName.endsWith(".nekox-settings.json")) {
+                    } else if (locFile.getName().toLowerCase().endsWith(".avex-settings.json") || fileName.endsWith(".avex-settings.json")) {
                         File finalLocFile = locFile;
                         SettingsBackupHelper.importSettings(getParentActivity(), finalLocFile);
                     } else if (getMessageType(selectedObject) == MESSAGE_TYPE_FONT) {
@@ -35152,7 +35152,7 @@ public class ChatActivity extends BaseFragment implements
                     View view = bulletin.getLayout();
                     view.postDelayed(() -> {
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                            if (!AveConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                         } catch (Exception ignored) {}
                     }, 550);
                 });
@@ -35762,7 +35762,7 @@ public class ChatActivity extends BaseFragment implements
                 for (int a = 0; a < dids.size(); a++) {
                     final long did = dids.get(a).dialogId;
                     final Long price = prices == null ? (Long) 0L : prices.get(did);
-                    if (message != null && !NekoConfig.sendCommentAfterForward.Bool()) {
+                    if (message != null && !AveConfig.sendCommentAfterForward.Bool()) {
                         SendMessagesHelper.SendMessageParams params = SendMessagesHelper.SendMessageParams.of(message.toString(), did, null, null, null, true, null, null, null, notify, scheduleDate, scheduleRepeatPeriod, null, false);
                         params.quick_reply_shortcut = quickReplyShortcut;
                         params.quick_reply_shortcut_id = getQuickReplyId();
@@ -35771,7 +35771,7 @@ public class ChatActivity extends BaseFragment implements
                     }
                     forwardMessages(fmessages, noForwardQuote, noForwardCaption, notify, scheduleDate, did, price == null ? 0 : price);
                     // getSendMessagesHelper().sendMessage(fmessages, did, false, false, notify, scheduleDate, scheduleRepeatPeriod, null, -1, price == null ? 0 : price, getSendMonoForumPeerId(), getSendMessageSuggestionParams());
-                    if (message != null && NekoConfig.sendCommentAfterForward.Bool()) {
+                    if (message != null && AveConfig.sendCommentAfterForward.Bool()) {
                         final SendMessagesHelper.SendMessageParams params = SendMessagesHelper.SendMessageParams.of(message.toString(), did, null, null, null, true, null, null, null, notify, scheduleDate, scheduleRepeatPeriod, null, false);
                         params.quick_reply_shortcut = quickReplyShortcut;
                         params.quick_reply_shortcut_id = getQuickReplyId();
@@ -39886,7 +39886,7 @@ public class ChatActivity extends BaseFragment implements
             if (chatMode == MODE_SAVED || chatMode == MODE_SUGGESTIONS || threadMessageId == 0 && !UserObject.isReplyUser(currentUser) || threadMessageObject != null && threadMessageObject.getRepliesCount() < 10) {
                 searchItem.setVisibility(View.GONE);
             }
-            // NekoX: hide viewInChat Item when searching
+            // AveX: hide viewInChat Item when searching
             if (viewInChatItem != null)
                 viewInChatItem.setVisibility(View.VISIBLE);
             if (translateItem != null)
@@ -41318,7 +41318,7 @@ public class ChatActivity extends BaseFragment implements
                     getMessagesController().pressTranscribeButton();
                 });
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) topUndoView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) topUndoView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 } catch (Exception ignored) {}
             } else if (type == 1) {
                 String until = LocaleController.formatDateTime(getMessagesController().transcribeAudioTrialCooldownUntil, true);
@@ -41327,7 +41327,7 @@ public class ChatActivity extends BaseFragment implements
                     AndroidUtilities.replaceTags(LocaleController.formatPluralString("TranscriptionTrialLeft", TranscribeButton.getTranscribeTrialCount(currentAccount)));
                 BulletinFactory.of(ChatActivity.this).createSimpleBulletin(R.raw.transcribe, text, 6).show(true);
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 } catch (Exception ignored) {}
             } else if (type == 2 || type == 3) {
                 String until = LocaleController.formatDateTime(getMessagesController().transcribeAudioTrialCooldownUntil, true);
@@ -41396,7 +41396,7 @@ public class ChatActivity extends BaseFragment implements
                 showDialog(builder.create());
             }
             try {
-                if (!NekoConfig.disableVibration.Bool()) cell.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                if (!AveConfig.disableVibration.Bool()) cell.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
             } catch (Exception ignore) {}
             return true;
         }
@@ -42799,20 +42799,20 @@ public class ChatActivity extends BaseFragment implements
                     } else {
                         scrollToPositionOnRecreate = -1;
                     }
-                } else if (message.getDocumentName().toLowerCase().endsWith(".nekox.json")) {
+                } else if (message.getDocumentName().toLowerCase().endsWith(".avex.json")) {
                     File finalLocFile = locFile;
                     AlertUtil.showConfirm(getParentActivity(),
                             getString(R.string.ImportProxyList),
                             R.drawable.menu_secret, getString(R.string.Import),
                             false, () -> {});
-                } else if (message.getDocumentName().toLowerCase().endsWith(".nekox-stickers.json")) {
+                } else if (message.getDocumentName().toLowerCase().endsWith(".avex-stickers.json")) {
                     File finalLocFile = locFile;
                     AlertUtil.showConfirm(getParentActivity(),
                             getString(R.string.ImportStickersList),
                             R.drawable.msg_sticker, getString(R.string.Import), false, () -> {
                                 presentFragment(new StickersActivity(finalLocFile));
                             });
-                } else if (message.getDocumentName().toLowerCase().endsWith(".nekox-settings.json")) {
+                } else if (message.getDocumentName().toLowerCase().endsWith(".avex-settings.json")) {
                     File finalLocFile = locFile;
                     SettingsBackupHelper.importSettings(getParentActivity(), finalLocFile);
                 } else {
@@ -45520,7 +45520,7 @@ public class ChatActivity extends BaseFragment implements
     private void updateBotHelpCellClick(BotHelpCell cell) {
         final CharSequence text = cell.getText();
         if (!TextUtils.isEmpty(text)) {
-            String toLang = NekoConfig.translateToLang.String();
+            String toLang = AveConfig.translateToLang.String();
             cell.setOnClickListener(e -> {
                 ActionBarPopupWindow.ActionBarPopupWindowLayout layout = new ActionBarPopupWindow.ActionBarPopupWindowLayout(getContext());
                 Drawable shadowDrawable2 = ContextCompat.getDrawable(getContext(), R.drawable.popup_fixed_alert4).mutate();
@@ -45760,7 +45760,7 @@ public class ChatActivity extends BaseFragment implements
                         getNotificationCenter().postNotificationName(NotificationCenter.closeChats);
                         finishFragment();
                     });
-                    if (!NekoConfig.disableVibration.Bool()) LaunchActivity.getLastFragment().getFragmentView().performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) LaunchActivity.getLastFragment().getFragmentView().performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 });
             });
             builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
@@ -46031,7 +46031,7 @@ public class ChatActivity extends BaseFragment implements
                     TLRPC.Chat chat = getMessagesController().getChat(peer.chat_id);
                     searchUserMessages(null, chat);
                 } else if (peer.channel_id!=0) {
-                    // thanks to Nekogram
+                    // thanks to Avegram
                     TLRPC.Chat chat = getMessagesController().getChat(peer.channel_id);
                     searchUserMessages(null, chat);
                 }
@@ -46136,7 +46136,7 @@ public class ChatActivity extends BaseFragment implements
                 }
             }
         }
-        if (!NekoConfig.repeatConfirm.Bool()) {
+        if (!AveConfig.repeatConfirm.Bool()) {
             doRepeatMessage(isLongClick, messages, isRepeatasCopy);
             return;
         }
@@ -47146,7 +47146,7 @@ public class ChatActivity extends BaseFragment implements
             return;
         }
         if (longpress && reaction.reaction instanceof TLRPC.TL_reactionPaid) {
-            if (!NekoConfig.disableVibration.Bool()) cell.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+            if (!AveConfig.disableVibration.Bool()) cell.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
             ArrayList<TLRPC.MessageReactor> reactors = null;
             if (messageObject.messageOwner != null && messageObject.messageOwner.reactions != null) {
                 reactors = messageObject.messageOwner.reactions.top_reactors;
@@ -47159,7 +47159,7 @@ public class ChatActivity extends BaseFragment implements
             return;
         }
         if (longpress || messageObject.areTags() && (isInsideContainer || searchingReaction != null && searchingReaction.isSame(reaction.reaction))) {
-            if (!NekoConfig.disableVibration.Bool()) cell.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+            if (!AveConfig.disableVibration.Bool()) cell.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
             FrameLayout scrimPopupContainerLayout = new FrameLayout(getParentActivity()) {
                 @Override
                 public boolean dispatchKeyEvent(KeyEvent event) {
@@ -47752,7 +47752,7 @@ public class ChatActivity extends BaseFragment implements
 //                            options.add(OPTION_EDIT_PRICE);
 //                            icons.add(R.drawable.menu_feature_paid);
 //                        }
-                if (NekoConfig.showReport.Bool() && !isAyuDeleted && selectedObject.contentType == 0 && !selectedObject.isMediaEmptyWebpage() && selectedObject.getId() > 0 && !selectedObject.isOut() && (currentChat != null || currentUser != null && currentUser.bot)) {
+                if (AveConfig.showReport.Bool() && !isAyuDeleted && selectedObject.contentType == 0 && !selectedObject.isMediaEmptyWebpage() && selectedObject.getId() > 0 && !selectedObject.isOut() && (currentChat != null || currentUser != null && currentUser.bot)) {
                     items.add(LocaleController.getString(R.string.ReportChat));
                     options.add(OPTION_REPORT_CHAT);
                     icons.add(R.drawable.msg_report);
@@ -47782,7 +47782,7 @@ public class ChatActivity extends BaseFragment implements
                 }
             }
             boolean allowViewHistory = currentChat != null && chatMode == 0 && !currentChat.broadcast && !(threadMessageObjects != null && threadMessageObjects.contains(message));
-            if (allowViewHistory && NekoConfig.showViewHistory.Bool()) {
+            if (allowViewHistory && AveConfig.showViewHistory.Bool()) {
                 items.add(LocaleController.getString(R.string.ViewHistory));
                 options.add(nkbtn_view_history);
                 icons.add(R.drawable.msg_recent_solar);
@@ -48060,15 +48060,15 @@ public class ChatActivity extends BaseFragment implements
                         options.add(OPTION_SHARE);
                         icons.add(R.drawable.msg_shareout);
                     }
-                } else if (type == MESSAGE_TYPE_NEKOX_JSON || type == MESSAGE_TYPE_NEKOX_STICKERS_JSON || type == MESSAGE_TYPE_NEKOX_SETTINGS_JSON || type == MESSAGE_TYPE_FONT) {
+                } else if (type == MESSAGE_TYPE_AVEX_JSON || type == MESSAGE_TYPE_AVEX_STICKERS_JSON || type == MESSAGE_TYPE_AVEX_SETTINGS_JSON || type == MESSAGE_TYPE_FONT) {
                     options.add(5);
-                    if (type == MESSAGE_TYPE_NEKOX_JSON) {
+                    if (type == MESSAGE_TYPE_AVEX_JSON) {
                         items.add(LocaleController.getString(R.string.ImportProxyList));
                         icons.add(R.drawable.menu_secret);
-                    } else if (type == MESSAGE_TYPE_NEKOX_STICKERS_JSON) {
+                    } else if (type == MESSAGE_TYPE_AVEX_STICKERS_JSON) {
                         items.add(LocaleController.getString(R.string.ImportStickersList));
                         icons.add(R.drawable.msg_sticker);
-                    } else if (type == MESSAGE_TYPE_NEKOX_SETTINGS_JSON) {
+                    } else if (type == MESSAGE_TYPE_AVEX_SETTINGS_JSON) {
                         items.add(LocaleController.getString(R.string.ImportSettings));
                         icons.add(R.drawable.menu_secret);
                     } else {
@@ -48207,7 +48207,7 @@ public class ChatActivity extends BaseFragment implements
                         options.add(nkbtn_setReminder);
                         icons.add(R.drawable.msg_calendar2);
                     }
-                    if (NekoConfig.showAddToSavedMessages.Bool() && !UserObject.isUserSelf(currentUser) && !noforwards && selectedObject.canForwardMessage()) {
+                    if (AveConfig.showAddToSavedMessages.Bool() && !UserObject.isUserSelf(currentUser) && !noforwards && selectedObject.canForwardMessage()) {
                         items.add(getString(R.string.AddToSavedMessages));
                         options.add(nkbtn_savemessage);
                         icons.add(R.drawable.msg_saved);
@@ -48229,29 +48229,29 @@ public class ChatActivity extends BaseFragment implements
                         icons.add(bookmarked ? R.drawable.msg_unfave : R.drawable.msg_fave);
                     }
                     boolean allowRepeat = currentUser != null || (currentChat != null && ChatObject.canSendMessages(currentChat));
-                    if (allowRepeat && !noforwards && selectedObject.canForwardMessage() && NekoConfig.showRepeat.Bool()) {
+                    if (allowRepeat && !noforwards && selectedObject.canForwardMessage() && AveConfig.showRepeat.Bool()) {
                         items.add(LocaleController.getString(R.string.Repeat));
                         options.add(nkbtn_repeat);
                         icons.add(R.drawable.msg_repeat);
                     }
-                    if (allowRepeat && !isAyuDeleted && !selectedObject.needDrawBluredPreview() && (NaConfig.INSTANCE.getShowRepeatAsCopy().Bool() || (NekoConfig.showRepeat.Bool() && noforwards))){
+                    if (allowRepeat && !isAyuDeleted && !selectedObject.needDrawBluredPreview() && (NaConfig.INSTANCE.getShowRepeatAsCopy().Bool() || (AveConfig.showRepeat.Bool() && noforwards))){
                         items.add(LocaleController.getString(R.string.RepeatAsCopy));
                         options.add(nkbtn_repeatascopy);
                         icons.add(R.drawable.msg_repeat);
                     }
-                    if (NekoConfig.showDeleteDownloadedFile.Bool() && getMessageHelper().messageObjectIsFile(type, selectedObject)) {
+                    if (AveConfig.showDeleteDownloadedFile.Bool() && getMessageHelper().messageObjectIsFile(type, selectedObject)) {
                         items.add(LocaleController.getString(R.string.DeleteDownloadedFile));
                         options.add(nkbtn_deldlcache);
                         icons.add(R.drawable.msg_clear);
                     }
                     boolean allowViewHistory = currentChat != null && chatMode == 0 && !currentChat.broadcast && !(threadMessageObjects != null && threadMessageObjects.contains(message));
-                    if (allowViewHistory && NekoConfig.showViewHistory.Bool()) {
+                    if (allowViewHistory && AveConfig.showViewHistory.Bool()) {
                         items.add(LocaleController.getString(R.string.ViewHistory));
                         options.add(nkbtn_view_history);
                         icons.add(R.drawable.msg_recent_solar);
                     }
                     final MessageObject msg = getMessageForTranslate();
-                    boolean showTranslate = NekoConfig.showTranslate.Bool() || (NaConfig.INSTANCE.getShowTranslateMessageLLM().Bool() && LlmConfig.llmIsDefaultProvider());
+                    boolean showTranslate = AveConfig.showTranslate.Bool() || (NaConfig.INSTANCE.getShowTranslateMessageLLM().Bool() && LlmConfig.llmIsDefaultProvider());
                     boolean showTranslateLLM = NaConfig.INSTANCE.getShowTranslateMessageLLM().Bool() && LlmConfig.isLLMTranslatorAvailable() && !LlmConfig.llmIsDefaultProvider();
                     boolean isTranslatableMessage = msg != null && !msg.isSponsored() && !msg.isAnimatedEmoji() && !msg.isDice();
                     if ((showTranslate || showTranslateLLM) && isTranslatableMessage) {
@@ -48279,13 +48279,13 @@ public class ChatActivity extends BaseFragment implements
                             icons.add(R.drawable.magic_stick_solar);
                         }
                     }
-                    if (NekoConfig.showShareMessages.Bool() && msg != null) {
+                    if (AveConfig.showShareMessages.Bool() && msg != null) {
                         items.add(LocaleController.getString(R.string.ShareMessages));
                         options.add(nkbtn_sharemessage);
                         icons.add(R.drawable.msg_shareout);
                     }
                 }
-                if (NekoConfig.showMessageHide.Bool()) {
+                if (AveConfig.showMessageHide.Bool()) {
                     items.add(LocaleController.getString(R.string.Hide));
                     options.add(nkbtn_hide);
                     icons.add(R.drawable.msg_disable);
@@ -48345,7 +48345,7 @@ public class ChatActivity extends BaseFragment implements
                         items.add(LocaleController.getString(R.string.BlockContact));
                         options.add(OPTION_REPORT_CHAT);
                         icons.add(R.drawable.msg_block2);
-                    } else if (NekoConfig.showReport.Bool() && !isAyuDeleted) {
+                    } else if (AveConfig.showReport.Bool() && !isAyuDeleted) {
                         items.add(LocaleController.getString(R.string.ReportChat));
                         options.add(OPTION_REPORT_CHAT);
                         icons.add(R.drawable.msg_report);
@@ -48448,7 +48448,7 @@ public class ChatActivity extends BaseFragment implements
                     items.add(LocaleController.getString(R.string.ApplyThemeFile));
                     options.add(OPTION_APPLY_LOCALIZATION_OR_THEME);
                     icons.add(R.drawable.msg_theme);
-                } else if (type == MESSAGE_TYPE_NEKOX_JSON) {
+                } else if (type == MESSAGE_TYPE_AVEX_JSON) {
                     items.add(LocaleController.getString(R.string.ImportProxyList));
                     options.add(5);
                     icons.add(R.drawable.proxy_on_solar);
@@ -48479,7 +48479,7 @@ public class ChatActivity extends BaseFragment implements
                     }
                 }
                 final MessageObject msg = getMessageForTranslate();
-                boolean showTranslate = NekoConfig.showTranslate.Bool() || (NaConfig.INSTANCE.getShowTranslateMessageLLM().Bool() && LlmConfig.llmIsDefaultProvider());
+                boolean showTranslate = AveConfig.showTranslate.Bool() || (NaConfig.INSTANCE.getShowTranslateMessageLLM().Bool() && LlmConfig.llmIsDefaultProvider());
                 boolean showTranslateLLM = NaConfig.INSTANCE.getShowTranslateMessageLLM().Bool() && LlmConfig.isLLMTranslatorAvailable() && !LlmConfig.llmIsDefaultProvider();
                 boolean isTranslatableMessage = msg != null && !msg.isSponsored() && !msg.isAnimatedEmoji() && !msg.isDice();
                 if ((showTranslate || showTranslateLLM) && isTranslatableMessage) {
@@ -48538,13 +48538,13 @@ public class ChatActivity extends BaseFragment implements
                             editingAdmin = participant instanceof TLRPC.TL_chatParticipantAdmin;
                         }
 
-                        if (canEditAdmin && NekoConfig.showAdminActions.Bool()) {
+                        if (canEditAdmin && AveConfig.showAdminActions.Bool()) {
                             items.add(editingAdmin ? LocaleController.getString(R.string.EditAdminRights) : LocaleController.getString(R.string.SetAsAdmin));
                             icons.add(R.drawable.profile_admin);
                             options.add(nkbtn_editAdmin);
                             selectedParticipant = participant;
                         }
-                        if (canRestrict && NekoConfig.showChangePermissions.Bool()) {
+                        if (canRestrict && AveConfig.showChangePermissions.Bool()) {
                             items.add(LocaleController.getString(R.string.ChangePermissions));
                             icons.add(R.drawable.msg_permissions);
                             options.add(nkbtn_editPermission);
@@ -48554,7 +48554,7 @@ public class ChatActivity extends BaseFragment implements
                 }
             }
         }
-        if (NekoConfig.showMessageDetails.Bool()) {
+        if (AveConfig.showMessageDetails.Bool()) {
             items.add(LocaleController.getString(R.string.MessageDetails));
             options.add(nkbtn_detail);
             icons.add(R.drawable.msg_info);
@@ -48625,7 +48625,7 @@ public class ChatActivity extends BaseFragment implements
         if (TextUtils.isEmpty(text)) {
             return false;
         }
-        DialogTransKt.startTrans(getParentActivity(), text, toLang != null ? toLang : NekoConfig.translateToLang.String(), Translator.providerLLMTranslator);
+        DialogTransKt.startTrans(getParentActivity(), text, toLang != null ? toLang : AveConfig.translateToLang.String(), Translator.providerLLMTranslator);
         return true;
     }
 
@@ -48641,7 +48641,7 @@ public class ChatActivity extends BaseFragment implements
     }
 
     public boolean isBlockedUser(long senderId) {
-        if (!NekoConfig.ignoreBlocked.Bool()) {
+        if (!AveConfig.ignoreBlocked.Bool()) {
             return false;
         }
         return getMessagesController().blockePeers.indexOfKey(senderId) >= 0 || AyuFilter.isCustomFilteredPeer(senderId);
@@ -49023,11 +49023,11 @@ public class ChatActivity extends BaseFragment implements
 
     private boolean onSideControlButtonOnLongClick(int buttonId, View view) {
         if (buttonId == ChatActivitySideControlsButtonsLayout.BUTTON_PAGE_DOWN) {
-            if (NekoConfig.rememberAllBackMessages.Bool()) {
+            if (AveConfig.rememberAllBackMessages.Bool()) {
                 returnToMessageId = 0;
                 returnToMessageIdsStack.clear();
                 onPageDownClicked();
-                if (NekoConfig.disableVibration.Bool()) {
+                if (AveConfig.disableVibration.Bool()) {
                     AndroidUtil.disableHapticFeedback(view);
                 }
                 return true;
@@ -49100,7 +49100,7 @@ public class ChatActivity extends BaseFragment implements
             }
         });
         try {
-            if (!NekoConfig.disableVibration.Bool()) {
+            if (!AveConfig.disableVibration.Bool()) {
                 view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             }
         } catch (Exception ignored) {}
@@ -49257,7 +49257,7 @@ public class ChatActivity extends BaseFragment implements
         }
         fireworksOverlay.start();
         try {
-            if (!NekoConfig.disableVibration.Bool()) fireworksOverlay.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+            if (!AveConfig.disableVibration.Bool()) fireworksOverlay.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         } catch (Exception ignored) {};
     }
 

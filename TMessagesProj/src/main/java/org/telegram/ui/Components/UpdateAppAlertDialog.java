@@ -33,7 +33,7 @@ import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.ActionBar.BottomSheet;
 import org.telegram.ui.ActionBar.Theme;
 
-import tw.nekomimi.nekogram.TextViewEffects;
+import org.avegram.ave.TextViewEffects;
 
 public class UpdateAppAlertDialog extends BottomSheet {
 

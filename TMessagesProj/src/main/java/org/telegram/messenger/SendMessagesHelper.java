@@ -127,8 +127,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import com.radolyn.ayugram.AyuForward;
-import tw.nekomimi.nekogram.utils.StringUtils;
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.utils.StringUtils;
+import org.avegram.ave.AveConfig;
 import org.avegram.NaConfig;
 
 public class SendMessagesHelper extends BaseController implements NotificationCenter.NotificationCenterDelegate {
@@ -3752,7 +3752,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
             req.big = true;
         }
         // --- Ghost Mode ---
-        if (req.msg_id != 0 && NekoConfig.markReadAfterSend.Bool() && !NekoConfig.sendReadMessagePackets.Bool()) {
+        if (req.msg_id != 0 && AveConfig.markReadAfterSend.Bool() && !AveConfig.sendReadMessagePackets.Bool()) {
             if (!AyuGhostPreferences.getGhostModeReadExclusion(AyuGhostUtils.getDialogId(req.peer))) {
                 AyuGhostUtils.markReadOnServer(req.msg_id, req.peer, false);
             }
@@ -11540,7 +11540,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
         public MessageObject replyToMsg;
         public MessageObject replyToTopMsg;
         public TLRPC.WebPage webPage;
-        public boolean searchLinks = !NekoConfig.disableLinkPreviewByDefault.Bool();
+        public boolean searchLinks = !AveConfig.disableLinkPreviewByDefault.Bool();
         public MessageObject retryMessageObject;
         public ArrayList<TLRPC.MessageEntity> entities;
         public TLRPC.ReplyMarkup replyMarkup;

@@ -36,8 +36,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.utils.FileUtil;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.utils.FileUtil;
 
 @RequiresApi(api = Build.VERSION_CODES.R)
 public class FilesMigrationService extends Service {
@@ -87,7 +87,7 @@ public class FilesMigrationService extends Service {
     }
 
     public void migrateOldFolder() {
-        File path = new File(NekoConfig.cachePath.String());
+        File path = new File(AveConfig.cachePath.String());
         if (!path.exists() || !path.isDirectory()) {
             return;
         }
@@ -215,7 +215,7 @@ public class FilesMigrationService extends Service {
             return;
         }
 
-        File path = new File(NekoConfig.cachePath.String());
+        File path = new File(AveConfig.cachePath.String());
         if (!path.exists() || !path.isDirectory()) {
             return;
         }

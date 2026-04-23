@@ -62,14 +62,14 @@ import java.util.List;
 import java.util.Objects;
 
 import kotlin.Unit;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
-import tw.nekomimi.nekogram.llm.LlmConfig;
-import tw.nekomimi.nekogram.translate.Translator;
-import tw.nekomimi.nekogram.ui.MessageDetailsActivity;
-import tw.nekomimi.nekogram.ui.NekoDelegateFragment;
-import tw.nekomimi.nekogram.ui.cells.NekoMessageCell;
+import org.avegram.ave.helpers.MessageHelper;
+import org.avegram.ave.llm.LlmConfig;
+import org.avegram.ave.translate.Translator;
+import org.avegram.ave.ui.MessageDetailsActivity;
+import org.avegram.ave.ui.AveDelegateFragment;
+import org.avegram.ave.ui.cells.AveMessageCell;
 
-public class AyuMessageHistory extends NekoDelegateFragment {
+public class AyuMessageHistory extends AveDelegateFragment {
     private static final int OPTION_DELETE = 1;
     private static final int OPTION_COPY = 2;
     private static final int OPTION_COPY_PHOTO = 3;
@@ -196,7 +196,7 @@ public class AyuMessageHistory extends NekoDelegateFragment {
         }
 
         listView.setOnItemClickListener((view, position, x, y) -> {
-            if (view instanceof NekoMessageCell) {
+            if (view instanceof AveMessageCell) {
                 createMenu(view, x, y, position);
             }
         });
@@ -572,8 +572,8 @@ public class AyuMessageHistory extends NekoDelegateFragment {
 
         @Override
         public void onViewRecycled(@NonNull RecyclerView.ViewHolder holder) {
-            if (holder.itemView instanceof NekoMessageCell) {
-                ((NekoMessageCell) holder.itemView).setAyuDelegate(null);
+            if (holder.itemView instanceof AveMessageCell) {
+                ((AveMessageCell) holder.itemView).setAyuDelegate(null);
             }
         }
 
@@ -590,7 +590,7 @@ public class AyuMessageHistory extends NekoDelegateFragment {
         @NonNull
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            NekoMessageCell cell = new NekoMessageCell(context, currentAccount);
+            AveMessageCell cell = new AveMessageCell(context, currentAccount);
             cell.setShowAyuDeletedMark(false);
             return new RecyclerListView.Holder(cell);
         }
@@ -598,7 +598,7 @@ public class AyuMessageHistory extends NekoDelegateFragment {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             if (holder.getItemViewType() == 1) {
-                var ayuMessageDetailCell = (NekoMessageCell) holder.itemView;
+                var ayuMessageDetailCell = (AveMessageCell) holder.itemView;
 
                 var editedMessage = messages.get(position);
                 MessageObject msg;

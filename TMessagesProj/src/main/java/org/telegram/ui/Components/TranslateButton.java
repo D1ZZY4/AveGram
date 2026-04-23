@@ -56,9 +56,9 @@ import org.telegram.ui.Stories.recorder.HintView2;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.NekoXConfig;
-import tw.nekomimi.nekogram.translate.Translator;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.AveXConfig;
+import org.avegram.ave.translate.Translator;
 public class TranslateButton extends FrameLayout implements Theme.Colorable {
 
     private final int currentAccount;
@@ -373,7 +373,7 @@ public class TranslateButton extends FrameLayout implements Theme.Colorable {
         });
         popupLayout.addView(hideButton);
 
-        boolean providerTelegram = NekoConfig.translationProvider.Int() == Translator.providerTelegram;
+        boolean providerTelegram = AveConfig.translationProvider.Int() == Translator.providerTelegram;
         if (providerTelegram) {
             popupLayout.addView(new ActionBarPopupWindow.GapView(getContext(), resourcesProvider), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
         }
@@ -430,7 +430,7 @@ public class TranslateButton extends FrameLayout implements Theme.Colorable {
                 lng = "en";
             }
             String text;
-            String lang = NekoXConfig.formatLang(lng);
+            String lang = AveXConfig.formatLang(lng);
             if (TextUtils.isEmpty(lang)) {
                 lang = TranslateAlert2.languageName(lng, accusative);
                 if (TextUtils.isEmpty(lang)) {

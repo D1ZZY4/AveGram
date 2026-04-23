@@ -39,7 +39,7 @@ import org.telegram.messenger.Utilities;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Cells.BaseCell;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 import org.avegram.NaConfig;
 import me.vkryl.android.animator.BoolAnimator;
 
@@ -135,7 +135,7 @@ public class Switch extends View {
             checkDrawable.setColorFilter(new PorterDuffColorFilter(Theme.getColor(trackCheckedColorKey, resourcesProvider), PorterDuff.Mode.MULTIPLY));
         }
 
-        setHapticFeedbackEnabled(!NekoConfig.disableVibration.Bool());
+        setHapticFeedbackEnabled(!AveConfig.disableVibration.Bool());
     }
 
     @Keep

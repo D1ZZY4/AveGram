@@ -50,8 +50,8 @@ import org.telegram.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
 
-import tw.nekomimi.nekogram.filters.AyuFilter;
-import tw.nekomimi.nekogram.filters.RegexFiltersSettingActivity;
+import org.avegram.ave.filters.AyuFilter;
+import org.avegram.ave.filters.RegexFiltersSettingActivity;
 
 public class PrivacyUsersActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 

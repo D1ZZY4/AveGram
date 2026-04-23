@@ -92,7 +92,7 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
-import tw.nekomimi.nekogram.helpers.remote.EmojiHelper;
+import org.avegram.ave.helpers.remote.EmojiHelper;
 
 public class ChatAttachAlertDocumentLayout extends ChatAttachAlert.AttachAlertLayout {
 

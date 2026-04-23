@@ -113,7 +113,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class StoryPrivacyBottomSheet extends BottomSheet implements NotificationCenter.NotificationCenterDelegate {
 
@@ -360,7 +360,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
 //                            AndroidUtilities.shakeViewSpring(view, shiftDp = -shiftDp);
 //                            BotWebViewVibrationEffect.APP_ERROR.vibrate();
                             try {
-                                if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                                if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                             } catch (Throwable ignore) {}
                             new AlertDialog.Builder(getContext(), resourcesProvider)
                                 .setTitle(getString(R.string.GroupTooLarge))

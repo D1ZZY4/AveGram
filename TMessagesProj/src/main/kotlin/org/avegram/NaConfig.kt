@@ -6,10 +6,10 @@ import androidx.core.content.edit
 import org.telegram.messenger.AndroidUtilities
 import org.telegram.messenger.ApplicationLoader
 import org.telegram.messenger.BuildVars
-import tw.nekomimi.nekogram.NekoConfig
-import tw.nekomimi.nekogram.config.ConfigItem
-import tw.nekomimi.nekogram.config.ConfigItemKeyLinked
-import tw.nekomimi.nekogram.llm.utils.LlmUrlNormalizer
+import org.avegram.ave.AveConfig
+import org.avegram.ave.config.ConfigItem
+import org.avegram.ave.config.ConfigItemKeyLinked
+import org.avegram.ave.llm.utils.LlmUrlNormalizer
 import java.io.ByteArrayInputStream
 import java.io.ObjectInputStream
 
@@ -20,7 +20,7 @@ object NaConfig {
 
     @JvmStatic
     fun getPreferences(): SharedPreferences {
-        return NekoConfig.getPreferences()
+        return AveConfig.getPreferences()
     }
 
     @JvmStatic
@@ -1483,7 +1483,7 @@ object NaConfig {
         addConfig(
             "MarkdownParser",
             ConfigItem.configTypeInt,
-            NekoConfig.MARKDOWN_PARSER_NEKO
+            AveConfig.MARKDOWN_PARSER_AVE
         )
     val keepTranslatorPreferences =
         addConfig(
@@ -1621,13 +1621,13 @@ object NaConfig {
         return when {
             getPreferences().getBoolean(
                 "IgnoreFolderCount", false
-            ) -> NekoConfig.DIALOG_FILTER_EXCLUDE_ALL
+            ) -> AveConfig.DIALOG_FILTER_EXCLUDE_ALL
 
             getPreferences().getBoolean(
                 "IgnoreMutedCount", true
-            ) -> NekoConfig.DIALOG_FILTER_EXCLUDE_MUTED
+            ) -> AveConfig.DIALOG_FILTER_EXCLUDE_MUTED
 
-            else -> NekoConfig.DIALOG_FILTER_EXCLUDE_NONE
+            else -> AveConfig.DIALOG_FILTER_EXCLUDE_NONE
         }
     }
 

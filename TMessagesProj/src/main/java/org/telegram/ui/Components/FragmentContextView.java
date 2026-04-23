@@ -110,7 +110,7 @@ import me.vkryl.android.animator.ListAnimator;
 import me.vkryl.android.animator.ReplaceAnimator;
 import me.vkryl.core.lambda.Destroyable;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class FragmentContextView extends FrameLayout implements NotificationCenter.NotificationCenterDelegate, VoIPService.StateListener, GroupCallMessagesController.CallMessageListener  {
     public final static int STYLE_NOT_SET = -1,
@@ -605,7 +605,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
 
                 AndroidUtilities.runOnUIThread(toggleMicRunnable, 90);
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) muteButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) muteButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 } catch (Exception ignore) {}
             };
 
@@ -642,7 +642,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
                             if (VoIPService.getSharedInstance() != null) {
                                 VoIPService.getSharedInstance().setMicMute(true, true, false);
                                 try {
-                                    if (!NekoConfig.disableVibration.Bool()) muteButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                                    if (!AveConfig.disableVibration.Bool()) muteButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                                 } catch (Exception ignore) {}
                             }
                             pressed = false;
@@ -699,7 +699,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
             muteButton.playAnimation();
             Theme.getFragmentContextViewWavesDrawable().updateState(true);
             try {
-                if (!NekoConfig.disableVibration.Bool()) muteButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                if (!AveConfig.disableVibration.Bool()) muteButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             } catch (Exception ignore) {}
         });
 

@@ -77,8 +77,8 @@ import org.telegram.ui.Components.VerticalPositionAutoAnimator;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.ui.EditTextAutoFill;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.ui.EditTextAutoFill;
 
 public class TwoStepVerificationActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
@@ -1152,7 +1152,7 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
             return;
         }
         try {
-            if (!NekoConfig.disableVibration.Bool()) field.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+            if (!AveConfig.disableVibration.Bool()) field.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         } catch (Exception ignored) {}
         if (clear) {
             field.setText("");

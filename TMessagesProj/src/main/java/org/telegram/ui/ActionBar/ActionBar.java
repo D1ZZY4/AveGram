@@ -76,7 +76,7 @@ import java.util.ArrayList;
 
 import me.vkryl.android.animator.ReplaceAnimator;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 import org.avegram.NaConfig;
 
 public class ActionBar extends FrameLayout implements Theme.Colorable {
@@ -336,18 +336,18 @@ public class ActionBar extends FrameLayout implements Theme.Colorable {
                     }
                 }
             }
-            if (NekoConfig.actionBarDecoration.Int() == 3) {
+            if (AveConfig.actionBarDecoration.Int() == 3) {
                 if (snowflakesEffect != null) {
                     snowflakesEffect = null;
                 }
                 if (fireworksEffect != null) {
                     fireworksEffect = null;
                 }
-            } else if (NekoConfig.actionBarDecoration.Int() == 2) {
+            } else if (AveConfig.actionBarDecoration.Int() == 2) {
                 if (fireworksEffect == null) {
                     fireworksEffect = new FireworksEffect();
                 }
-            } else if (NekoConfig.actionBarDecoration.Int() == 1 || Theme.canStartHolidayAnimation()) {
+            } else if (AveConfig.actionBarDecoration.Int() == 1 || Theme.canStartHolidayAnimation()) {
                 if (snowflakesEffect == null) {
                     snowflakesEffect = new SnowflakesEffect(0);
                 }
@@ -495,7 +495,7 @@ public class ActionBar extends FrameLayout implements Theme.Colorable {
         if (titleTextView[0] != null) {
             titleTextView[0].setVisibility(value != null && !isSearchFieldVisible ? VISIBLE : INVISIBLE);
             titleTextView[0].setText(lastTitle = value);
-            if (UserConfig.getInstance(UserConfig.selectedAccount).isPremiumOrLocal() || (NekoConfig.isGhostModeActive() && NekoConfig.showGhostModeStatus.Bool())) {
+            if (UserConfig.getInstance(UserConfig.selectedAccount).isPremiumOrLocal() || (AveConfig.isGhostModeActive() && AveConfig.showGhostModeStatus.Bool())) {
                 if (attached && lastRightDrawable instanceof AnimatedEmojiDrawable.SwapAnimatedEmojiDrawable) {
                     ((AnimatedEmojiDrawable.SwapAnimatedEmojiDrawable) lastRightDrawable).setParentView(null);
                 }
@@ -2065,7 +2065,7 @@ public class ActionBar extends FrameLayout implements Theme.Colorable {
         }
     }
 
-    // NekoX Changes
+    // AveX Changes
 
     private StaticLayout countLayout;
 
@@ -2110,7 +2110,7 @@ public class ActionBar extends FrameLayout implements Theme.Colorable {
     }
 
     public void unreadBadgeSetCount(int count) {
-        if (backButtonImageView != null && NekoConfig.unreadBadgeOnBackButton.Bool()) {
+        if (backButtonImageView != null && AveConfig.unreadBadgeOnBackButton.Bool()) {
             backButtonImageView.setUnread(count);
         }
     }

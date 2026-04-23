@@ -70,7 +70,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class ChatAttachAlertPhotoLayoutPreview extends ChatAttachAlert.AttachAlertLayout {
 
@@ -1694,7 +1694,7 @@ public class ChatAttachAlertPhotoLayoutPreview extends ChatAttachAlert.AttachAle
                     draggingCellFromWidth = draggingCellDrawingRect.width();
                     draggingCellFromHeight = draggingCellDrawingRect.height();
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) ChatAttachAlertPhotoLayoutPreview.this.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                        if (!AveConfig.disableVibration.Bool()) ChatAttachAlertPhotoLayoutPreview.this.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     } catch (Exception ignore) {}
                 }, ViewConfiguration.getLongPressTimeout());
 
@@ -1756,7 +1756,7 @@ public class ChatAttachAlertPhotoLayoutPreview extends ChatAttachAlert.AttachAle
                     }
 
                     try {
-                        if (!NekoConfig.disableVibration.Bool()) ChatAttachAlertPhotoLayoutPreview.this.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_RELEASE, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                        if (!AveConfig.disableVibration.Bool()) ChatAttachAlertPhotoLayoutPreview.this.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_RELEASE, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     } catch (Exception ignore) {}
 
                     updateGroups();

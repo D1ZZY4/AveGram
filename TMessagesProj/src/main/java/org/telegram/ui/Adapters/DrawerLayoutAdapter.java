@@ -35,8 +35,8 @@ import org.telegram.ui.Components.SideMenultItemAnimator;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.PasscodeHelper;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.PasscodeHelper;
 import org.avegram.NaConfig;
 
 public class DrawerLayoutAdapter extends RecyclerListView.SelectionAdapter implements NotificationCenter.NotificationCenterDelegate {
@@ -254,11 +254,11 @@ public class DrawerLayoutAdapter extends RecyclerListView.SelectionAdapter imple
         int settingsIcon = R.drawable.msg_settings_old;
 
         UserConfig me = UserConfig.getInstance(UserConfig.selectedAccount);
-        boolean showGhostInDrawer = NekoConfig.showGhostInDrawer.Bool();
+        boolean showGhostInDrawer = AveConfig.showGhostInDrawer.Bool();
         if (showGhostInDrawer) {
             items.add(new Item(
                     nkbtnGhostMode,
-                    NekoConfig.isGhostModeActive()
+                    AveConfig.isGhostModeActive()
                             ? LocaleController.getString(R.string.DisableGhostMode)
                             : LocaleController.getString(R.string.EnableGhostMode),
                     R.drawable.ayu_ghost
@@ -348,7 +348,7 @@ public class DrawerLayoutAdapter extends RecyclerListView.SelectionAdapter imple
             items.add(null);
         }
         if (showNSettings) {
-            items.add(new Item(nkbtnSettings, LocaleController.getString(R.string.NekoSettings), R.drawable.nagramx_outline));
+            items.add(new Item(nkbtnSettings, LocaleController.getString(R.string.AveSettings), R.drawable.nagramx_outline));
         }
         if (showBrowser) {
             items.add(new Item(nkbtnBrowser, LocaleController.getString(R.string.InappBrowser), R.drawable.web_browser));

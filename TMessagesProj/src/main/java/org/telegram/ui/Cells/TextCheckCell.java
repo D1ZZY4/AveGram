@@ -168,10 +168,10 @@ public class TextCheckCell extends FrameLayout {
         setTextAndCheck(text, checked, divider, false);
     }
 
-    public void setTextAndCheck(CharSequence text, boolean checked, boolean divider, boolean isNekoCell) {
+    public void setTextAndCheck(CharSequence text, boolean checked, boolean divider, boolean isAveCell) {
         AvatarSpan.checkSpansParent(text, this);
         textView.setText(text);
-        if (isNekoCell) {
+        if (isAveCell) {
             textView.setLines(0);
             textView.setMaxLines(0);
             textView.setSingleLine(false);
@@ -241,7 +241,7 @@ public class TextCheckCell extends FrameLayout {
         setTextAndValueAndCheck(text, value, checked, multiline, divider, false);
     }
 
-    public void setTextAndValueAndCheck(String text, String value, boolean checked, boolean multiline, boolean divider, boolean isNekoCell) {
+    public void setTextAndValueAndCheck(String text, String value, boolean checked, boolean multiline, boolean divider, boolean isAveCell) {
         AvatarSpan.checkSpansParent(text, this);
         textView.setText(text);
         valueTextView.setText(value);
@@ -256,7 +256,7 @@ public class TextCheckCell extends FrameLayout {
         valueTextView.setVisibility(VISIBLE);
         isMultiline = multiline;
         if (multiline) {
-            if (isNekoCell) {
+            if (isAveCell) {
                 if (!TextUtils.isEmpty(value)) {
                     textView.setMaxLines(1);
                     textView.setEllipsize(TextUtils.TruncateAt.END);

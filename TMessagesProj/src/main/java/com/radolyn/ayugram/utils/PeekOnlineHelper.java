@@ -18,7 +18,7 @@ import org.telegram.tgnet.tl.TL_account;
 
 import java.util.ArrayList;
 
-import tw.nekomimi.nekogram.helpers.PasscodeHelper;
+import org.avegram.ave.helpers.PasscodeHelper;
 
 public class PeekOnlineHelper {
 

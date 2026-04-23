@@ -20,8 +20,8 @@ import static org.telegram.messenger.LocaleController.getString;
 import static org.telegram.ui.Stars.StarGiftSheet.replaceUnderstood;
 import static org.telegram.ui.Stars.StarsIntroActivity.formatStarsAmountShort;
 import static org.telegram.ui.bots.AffiliateProgramFragment.percents;
-import static tw.nekomimi.nekogram.DatacenterActivity.getDCLocation;
-import static tw.nekomimi.nekogram.DatacenterActivity.getDCName;
+import static org.avegram.ave.DatacenterActivity.getDCLocation;
+import static org.avegram.ave.DatacenterActivity.getDCName;
 
 import android.Manifest;
 import android.animation.Animator;
@@ -348,30 +348,30 @@ import java.util.zip.ZipOutputStream;
 
 import kotlin.Unit;
 import me.vkryl.android.animator.BoolAnimator;
-import tw.nekomimi.nekogram.BackButtonMenuRecent;
-import tw.nekomimi.nekogram.DatacenterActivity;
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
-import tw.nekomimi.nekogram.filters.RegexChatFiltersListActivity;
-import tw.nekomimi.nekogram.filters.ShadowBanListActivity;
-import tw.nekomimi.nekogram.helpers.ChatsHelper;
-import tw.nekomimi.nekogram.helpers.LocalNameHelper;
-import tw.nekomimi.nekogram.helpers.MainTabsHelper;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
-import tw.nekomimi.nekogram.helpers.ProfileDateHelper;
-import tw.nekomimi.nekogram.helpers.SettingsHelper;
-import tw.nekomimi.nekogram.helpers.SettingsSearchResult;
-import tw.nekomimi.nekogram.helpers.remote.UpdateHelper;
-import tw.nekomimi.nekogram.llm.LlmConfig;
-import tw.nekomimi.nekogram.menu.forum.CustomForumTabsPopupWrapper;
-import tw.nekomimi.nekogram.parts.DialogTransKt;
-import tw.nekomimi.nekogram.settings.NekoSettingsActivity;
-import tw.nekomimi.nekogram.translate.Translator;
-import tw.nekomimi.nekogram.ui.BottomBuilder;
-import tw.nekomimi.nekogram.utils.AlertUtil;
-import tw.nekomimi.nekogram.utils.AndroidUtil;
-import tw.nekomimi.nekogram.utils.FileUtil;
-import tw.nekomimi.nekogram.utils.ShareUtil;
+import org.avegram.ave.BackButtonMenuRecent;
+import org.avegram.ave.DatacenterActivity;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.filters.AyuFilter;
+import org.avegram.ave.filters.RegexChatFiltersListActivity;
+import org.avegram.ave.filters.ShadowBanListActivity;
+import org.avegram.ave.helpers.ChatsHelper;
+import org.avegram.ave.helpers.LocalNameHelper;
+import org.avegram.ave.helpers.MainTabsHelper;
+import org.avegram.ave.helpers.MessageHelper;
+import org.avegram.ave.helpers.ProfileDateHelper;
+import org.avegram.ave.helpers.SettingsHelper;
+import org.avegram.ave.helpers.SettingsSearchResult;
+import org.avegram.ave.helpers.remote.UpdateHelper;
+import org.avegram.ave.llm.LlmConfig;
+import org.avegram.ave.menu.forum.CustomForumTabsPopupWrapper;
+import org.avegram.ave.parts.DialogTransKt;
+import org.avegram.ave.settings.AveSettingsActivity;
+import org.avegram.ave.translate.Translator;
+import org.avegram.ave.ui.BottomBuilder;
+import org.avegram.ave.utils.AlertUtil;
+import org.avegram.ave.utils.AndroidUtil;
+import org.avegram.ave.utils.FileUtil;
+import org.avegram.ave.utils.ShareUtil;
 import org.avegram.NaConfig;
 import org.avegram.nowplaying.LocalNowPlayingController;
 
@@ -679,8 +679,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int settingsSectionRow;
     private int settingsSectionRow2;
     private int notificationRow;
-    private int nekoRow;
-    private int nekoSectionRow;
+    private int aveRow;
+    private int aveSectionRow;
     private int languageRow;
     private int privacyRow;
     private int dataRow;
@@ -4536,8 +4536,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 presentFragment(new LiteModeSettingsActivity());
             } else if (position == devicesRow) {
                 presentFragment(new SessionsActivity(0));
-            } else if (position == nekoRow) {
-                presentFragment(new NekoSettingsActivity());
+            } else if (position == aveRow) {
+                presentFragment(new AveSettingsActivity());
             } else if (position == questionRow) {
                 showDialog(AlertsCreator.createSupportAlert(ProfileActivity.this, resourcesProvider));
             } else if (position == faqRow) {
@@ -7761,7 +7761,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (LlmConfig.isLLMTranslatorAvailable() && !LlmConfig.llmIsDefaultProvider()) {
                     builder.addItem(getString(R.string.TranslateMessageLLM), R.drawable.magic_stick_solar, __ -> {
                         try {
-                            DialogTransKt.startTrans(getParentActivity(), finalText, NekoConfig.translateToLang.String(), Translator.providerLLMTranslator);
+                            DialogTransKt.startTrans(getParentActivity(), finalText, AveConfig.translateToLang.String(), Translator.providerLLMTranslator);
                         } catch (Exception e) {
                             FileLog.e(e);
                         }
@@ -8757,7 +8757,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         avatarsViewPager.setVisibility(View.VISIBLE);
 
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) avatarContainer.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                            if (!AveConfig.disableVibration.Bool()) avatarContainer.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                         } catch (Exception ignore) {
                         }
                     }
@@ -8841,7 +8841,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         expandAnimator.start();
                         ignoreScrollOnFullExpand = false;
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) avatarContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                            if (!AveConfig.disableVibration.Bool()) avatarContainer.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                         } catch (Exception ignore) {
                         }
                     }
@@ -10815,8 +10815,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         settingsSectionRow = -1;
         settingsSectionRow2 = -1;
         notificationRow = -1;
-        nekoRow = -1;
-        nekoSectionRow = -1;
+        aveRow = -1;
+        aveSectionRow = -1;
         languageRow = -1;
         premiumRow = -1;
         starsRow = -1;
@@ -10976,8 +10976,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
                 settingsSectionRow = rowCount++;
 
-                nekoRow = rowCount++;
-                nekoSectionRow = rowCount++;
+                aveRow = rowCount++;
+                aveSectionRow = rowCount++;
 
                 Set<String> suggestions = getMessagesController().pendingSuggestions;
                 if (suggestions.contains("PREMIUM_GRACE")) {
@@ -11736,7 +11736,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if (userInfo != null && userInfo.stars_rating != null && userInfo.stars_rating.stars < 0) {
                         newString2 = getString(R.string.StarRatingLevelNegative).toLowerCase(Locale.ROOT);
                     } else {
-                        if (!NekoConfig.sendOnlinePackets.Bool() || NekoConfig.sendOfflinePacketAfterOnline.Bool()) {
+                        if (!AveConfig.sendOnlinePackets.Bool() || AveConfig.sendOfflinePacketAfterOnline.Bool()) {
                             newString2 = getString(R.string.VoipOfflineTitle);
                         } else {
                             newString2 = LocaleController.getString(R.string.Online);
@@ -12534,7 +12534,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 otherItem.addSubItem(block_contact, R.drawable.msg_retry, LocaleController.getString(R.string.BotRestart));
                             }
                         } else {
-                            if (NekoConfig.ignoreBlocked.Bool()) {
+                            if (AveConfig.ignoreBlocked.Bool()) {
                                 boolean customFiltered = AyuFilter.getCustomFilteredUsersList().contains(userId);
                                 otherItem.addSubItem(shadow_ban, customFiltered ? R.drawable.msg_block : R.drawable.msg_block2, getString(customFiltered ? R.string.UnshadowBan : R.string.ShadowBan));
                             }
@@ -12548,7 +12548,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if (!TextUtils.isEmpty(user.phone)) {
                         otherItem.addSubItem(share_contact, R.drawable.msg_share, LocaleController.getString(R.string.ShareContact));
                     }
-                    if (NekoConfig.ignoreBlocked.Bool()) {
+                    if (AveConfig.ignoreBlocked.Bool()) {
                         boolean customFiltered = AyuFilter.getCustomFilteredUsersList().contains(userId);
                         otherItem.addSubItem(shadow_ban, customFiltered ? R.drawable.msg_block : R.drawable.msg_block2, getString(customFiltered ? R.string.UnshadowBan : R.string.ShadowBan));
                     }
@@ -13903,7 +13903,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         String text;
                         TLRPC.User user = getMessagesController().getUser(userId);
                         String phoneNumber;
-                        boolean shouldHide = NekoConfig.hidePhone.Bool() && (myProfile || (user != null && user.self));
+                        boolean shouldHide = AveConfig.hidePhone.Bool() && (myProfile || (user != null && user.self));
                         if (!shouldHide && user != null && !TextUtils.isEmpty(vcardPhone)) {
                             text = PhoneFormat.getInstance().format("+" + vcardPhone);
                             phoneNumber = vcardPhone;
@@ -14027,7 +14027,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     } else if (position == numberRow) {
                         TLRPC.User user = UserConfig.getInstance(currentAccount).getCurrentUser();
                         String value;
-                        if (user != null && user.phone != null && user.phone.length() != 0 && !NekoConfig.hidePhone.Bool()) {
+                        if (user != null && user.phone != null && user.phone.length() != 0 && !AveConfig.hidePhone.Bool()) {
                             value = PhoneFormat.getInstance().format("+" + user.phone);
                         } else {
                             value = LocaleController.getString(R.string.NumberUnknown);
@@ -14273,8 +14273,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         textCell.setTextAndIcon(LocaleController.getString(R.string.ChatSettings), R.drawable.msg2_discussion, true);
                     } else if (position == filtersRow) {
                         textCell.setTextAndIcon(LocaleController.getString(R.string.Filters), R.drawable.msg2_folder, true);
-                    } else if (position == nekoRow) {
-                        textCell.setTextAndIcon(getString(R.string.NekoSettings), R.drawable.msg_settings, false);
+                    } else if (position == aveRow) {
+                        textCell.setTextAndIcon(getString(R.string.AveSettings), R.drawable.msg_settings, false);
                     } else if (position == liteModeRow) {
                         textCell.setTextAndIcon(LocaleController.getString(R.string.PowerUsage), R.drawable.msg2_battery, true);
                     } else if (position == questionRow) {
@@ -14726,7 +14726,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         position == clearLogsRow || position == switchBackendRow || position == setAvatarRow ||
                         position == addToGroupButtonRow || position == premiumRow || position == premiumGiftingRow ||
                         position == businessRow || position == liteModeRow || position == birthdayRow || position == channelRow ||
-                        position == starsRow || position == tonRow || position == idDcRow || position == nekoRow;
+                        position == starsRow || position == tonRow || position == idDcRow || position == aveRow;
             }
             if (holder.itemView instanceof UserCell) {
                 UserCell userCell = (UserCell) holder.itemView;
@@ -14762,7 +14762,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return VIEW_TYPE_TEXT_DETAIL_MULTILINE_2;
             } else if (position == userInfoRow || position == channelInfoRow || position == bioRow) {
                 return VIEW_TYPE_ABOUT_LINK;
-            } else if (position == nekoRow || position == settingsTimerRow || position == settingsKeyRow || position == reportRow || position == reportReactionRow ||
+            } else if (position == aveRow || position == settingsTimerRow || position == settingsKeyRow || position == reportRow || position == reportReactionRow ||
                     position == subscribersRow || position == subscribersRequestsRow || position == administratorsRow || position == settingsRow || position == blockedUsersRow ||
                     position == addMemberRow || position == joinRow || position == unblockRow ||
                     position == sendMessageRow || position == notificationRow || position == privacyRow ||
@@ -16146,8 +16146,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             put(++pointer, settingsSectionRow, sparseIntArray);
             put(++pointer, settingsSectionRow2, sparseIntArray);
             put(++pointer, notificationRow, sparseIntArray);
-            put(++pointer, nekoRow, sparseIntArray);
-            put(++pointer, nekoSectionRow, sparseIntArray);
+            put(++pointer, aveRow, sparseIntArray);
+            put(++pointer, aveSectionRow, sparseIntArray);
             put(++pointer, languageRow, sparseIntArray);
             put(++pointer, premiumRow, sparseIntArray);
             put(++pointer, starsRow, sparseIntArray);
@@ -17419,7 +17419,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private long getId(boolean styled) {
         long id = userId != 0 ? userId : chatId != 0 ? chatId : 0;
-        if (styled && chatId != 0 && NaConfig.INSTANCE.getIdDcType().Int() == NekoConfig.ID_TYPE_BOT_API) {
+        if (styled && chatId != 0 && NaConfig.INSTANCE.getIdDcType().Int() == AveConfig.ID_TYPE_BOT_API) {
             var chat = getMessagesController().getChat(chatId);
             if (chat != null) {
                 if (ChatObject.isChannel(chat)) {

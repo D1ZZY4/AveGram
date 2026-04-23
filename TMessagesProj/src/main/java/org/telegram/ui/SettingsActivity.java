@@ -144,13 +144,13 @@ import java.util.Set;
 
 import me.vkryl.android.animator.BoolAnimator;
 import me.vkryl.android.animator.FactorAnimator;
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.MainTabsHelper;
-import tw.nekomimi.nekogram.helpers.PasscodeHelper;
-import tw.nekomimi.nekogram.helpers.remote.UpdateHelper;
-import tw.nekomimi.nekogram.settings.NekoSettingsActivity;
-import tw.nekomimi.nekogram.ui.BottomBuilder;
-import tw.nekomimi.nekogram.utils.AndroidUtil;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.MainTabsHelper;
+import org.avegram.ave.helpers.PasscodeHelper;
+import org.avegram.ave.helpers.remote.UpdateHelper;
+import org.avegram.ave.settings.AveSettingsActivity;
+import org.avegram.ave.ui.BottomBuilder;
+import org.avegram.ave.utils.AndroidUtil;
 import org.avegram.NaConfig;
 
 import kotlin.Unit;
@@ -564,12 +564,12 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         avatarView.setForUserOrChat(user, avatarDrawable);
         titleView.setText(UserObject.getUserName(user));
         final StringBuilder sb = new StringBuilder();
-        if (!NekoConfig.hidePhone.Bool() && user != null) {
+        if (!AveConfig.hidePhone.Bool() && user != null) {
             sb.append(PhoneFormat.getInstance().format("+" + user.phone));
         }
         final String username = UserObject.getPublicUsername(user);
         if (username != null) {
-            sb.append(NekoConfig.hidePhone.Bool() ? "@" : " • @").append(username);
+            sb.append(AveConfig.hidePhone.Bool() ? "@" : " • @").append(username);
         }
         subtitleView.setText(sb);
 
@@ -718,7 +718,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             items.add(UItem.asShadow(null));
         }
 
-        items.add(SettingCell.Factory.of(100, 0xFF3CCFFF, 0xFF007AFF, R.drawable.filled_profile_settings, getString(R.string.NekoSettings)));
+        items.add(SettingCell.Factory.of(100, 0xFF3CCFFF, 0xFF007AFF, R.drawable.filled_profile_settings, getString(R.string.AveSettings)));
         items.add(UItem.asShadow(null));
 
         items.add(SettingCell.Factory.of(1, IconBackgroundColors.BLUE.top, IconBackgroundColors.BLUE.bottom, R.drawable.settings_account, getString(R.string.SettingsAccount), getString(R.string.SettingsAccountInfo)));
@@ -919,7 +919,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 break;
             }
             case 100: {
-                presentFragment(new NekoSettingsActivity());
+                presentFragment(new AveSettingsActivity());
                 break;
             }
         }

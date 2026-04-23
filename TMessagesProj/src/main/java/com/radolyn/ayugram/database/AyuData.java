@@ -36,8 +36,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-import tw.nekomimi.nekogram.utils.AndroidUtil;
-import tw.nekomimi.nekogram.utils.FileUtil;
+import org.avegram.ave.utils.AndroidUtil;
+import org.avegram.ave.utils.FileUtil;
 
 public class AyuData {
     public static long dbSize, attachmentsSize, totalSize;

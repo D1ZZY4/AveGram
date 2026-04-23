@@ -89,7 +89,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Objects;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class SelfStoryViewsPage extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
 
@@ -395,7 +395,7 @@ public class SelfStoryViewsPage extends FrameLayout implements NotificationCente
                 itemOptions.show();
 
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                 } catch (Exception ignore) {}
 
                 return true;

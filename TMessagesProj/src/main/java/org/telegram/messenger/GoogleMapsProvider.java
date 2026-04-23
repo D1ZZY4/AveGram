@@ -31,13 +31,13 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import tw.nekomimi.nekogram.location.NekoLocationSource;
+import org.avegram.ave.location.AveLocationSource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 public class GoogleMapsProvider implements IMapsProvider {
 
@@ -592,8 +592,8 @@ public class GoogleMapsProvider implements IMapsProvider {
         @Override
         public void getMapAsync(Consumer<IMap> callback) {
             mapView.getMapAsync(googleMap -> {
-                if (NekoConfig.fixDriftingForGoogleMaps())
-                    googleMap.setLocationSource(new NekoLocationSource(mapView.getContext()));
+                if (AveConfig.fixDriftingForGoogleMaps())
+                    googleMap.setLocationSource(new AveLocationSource(mapView.getContext()));
                 callback.accept(new GoogleMapImpl(googleMap));
                 findGlSurfaceView(mapView);
             });

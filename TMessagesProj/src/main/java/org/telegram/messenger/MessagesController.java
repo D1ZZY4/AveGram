@@ -131,12 +131,12 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
-import tw.nekomimi.nekogram.helpers.ChatsHelper;
-import tw.nekomimi.nekogram.helpers.LocalNameHelper;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
-import tw.nekomimi.nekogram.utils.AlertUtil;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.filters.AyuFilter;
+import org.avegram.ave.helpers.ChatsHelper;
+import org.avegram.ave.helpers.LocalNameHelper;
+import org.avegram.ave.helpers.MessageHelper;
+import org.avegram.ave.utils.AlertUtil;
 import org.avegram.NaConfig;
 import org.avegram.helper.LocalPremiumStatusHelper;
 
@@ -859,7 +859,7 @@ public class MessagesController extends BaseController implements NotificationCe
         if (dialogFilters.isEmpty()) {
             return;
         }
-        if (!premium && !NekoConfig.localPremium.Bool()) {
+        if (!premium && !AveConfig.localPremium.Bool()) {
             if (!dialogFilters.get(0).isDefault()) {
                 for (int i = 1; i < dialogFilters.size(); i++) {
                     if (dialogFilters.get(i).isDefault()) {
@@ -892,7 +892,7 @@ public class MessagesController extends BaseController implements NotificationCe
                     if (!filtersSortedById.get(i).locked) {
                         changed = true;
                     }
-                    filtersSortedById.get(i).locked = !NekoConfig.localPremium.Bool();
+                    filtersSortedById.get(i).locked = !AveConfig.localPremium.Bool();
                 } else {
                     if (filtersSortedById.get(i).locked) {
                         changed = true;
@@ -931,7 +931,7 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public boolean isPremiumUser(TLRPC.User currentUser) {
-        return !premiumFeaturesBlocked() && (currentUser.premium || currentUser.id == getUserConfig().getClientUserId() && NekoConfig.localPremium.Bool()) && !isSupportUser(currentUser);
+        return !premiumFeaturesBlocked() && (currentUser.premium || currentUser.id == getUserConfig().getClientUserId() && AveConfig.localPremium.Bool()) && !isSupportUser(currentUser);
     }
 
     public boolean didPressTranscribeButtonEnough() {
@@ -2445,7 +2445,7 @@ public class MessagesController extends BaseController implements NotificationCe
             } else if (response instanceof TLRPC.TL_messages_dialogFilters) {
                 TLRPC.TL_messages_dialogFilters res = (TLRPC.TL_messages_dialogFilters) response;
                 if (folderTags != res.tags_enabled) {
-                    setFolderTags(res.tags_enabled || !getUserConfig().isPremium() && NekoConfig.localPremium.Bool());
+                    setFolderTags(res.tags_enabled || !getUserConfig().isPremium() && AveConfig.localPremium.Bool());
                     AndroidUtilities.runOnUIThread(() -> {
                         getNotificationCenter().postNotificationName(NotificationCenter.dialogFiltersUpdated);
                     });
@@ -8904,7 +8904,7 @@ public class MessagesController extends BaseController implements NotificationCe
                 }
                 loadingBlockedPeers = false;
                 getNotificationCenter().postNotificationName(NotificationCenter.blockedUsersDidLoad);
-                if (!reset && !blockedEndReached && NekoConfig.ignoreBlocked.Bool()) {
+                if (!reset && !blockedEndReached && AveConfig.ignoreBlocked.Bool()) {
                     getBlockedPeers(false);
                 }
             }
@@ -10710,7 +10710,7 @@ public class MessagesController extends BaseController implements NotificationCe
                 TLRPC.TL_help_promoDataEmpty res = (TLRPC.TL_help_promoDataEmpty) response;
                 nextPromoInfoCheckTime = res.expires;
                 noDialog = true;
-            } else if (response instanceof TLRPC.TL_help_promoData res && (!res.proxy || !NekoConfig.hideProxySponsorChannel.Bool())) {
+            } else if (response instanceof TLRPC.TL_help_promoData res && (!res.proxy || !AveConfig.hideProxySponsorChannel.Bool())) {
                 long did;
                     if (res.peer == null) {
                         did = 0;
@@ -11009,7 +11009,7 @@ public class MessagesController extends BaseController implements NotificationCe
                 Integer threadId = threadEntry.getKey();
                 ArrayList<PrintingUser> arr = threadEntry.getValue();
                 // ignoreBlocked start
-                if (NekoConfig.ignoreBlocked.Bool()) {
+                if (AveConfig.ignoreBlocked.Bool()) {
                     LongSparseIntArray blockePeersCopy = blockePeers.clone();
                     ArrayList<PrintingUser> filteredArr = new ArrayList<>();
                     for (PrintingUser pu : arr) {
@@ -11288,7 +11288,7 @@ public class MessagesController extends BaseController implements NotificationCe
             } else if (action == 9) {
                 req.action = new TLRPC.TL_sendMessageUploadAudioAction();
             } else if (action == 10) {
-                if (NekoConfig.disableChoosingSticker.Bool())
+                if (AveConfig.disableChoosingSticker.Bool())
                     req.action = new TLRPC.TL_sendMessageTypingAction();
                 else
                     req.action = new TLRPC.TL_sendMessageChooseStickerAction();
@@ -16777,7 +16777,7 @@ public class MessagesController extends BaseController implements NotificationCe
                     newTaskId = taskId;
                 }
 
-                if (!NekoConfig.unlimitedPinnedDialogs.Bool()) getConnectionsManager().sendRequest(req, (response, error) -> {
+                if (!AveConfig.unlimitedPinnedDialogs.Bool()) getConnectionsManager().sendRequest(req, (response, error) -> {
                     if (newTaskId != 0) {
                         getMessagesStorage().removePendingTask(newTaskId);
                     }
@@ -16789,7 +16789,7 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public void loadPinnedDialogs(final int folderId, long newDialogId, ArrayList<Long> order) {
-        if (NekoConfig.unlimitedPinnedDialogs.Bool()) {
+        if (AveConfig.unlimitedPinnedDialogs.Bool()) {
             return;
         }
         if (loadingPinnedDialogs.indexOfKey(folderId) >= 0 || getUserConfig().isPinnedDialogsLoaded(folderId)) {
@@ -20932,7 +20932,7 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public SponsoredMessagesInfo getSponsoredMessages(long dialogId) {
-        if (NekoConfig.hideSponsoredMessage.Bool()) {
+        if (AveConfig.hideSponsoredMessage.Bool()) {
             return null;
         }
         SponsoredMessagesInfo info = sponsoredMessages.get(dialogId);
@@ -20987,7 +20987,7 @@ public class MessagesController extends BaseController implements NotificationCe
                             message.entities = sponsoredMessage.entities;
                             message.flags |= 128;
                         }
-                        if (NekoConfig.hideSponsoredMessage.Bool()) {
+                        if (AveConfig.hideSponsoredMessage.Bool()) {
                             message.hide = true;
                         }
                         message.peer_id = getPeer(dialogId);
@@ -21701,7 +21701,7 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public String getRestrictionReason(ArrayList<TLRPC.RestrictionReason> reasons) {
-        if (reasons.isEmpty() || NekoConfig.ignoreContentRestrictions.Bool()) {
+        if (reasons.isEmpty() || AveConfig.ignoreContentRestrictions.Bool()) {
             return null;
         }
         for (int a = 0, N = reasons.size(); a < N; a++) {

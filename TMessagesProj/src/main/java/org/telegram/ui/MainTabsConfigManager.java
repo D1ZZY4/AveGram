@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 import org.avegram.NaConfig;
 
 public class MainTabsConfigManager {
@@ -265,7 +265,7 @@ public class MainTabsConfigManager {
     }
 
     private static void ensureChatsPinnedForDrawer(List<TabState> tabs) {
-        if (!NekoConfig.navigationDrawerEnabled.Bool()) {
+        if (!AveConfig.navigationDrawerEnabled.Bool()) {
             return;
         }
         TabState chats = null;

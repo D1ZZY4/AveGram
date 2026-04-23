@@ -78,15 +78,15 @@ import java.util.List;
 
 import me.vkryl.android.animator.BoolAnimator;
 import me.vkryl.android.animator.FactorAnimator;
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.AppRestartHelper;
-import tw.nekomimi.nekogram.helpers.MainTabsHelper;
-import tw.nekomimi.nekogram.helpers.PasscodeHelper;
-import tw.nekomimi.nekogram.settings.GhostModeActivity;
-import tw.nekomimi.nekogram.settings.MainTabsCustomizeActivity;
-import tw.nekomimi.nekogram.settings.NekoSettingsActivity;
-import tw.nekomimi.nekogram.ui.BookmarkManagerActivity;
-import tw.nekomimi.nekogram.utils.BrowserUtils;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.AppRestartHelper;
+import org.avegram.ave.helpers.MainTabsHelper;
+import org.avegram.ave.helpers.PasscodeHelper;
+import org.avegram.ave.settings.GhostModeActivity;
+import org.avegram.ave.settings.MainTabsCustomizeActivity;
+import org.avegram.ave.settings.AveSettingsActivity;
+import org.avegram.ave.ui.BookmarkManagerActivity;
+import org.avegram.ave.utils.BrowserUtils;
 import org.avegram.NaConfig;
 
 public class MainTabsActivity extends ViewPagerActivity implements NotificationCenter.NotificationCenterDelegate, FactorAnimator.Target {
@@ -1241,21 +1241,21 @@ public class MainTabsActivity extends ViewPagerActivity implements NotificationC
         }
         if (tabType == MainTabsConfigManager.TabType.SETTINGS) {
             ItemOptions o = ItemOptions.makeOptions(this, button);
-            if (NekoConfig.showGhostInDrawer.Bool()) {
-                final String msg = NekoConfig.isGhostModeActive()
+            if (AveConfig.showGhostInDrawer.Bool()) {
+                final String msg = AveConfig.isGhostModeActive()
                     ? getString(R.string.DisableGhostMode)
                     : getString(R.string.EnableGhostMode);
                 o.add(R.drawable.ayu_ghost, msg, () -> presentFragment(new GhostModeActivity()), () -> {
-                    final String toggleMsg = NekoConfig.isGhostModeActive()
+                    final String toggleMsg = AveConfig.isGhostModeActive()
                         ? getString(R.string.GhostModeDisabled)
                         : getString(R.string.GhostModeEnabled);
-                    NekoConfig.toggleGhostMode();
+                    AveConfig.toggleGhostMode();
                     BulletinFactory.of(contentView, resourceProvider).createSuccessBulletin(toggleMsg).show();
                     NotificationCenter.getInstance(UserConfig.selectedAccount).postNotificationName(NotificationCenter.mainUserInfoChanged);
                 });
                 o.addGap();
             }
-            o.add(R.drawable.msg_settings, getString(R.string.NekoSettings), () -> presentFragment(new NekoSettingsActivity()));
+            o.add(R.drawable.msg_settings, getString(R.string.AveSettings), () -> presentFragment(new AveSettingsActivity()));
             o.add(R.drawable.web_browser, getString(R.string.InappBrowser), () -> presentFragment(new WebBrowserSettings(null)), () -> BrowserUtils.openBrowserHome(null, true));
             o.addGap();
             o.add(R.drawable.msg_retry_solar, getString(R.string.RestartApp), () ->

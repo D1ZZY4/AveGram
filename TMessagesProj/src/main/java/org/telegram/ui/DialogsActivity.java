@@ -277,13 +277,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import me.vkryl.android.animator.BoolAnimator;
 import me.vkryl.android.animator.FactorAnimator;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.MainTabsHelper;
-import tw.nekomimi.nekogram.ChatHistoryActivity;
-import tw.nekomimi.nekogram.helpers.PasscodeHelper;
-import tw.nekomimi.nekogram.helpers.TypefaceHelper;
-import tw.nekomimi.nekogram.settings.MainTabsCustomizeActivity;
-import tw.nekomimi.nekogram.ui.BookmarkManagerActivity;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.MainTabsHelper;
+import org.avegram.ave.ChatHistoryActivity;
+import org.avegram.ave.helpers.PasscodeHelper;
+import org.avegram.ave.helpers.TypefaceHelper;
+import org.avegram.ave.settings.MainTabsCustomizeActivity;
+import org.avegram.ave.ui.BookmarkManagerActivity;
 import org.avegram.NaConfig;
 import org.avegram.ui.folders.FoldersHelper;
 
@@ -2243,7 +2243,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                                 if (!canShowHiddenArchive) {
                                     canShowHiddenArchive = true;
                                     try {
-                                        if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                                        if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                                     } catch (Exception ignored) {}
                                     if (parentPage.pullForegroundDrawable != null) {
                                         parentPage.pullForegroundDrawable.colorize(true);
@@ -2255,7 +2255,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                                     AndroidUtilities.makeAccessibilityAnnouncement(LocaleController.getString(R.string.AccDescrArchivedChatsShown));
                                 }
 
-                                if (NekoConfig.openArchiveOnPull.Bool()) {
+                                if (AveConfig.openArchiveOnPull.Bool()) {
                                     AndroidUtilities.runOnUIThread(() -> {
                                         // Open the folder.
                                         // Delay was taken from PullForegroundDrawable::startOutAnimation().
@@ -3006,7 +3006,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         if (statusDrawable == null || actionBar == null) {
             return;
         }
-        if (NekoConfig.isGhostModeActive() && NekoConfig.showGhostModeStatus.Bool()) {
+        if (AveConfig.isGhostModeActive() && AveConfig.showGhostModeStatus.Bool()) {
             if (ghostDrawable == null) {
                 ghostDrawable = getContext().getResources().getDrawable(R.drawable.ayu_ghost).mutate();
                 ghostDrawable = new AnimatedEmojiDrawable.WrapSizeDrawable(ghostDrawable, dp(20), dp(20)) {
@@ -3591,7 +3591,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
             actionBar.setBackgroundColor(getThemedColor(Theme.key_windowBackgroundWhite));
             actionBar.setOnLongClickListener(v -> {
-                if (NekoConfig.hideAllTab.Bool() && filterTabsView != null && filterTabsView.getDefaultTabId() != filterTabsView.getCurrentTabId()) {
+                if (AveConfig.hideAllTab.Bool() && filterTabsView != null && filterTabsView.getDefaultTabId() != filterTabsView.getCurrentTabId()) {
                     filterTabsView.toggleAllTabs(true);
                     filterTabsView.selectDefaultTab();
                 }
@@ -3611,7 +3611,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 statusDrawable.center = true;
                 actionBar.setTitle(actionBarTitleNax = TypefaceHelper.getTitleText(currentAccount), statusDrawable);
                 actionBar.setOnLongClickListener(v -> {
-                    if (NekoConfig.hideAllTab.Bool() && filterTabsView != null && filterTabsView.getCurrentTabId() != Integer.MAX_VALUE) {
+                    if (AveConfig.hideAllTab.Bool() && filterTabsView != null && filterTabsView.getCurrentTabId() != Integer.MAX_VALUE) {
                         filterTabsView.toggleAllTabs(true);
                         filterTabsView.selectDefaultTab();
                     }
@@ -3661,7 +3661,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 protected void onDefaultTabMoved() {
                     if (!getMessagesController().premiumFeaturesBlocked()) {
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                            if (!AveConfig.disableVibration.Bool()) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                         } catch (Exception ignore) {}
                         topBulletin = BulletinFactory.of(DialogsActivity.this).createSimpleBulletin(R.raw.filter_reorder, AndroidUtilities.replaceTags(LocaleController.formatString(R.string.LimitReachedReorderFolder, LocaleController.getString(R.string.FilterAllChats))), LocaleController.getString(R.string.PremiumMore), Bulletin.DURATION_PROLONG, () -> {
                             showDialog(new PremiumFeatureBottomSheet(DialogsActivity.this, PremiumPreviewFragment.PREMIUM_FEATURE_ADVANCED_CHAT_MANAGEMENT, true));
@@ -3774,7 +3774,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
                 @Override
                 public int getTabCounter(int tabId) {
-                    if (NaConfig.INSTANCE.getIgnoreUnreadCount().Int() == NekoConfig.DIALOG_FILTER_EXCLUDE_ALL) {
+                    if (NaConfig.INSTANCE.getIgnoreUnreadCount().Int() == AveConfig.DIALOG_FILTER_EXCLUDE_ALL) {
                         return 0;
                     }
 
@@ -4474,7 +4474,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                                 canShowHiddenArchive = canShowInternal;
                                 if (viewPage.archivePullViewState == ARCHIVE_ITEM_STATE_HIDDEN) {
                                     try {
-                                        if (!NekoConfig.disableVibration.Bool()) viewPage.listView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                                        if (!AveConfig.disableVibration.Bool()) viewPage.listView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                                     } catch (Exception ignored) {}
                                     if (viewPage.pullForegroundDrawable != null) {
                                         viewPage.pullForegroundDrawable.colorize(canShowInternal);
@@ -5342,7 +5342,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     return;
                 }
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                    if (!AveConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
                 } catch (Exception ignored) {}
                 if (dialogId == UserConfig.getInstance(currentAccount).getClientUserId()) {
                     if (!storiesEnabled) {
@@ -7039,7 +7039,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         filterTabsView.addTab(a, filter.localId, filter.name, filter.emoticon, filter.entities, filter.title_noanimate, false, filters.get(a).locked);
                     }
                 }
-                if (NekoConfig.hideAllTab.Bool() && stableId <= 0) {
+                if (AveConfig.hideAllTab.Bool() && stableId <= 0) {
                     id = filterTabsView.getFirstTabId();
                     updateCurrentTab = true;
                     viewPages[0].selectedType = id;
@@ -8563,7 +8563,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
     private void onArchiveLongPress(View view) {
         try {
-            if (!NekoConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+            if (!AveConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         } catch (Exception ignored) {}
         BottomSheet.Builder builder = new BottomSheet.Builder(getParentActivity());
         final boolean hasUnread = getMessagesStorage().getArchiveUnreadCount() != 0;
@@ -9137,7 +9137,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
             if (isOpen && afterSignup) {
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 } catch (Exception ignored) {}
                 if (getParentActivity() instanceof LaunchActivity) {
                     ((LaunchActivity) getParentActivity()).getFireworksOverlay().start();
@@ -9380,7 +9380,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             int maxPinnedCount;
             if (containsFilter) {
                 maxPinnedCount = 100 - filter.alwaysShow.size();
-            } else if (NekoConfig.unlimitedPinnedDialogs.Bool() || folderId != 0 || filter != null) {
+            } else if (AveConfig.unlimitedPinnedDialogs.Bool() || folderId != 0 || filter != null) {
                 if (UserConfig.getInstance(currentAccount).isPremium()) {
                     maxPinnedCount = getMessagesController().maxFolderPinnedDialogsCountPremium;
                 } else {
@@ -11879,7 +11879,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         sendPopupWindow.showAtLocation(view, Gravity.LEFT | Gravity.TOP, location[0] + view.getMeasuredWidth() - layout.getMeasuredWidth() + dp(8), y);
         sendPopupWindow.dimBehind();
         try {
-            if (!NekoConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+            if (!AveConfig.disableVibration.Bool()) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         } catch (Exception ignored) {}
 
         return false;
@@ -13544,7 +13544,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
                 Bulletin.make(DialogsActivity.this, layout, duration).show();
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 } catch (Exception ignored) {}
 
             }, () -> getMessagesController().removeSuggestion(0, "SETUP_LOGIN_EMAIL"),
@@ -14080,7 +14080,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     }
 
     private boolean useHomeDrawer() {
-        return NekoConfig.navigationDrawerEnabled.Bool()
+        return AveConfig.navigationDrawerEnabled.Bool()
                 && !onlySelect
                 && folderId == 0
                 && initialDialogsType == DIALOGS_TYPE_DEFAULT

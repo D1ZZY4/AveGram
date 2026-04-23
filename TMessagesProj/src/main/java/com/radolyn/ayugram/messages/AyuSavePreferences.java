@@ -17,7 +17,7 @@ import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.Utilities;
 import org.telegram.tgnet.TLRPC;
 
-import tw.nekomimi.nekogram.NekoConfig;
+import org.avegram.ave.AveConfig;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -118,20 +118,20 @@ public class AyuSavePreferences {
 
     public static void setSaveDeletedExclusion(long chatId, boolean value) {
         saveDeletedExclusions.put(Math.abs(chatId), value);
-        NekoConfig.getPreferences().edit().putBoolean(saveExclusionPrefix + Math.abs(chatId), value).apply();
+        AveConfig.getPreferences().edit().putBoolean(saveExclusionPrefix + Math.abs(chatId), value).apply();
     }
 
     public static boolean getSaveDeletedExclusion(long chatId) {
         if (isSaveDeletedExclusionsLoaded) {
             return Boolean.TRUE.equals(saveDeletedExclusions.getOrDefault(Math.abs(chatId), false));
         } else {
-            return saveDeletedExclusions.computeIfAbsent(Math.abs(chatId), k -> NekoConfig.getPreferences().getBoolean(saveExclusionPrefix + Math.abs(chatId), false));
+            return saveDeletedExclusions.computeIfAbsent(Math.abs(chatId), k -> AveConfig.getPreferences().getBoolean(saveExclusionPrefix + Math.abs(chatId), false));
         }
     }
 
     public static void loadAllExclusions() {
         Utilities.stageQueue.postRunnable(() -> {
-            Map<String, ?> allEntries = NekoConfig.getPreferences().getAll();
+            Map<String, ?> allEntries = AveConfig.getPreferences().getAll();
             for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
                 if (entry.getKey().startsWith(saveExclusionPrefix)) {
                     try {

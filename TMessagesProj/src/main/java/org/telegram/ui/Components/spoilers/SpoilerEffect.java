@@ -57,8 +57,8 @@ import java.util.Stack;
 import java.util.WeakHashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.filters.AyuFilter;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.filters.AyuFilter;
 
 public class SpoilerEffect extends Drawable {
     public final static int MAX_PARTICLES_PER_ENTITY = measureMaxParticlesCount();
@@ -592,7 +592,7 @@ public class SpoilerEffect extends Drawable {
      * @param spoilers     Spoilers list to populate
      */
     public static void addSpoilers(@Nullable View v, Layout textLayout, @Nullable Stack<SpoilerEffect> spoilersPool, List<SpoilerEffect> spoilers) {
-        if (NekoConfig.showSpoilersDirectly.Bool() && !AyuFilter.hasMaskedFilterSpan(textLayout == null ? null : textLayout.getText())) {
+        if (AveConfig.showSpoilersDirectly.Bool() && !AyuFilter.hasMaskedFilterSpan(textLayout == null ? null : textLayout.getText())) {
             return;
         }
         if (textLayout.getText() instanceof Spanned) {
@@ -601,7 +601,7 @@ public class SpoilerEffect extends Drawable {
     }
 
     public static void addSpoilers(@Nullable View v, Layout textLayout, int left, int right, @Nullable Stack<SpoilerEffect> spoilersPool, List<SpoilerEffect> spoilers) {
-        if (NekoConfig.showSpoilersDirectly.Bool() && !AyuFilter.hasMaskedFilterSpan(textLayout == null ? null : textLayout.getText())) {
+        if (AveConfig.showSpoilersDirectly.Bool() && !AyuFilter.hasMaskedFilterSpan(textLayout == null ? null : textLayout.getText())) {
             return;
         }
         if (textLayout.getText() instanceof Spanned) {

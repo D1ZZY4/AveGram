@@ -116,9 +116,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.CountDownLatch;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.LocalNameHelper;
-import tw.nekomimi.nekogram.utils.AndroidUtil;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.LocalNameHelper;
+import org.avegram.ave.utils.AndroidUtil;
 
 public class ChatEditActivity extends BaseFragment implements ImageUpdater.ImageUpdaterDelegate, NotificationCenter.NotificationCenterDelegate {
 
@@ -1117,7 +1117,7 @@ public class ChatEditActivity extends BaseFragment implements ImageUpdater.Image
                         }
                         BulletinFactory.of(this).createSimpleBulletin(R.raw.topics, text).show();
                         try {
-                            if (!NekoConfig.disableVibration.Bool()) frameLayout.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                            if (!AveConfig.disableVibration.Bool()) frameLayout.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                         } catch (Exception ignored) {}
                         return;
                     }

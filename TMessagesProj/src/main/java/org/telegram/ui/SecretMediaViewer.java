@@ -113,8 +113,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.MessageHelper;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.helpers.MessageHelper;
 
 import com.radolyn.ayugram.utils.AyuMessageUtils;
 
@@ -1179,7 +1179,7 @@ public class SecretMediaViewer implements NotificationCenter.NotificationCenterD
         if (!isCaptionEmpty) {
             Theme.createChatResources(null, true);
             CharSequence str;
-            if (messageObject != null /*&& captionTranslated*/ && messageObject.messageOwner != null && messageObject.messageOwner.translatedText != null && TextUtils.equals(messageObject.messageOwner.translatedToLanguage, NekoConfig.translateToLang.String())) {
+            if (messageObject != null /*&& captionTranslated*/ && messageObject.messageOwner != null && messageObject.messageOwner.translatedText != null && TextUtils.equals(messageObject.messageOwner.translatedToLanguage, AveConfig.translateToLang.String())) {
                 str = caption;
             } else if (messageObject != null && !messageObject.messageOwner.entities.isEmpty()) {
                 Spannable spannableString = new SpannableString(caption);

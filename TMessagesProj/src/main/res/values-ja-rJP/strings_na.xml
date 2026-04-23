@@ -49,7 +49,7 @@
     <string name="CheckAllForum">すべてのトピックモードグループを追加</string>
     <string name="DecorationNone">なし</string>
     <string name="ChatDecoration">チャットデコレーション</string>
-    <string name="NeedChangeNekoSettings">この設定はN-設定によって上書きされているため、変更できません</string>
+    <string name="NeedChangeAveSettings">この設定はN-設定によって上書きされているため、変更できません</string>
     <string name="DoNotUnarchiveBySwipe">スワイプによるアーカイブ解除を無効化</string>
     <string name="DefaultDeleteMenu">デフォルトの削除メニュー</string>
     <string name="DisableStories">ストーリー機能を無効化</string>

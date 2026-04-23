@@ -6,7 +6,7 @@ public final class AvatarCornerHelper {
 
     private static final float BASE_AVATAR_SIZE_DP = 56.0f;
     private static final float STORY_RADIUS_COMPENSATION = 2.5f;
-    // Matches exteraGram's forum avatar scaling, which is roughly 0.65625x of the base radius.
+    // Matches aveGram's forum avatar scaling, which is roughly 0.65625x of the base radius.
     private static final int FORUM_RADIUS_MULTIPLIER = 42;
     private static final int FORUM_RADIUS_SHIFT = 6;
 

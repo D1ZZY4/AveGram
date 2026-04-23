@@ -69,12 +69,12 @@ import org.telegram.ui.RestrictedLanguagesSelectActivity;
 
 import java.util.ArrayList;
 
-import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.llm.LlmConfig;
-import tw.nekomimi.nekogram.translate.Translator;
-import tw.nekomimi.nekogram.translate.TranslatorKt;
-import tw.nekomimi.nekogram.utils.AlertUtil;
-import tw.nekomimi.nekogram.utils.ProxyUtil;
+import org.avegram.ave.AveConfig;
+import org.avegram.ave.llm.LlmConfig;
+import org.avegram.ave.translate.Translator;
+import org.avegram.ave.translate.TranslatorKt;
+import org.avegram.ave.utils.AlertUtil;
+import org.avegram.ave.utils.ProxyUtil;
 import org.avegram.NaConfig;
 import org.avegram.helper.SystemAiServiceHelper;
 
@@ -290,7 +290,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
 
                 selectedView = newView;
                 try {
-                    if (!NekoConfig.disableVibration.Bool()) textSelectionOverlay.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+                    if (!AveConfig.disableVibration.Bool()) textSelectionOverlay.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                 } catch (Exception ignored) {}
                 AndroidUtilities.cancelRunOnUIThread(showActionsRunnable);
                 AndroidUtilities.runOnUIThread(showActionsRunnable);
@@ -1452,7 +1452,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
                     }
                     menu.getItem(2).setVisible(selectedView instanceof View);
                 }
-                // NekoX: Merge 8.5.0, remove due to removing LanguageDetector
+                // AveX: Merge 8.5.0, remove due to removing LanguageDetector
                 MenuItem addToFilterItem = menu.findItem(ADD_TO_FILTER);
                 if (addToFilterItem != null) {
                     addToFilterItem.setVisible(canShowAddToFilter());
@@ -1503,7 +1503,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
                     Activity activity = ProxyUtil.getOwnerActivity((((View) selectedView).getContext()));
                     AlertDialog pro = AlertUtil.showProgress(activity);
                     pro.show();
-                    Translator.translate(TranslatorKt.getCode2Locale(NekoConfig.translateToLang.String()), urlFinal, LlmConfig.isLLMTranslatorAvailable() ? Translator.providerLLMTranslator : 0, new Translator.Companion.TranslateCallBack() {
+                    Translator.translate(TranslatorKt.getCode2Locale(AveConfig.translateToLang.String()), urlFinal, LlmConfig.isLLMTranslatorAvailable() ? Translator.providerLLMTranslator : 0, new Translator.Companion.TranslateCallBack() {
                         @Override
                         public void onSuccess(@NotNull String translation) {
                             pro.dismiss();

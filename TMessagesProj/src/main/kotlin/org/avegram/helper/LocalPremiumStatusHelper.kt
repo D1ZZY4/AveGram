@@ -4,7 +4,7 @@ import androidx.core.content.edit
 import com.google.gson.Gson
 import org.telegram.messenger.UserConfig
 import org.telegram.tgnet.TLRPC
-import tw.nekomimi.nekogram.NekoConfig
+import org.avegram.ave.AveConfig
 import org.avegram.NaConfig
 
 data class LocalEmojiStatusData(
@@ -19,7 +19,7 @@ object LocalPremiumStatusHelper {
 
     @JvmStatic
     fun getDocumentId(user: TLRPC.User?): Long? {
-        if (!NekoConfig.localPremium.Bool()) return null
+        if (!AveConfig.localPremium.Bool()) return null
         if (user == null || !isLocalUser(user.id)) return null
 
         val data = getDataForUser(user.id) ?: return null
@@ -82,7 +82,7 @@ object LocalPremiumStatusHelper {
 
     @JvmStatic
     fun apply(status: TLRPC.EmojiStatus?) {
-        if (!NekoConfig.localPremium.Bool()) return
+        if (!AveConfig.localPremium.Bool()) return
 
         val userId = getCurrentUserId()
         if (userId == 0L) return

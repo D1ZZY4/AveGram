@@ -281,7 +281,7 @@ public class WebBrowserSettings extends UniversalFragment implements Notificatio
                 items.add(UItem.asCheck(13, "only local IV").setChecked(SharedConfig.onlyLocalInstantView));
             }
         }
-        items.add(UItem.asHeader(getString(R.string.NekoSettings)));
+        items.add(UItem.asHeader(getString(R.string.AveSettings)));
         items.add(UItem.asCheck(14, getString(R.string.DisableInAppBrowserGestures)).setChecked(NaConfig.INSTANCE.getDisableInAppBrowserGestures().Bool()));
     }
 

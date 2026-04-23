@@ -41,7 +41,7 @@ public class NotificationsService extends Service {
 //                    .setContentIntent(explainPendingIntent)
                     .setShowWhen(false)
                     .setOngoing(true)
-                    .setSmallIcon(R.drawable.neko_notification)
+                    .setSmallIcon(R.drawable.ave_notification)
                     .setContentText(LocaleController.getString(R.string.AveGramPushService))
                     .build();
             try {
