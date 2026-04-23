@@ -109,13 +109,13 @@
         android:restoreAnyVersion="true"
         android:backupAgent=".BackupAgent"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher_nagram_dark_blue"
+        android:icon="@mipmap/ic_launcher_avegram"
         android:label="@string/AppName"
         android:largeHeap="true"
         android:theme="@style/Theme.TMessages.Start"
         android:manageSpaceActivity="org.telegram.ui.ExternalActionActivity"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_nagram_dark_blue_round"
+        android:roundIcon="@mipmap/ic_launcher_avegram_round"
         android:supportsRtl="false"
         android:requestLegacyExternalStorage="true"
         android:hasFragileUserData="true"
@@ -715,7 +715,7 @@
             </intent-filter>
         </service>
 
-		<receiver android:name=".MusicPlayerReceiver" android:exported="false">
+                <receiver android:name=".MusicPlayerReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="org.telegram.android.musicplayer.close" />
                 <action android:name="org.telegram.android.musicplayer.pause" />
